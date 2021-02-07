@@ -5,12 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs --temp .temp"
+    "dev": "vuepress dev docs --temp .temp",
+    "build": "vuepress build docs"
   },
   "author": "BenThomson",
   "license": "MIT",
   "devDependencies": {
     "vuepress": "^1.8.0"
+  },
+  "dependencies": {
+    "@kawarimidoll/vuepress-plugin-tailwind": "^2.0.0",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "^9.8.6",
+    "d3": "^6.5.0",
+    "node-sass": "^5.0.0",
+    "postcss": "^7.0.35",
+    "sass-loader": "^10.1.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   }
 }
