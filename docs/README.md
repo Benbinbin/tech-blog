@@ -2,6 +2,7 @@
 {
   "layout": "HomeLayout",
   "title": "Home",
+  "omitList": true,
   "cards": [
     {
       "name": "Data",

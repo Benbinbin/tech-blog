@@ -8,142 +8,11 @@ export const siteData = {
   "headTags": [],
   "pages": [
     {
-      "title": "简介",
-      "frontmatter": {
-        "permalink": "d3js-introduction",
-        "type": "series",
-        "series": "Getting started with d3.js"
-      },
-      "regularPath": "/data/data-vis/D3/%E7%AE%80%E4%BB%8B.html",
-      "relativePath": "data/data-vis/D3/简介.md",
-      "key": "v-057e6eb2",
-      "path": "/d3js-introduction/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "下载安装",
-          "slug": "下载安装"
-        }
-      ],
-      "lastUpdateTime": "2021-02-07"
-    },
-    {
-      "title": "SVG",
-      "frontmatter": {},
-      "regularPath": "/data/data-vis/D3/SVG.html",
-      "relativePath": "data/data-vis/D3/SVG.md",
-      "key": "v-679d6378",
-      "path": "/data/data-vis/D3/SVG.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "坐标定位",
-          "slug": "坐标定位"
-        },
-        {
-          "level": 2,
-          "title": "viewport 和 viewBox",
-          "slug": "viewport-和-viewbox"
-        },
-        {
-          "level": 2,
-          "title": "基本形状",
-          "slug": "基本形状"
-        },
-        {
-          "level": 3,
-          "title": "矩形和圆角矩形",
-          "slug": "矩形和圆角矩形"
-        },
-        {
-          "level": 3,
-          "title": "圆形和椭圆",
-          "slug": "圆形和椭圆"
-        },
-        {
-          "level": 3,
-          "title": "线条和折线",
-          "slug": "线条和折线"
-        },
-        {
-          "level": 3,
-          "title": "多边形",
-          "slug": "多边形"
-        },
-        {
-          "level": 2,
-          "title": "路径",
-          "slug": "路径"
-        },
-        {
-          "level": 3,
-          "title": "直线",
-          "slug": "直线"
-        },
-        {
-          "level": 3,
-          "title": "曲线",
-          "slug": "曲线"
-        },
-        {
-          "level": 2,
-          "title": "文本",
-          "slug": "文本"
-        },
-        {
-          "level": 2,
-          "title": "工具",
-          "slug": "工具"
-        },
-        {
-          "level": 2,
-          "title": "资源",
-          "slug": "资源"
-        }
-      ],
-      "lastUpdateTime": "2021-02-07"
-    },
-    {
-      "title": "基础操作",
-      "frontmatter": {},
-      "regularPath": "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
-      "relativePath": "data/data-vis/D3/基础操作.md",
-      "key": "v-7cf560fa",
-      "path": "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "选择器",
-          "slug": "选择器"
-        },
-        {
-          "level": 2,
-          "title": "动态属性",
-          "slug": "动态属性"
-        },
-        {
-          "level": 2,
-          "title": "enter 和 exit",
-          "slug": "enter-和-exit"
-        },
-        {
-          "level": 2,
-          "title": "D3 不是一种新的表示方法",
-          "slug": "d3-不是一种新的表示方法"
-        },
-        {
-          "level": 2,
-          "title": "过渡",
-          "slug": "过渡"
-        }
-      ],
-      "lastUpdateTime": "2021-02-07"
-    },
-    {
       "title": "Home",
       "frontmatter": {
         "layout": "HomeLayout",
         "title": "Home",
+        "omitList": true,
         "cards": [
           {
             "name": "Data",
@@ -190,13 +59,38 @@ export const siteData = {
       "relativePath": "README.md",
       "key": "v-50dc5f6e",
       "path": "/",
-      "lastUpdated": "2/4/2021, 2:49:18 PM",
-      "lastUpdateTime": "2021-02-07"
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
+    },
+    {
+      "title": "简介",
+      "frontmatter": {
+        "permalink": "d3js-introduction",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "data",
+          "d3.js",
+          "data visualization"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E7%AE%80%E4%BB%8B.html",
+      "relativePath": "data/data-vis/D3/简介.md",
+      "key": "v-057e6eb2",
+      "path": "/d3js-introduction/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "下载安装",
+          "slug": "下载安装"
+        }
+      ],
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
     },
     {
       "title": "demo",
       "frontmatter": {
-        "date": "2021-02-05T00:00:00.000Z"
+        "date": "2021-02-05T00:00:00.000Z",
+        "omitList": true
       },
       "regularPath": "/test.html",
       "relativePath": "test.md",
@@ -274,16 +168,19 @@ export const siteData = {
           "slug": "custom-containers"
         }
       ],
-      "lastUpdateTime": "2021-02-07"
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
     },
     {
       "title": "CSS3",
       "frontmatter": {
         "tags": [
-          "css"
+          "css",
+          "web"
         ],
         "date": "2021-02-05T00:00:00.000Z",
-        "author": "BenThomson"
+        "author": "BenThomson",
+        "layout": "LayoutTemplate",
+        "summary": "介绍 CSS3 选择器相关内容。"
       },
       "regularPath": "/web/CSS/CSS3.html",
       "relativePath": "web/CSS/CSS3.md",
@@ -366,21 +263,195 @@ export const siteData = {
           "slug": "获取网页字体"
         }
       ],
-      "lastUpdateTime": "2021-02-07"
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
+    },
+    {
+      "title": "基础操作",
+      "frontmatter": {
+        "permalink": "d3js-basic",
+        "summary": "D3.js 基础操作，主要介绍选择器和 enter 和 exit 等核心思想。",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
+      "relativePath": "data/data-vis/D3/基础操作.md",
+      "key": "v-7cf560fa",
+      "path": "/d3js-basic/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "选择器",
+          "slug": "选择器"
+        },
+        {
+          "level": 2,
+          "title": "动态属性",
+          "slug": "动态属性"
+        },
+        {
+          "level": 2,
+          "title": "enter 和 exit",
+          "slug": "enter-和-exit"
+        },
+        {
+          "level": 2,
+          "title": "D3 不是一种新的表示方法",
+          "slug": "d3-不是一种新的表示方法"
+        },
+        {
+          "level": 2,
+          "title": "过渡",
+          "slug": "过渡"
+        }
+      ],
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
+    },
+    {
+      "title": "SVG",
+      "frontmatter": {
+        "tags": [
+          "web",
+          "data visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/SVG.html",
+      "relativePath": "data/data-vis/D3/SVG.md",
+      "key": "v-679d6378",
+      "path": "/data/data-vis/D3/SVG.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "坐标定位",
+          "slug": "坐标定位"
+        },
+        {
+          "level": 2,
+          "title": "viewport 和 viewBox",
+          "slug": "viewport-和-viewbox"
+        },
+        {
+          "level": 2,
+          "title": "基本形状",
+          "slug": "基本形状"
+        },
+        {
+          "level": 3,
+          "title": "矩形和圆角矩形",
+          "slug": "矩形和圆角矩形"
+        },
+        {
+          "level": 3,
+          "title": "圆形和椭圆",
+          "slug": "圆形和椭圆"
+        },
+        {
+          "level": 3,
+          "title": "线条和折线",
+          "slug": "线条和折线"
+        },
+        {
+          "level": 3,
+          "title": "多边形",
+          "slug": "多边形"
+        },
+        {
+          "level": 2,
+          "title": "路径",
+          "slug": "路径"
+        },
+        {
+          "level": 3,
+          "title": "直线",
+          "slug": "直线"
+        },
+        {
+          "level": 3,
+          "title": "曲线",
+          "slug": "曲线"
+        },
+        {
+          "level": 2,
+          "title": "文本",
+          "slug": "文本"
+        },
+        {
+          "level": 2,
+          "title": "工具",
+          "slug": "工具"
+        },
+        {
+          "level": 2,
+          "title": "资源",
+          "slug": "资源"
+        }
+      ],
+      "lastUpdated": "2/7/2021, 11:18:30 PM"
     },
     {
       "frontmatter": {
-        "layout": "ListLayout"
+        "layout": "ListLayout",
+        "sidebar": false,
+        "site": "all",
+        "omitList": true
       },
-      "regularPath": "/web/",
-      "key": "v-b15373a0",
-      "path": "/web/",
-      "lastUpdateTime": "2021-02-07"
+      "regularPath": "/posts-list/",
+      "key": "v-00c90f3c",
+      "path": "/posts-list/"
+    },
+    {
+      "frontmatter": {
+        "layout": "ListLayout",
+        "sidebar": false,
+        "site": "web",
+        "omitList": true
+      },
+      "regularPath": "/posts-list/web.html",
+      "key": "v-45693f32",
+      "path": "/posts-list/web.html"
+    },
+    {
+      "frontmatter": {
+        "layout": "ListLayout",
+        "sidebar": false,
+        "site": "data",
+        "omitList": true
+      },
+      "regularPath": "/posts-list/data.html",
+      "key": "v-3788614d",
+      "path": "/posts-list/data.html"
+    },
+    {
+      "frontmatter": {
+        "layout": "ListLayout",
+        "sidebar": false,
+        "site": "design",
+        "omitList": true
+      },
+      "regularPath": "/posts-list/design.html",
+      "key": "v-7ef8878e",
+      "path": "/posts-list/design.html"
+    },
+    {
+      "frontmatter": {
+        "layout": "ListLayout",
+        "sidebar": false,
+        "site": "other",
+        "omitList": true
+      },
+      "regularPath": "/posts-list/other.html",
+      "key": "v-c0c4dcaa",
+      "path": "/posts-list/other.html"
     }
   ],
   "themeConfig": {
     "author": "BenThomson",
-    "logo": "/img/Ben.png",
+    "avatar": "/img/Ben.png",
     "lastUpdated": true,
     "socialMedia": [
       {
@@ -412,6 +483,24 @@ export const siteData = {
         "name": "weibo",
         "logo": "/img/weibo.svg",
         "url": "https://weibo.com/binbindesign"
+      }
+    ],
+    "nav": [
+      {
+        "text": "Data",
+        "link": "/posts-list/data/"
+      },
+      {
+        "text": "Web",
+        "link": "/posts-list/web/"
+      },
+      {
+        "text": "design",
+        "link": "/posts-list/design/"
+      },
+      {
+        "text": "Other",
+        "link": "/posts-list/other/"
       }
     ]
   }

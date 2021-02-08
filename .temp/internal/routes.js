@@ -9,6 +9,18 @@ import GlobalLayout from "F:\\Blog\\Tech-Blog\\node_modules\\@vuepress\\core\\li
 injectComponentOption(GlobalLayout, 'mixins', rootMixins)
 export const routes = [
   {
+    name: "v-50dc5f6e",
+    path: "/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("HomeLayout", "v-50dc5f6e").then(next)
+    },
+  },
+  {
+    path: "/index.html",
+    redirect: "/"
+  },
+  {
     name: "v-057e6eb2",
     path: "/d3js-introduction/",
     component: GlobalLayout,
@@ -25,42 +37,6 @@ export const routes = [
     redirect: "/d3js-introduction/"
   },
   {
-    name: "v-679d6378",
-    path: "/data/data-vis/D3/SVG.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-679d6378").then(next)
-    },
-  },
-  {
-    name: "v-7cf560fa",
-    path: "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-7cf560fa").then(next)
-    },
-  },
-  {
-    path: "/data/data-vis/D3/基础操作.html",
-    redirect: "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html"
-  },
-  {
-    path: "/data/data-vis/D3/基础操作.html",
-    redirect: "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html"
-  },
-  {
-    name: "v-50dc5f6e",
-    path: "/",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("HomeLayout", "v-50dc5f6e").then(next)
-    },
-  },
-  {
-    path: "/index.html",
-    redirect: "/"
-  },
-  {
     name: "v-e902cc16",
     path: "/test.html",
     component: GlobalLayout,
@@ -73,20 +49,76 @@ export const routes = [
     path: "/web/CSS/CSS3.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-1055395e").then(next)
+      ensureAsyncComponentsLoaded("LayoutTemplate", "v-1055395e").then(next)
     },
   },
   {
-    name: "v-b15373a0",
-    path: "/web/",
+    name: "v-7cf560fa",
+    path: "/d3js-basic/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("ListLayout", "v-b15373a0").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-7cf560fa").then(next)
     },
   },
   {
-    path: "/web/index.html",
-    redirect: "/web/"
+    path: "/d3js-basic/index.html",
+    redirect: "/d3js-basic/"
+  },
+  {
+    path: "/data/data-vis/D3/基础操作.html",
+    redirect: "/d3js-basic/"
+  },
+  {
+    name: "v-679d6378",
+    path: "/data/data-vis/D3/SVG.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-679d6378").then(next)
+    },
+  },
+  {
+    name: "v-00c90f3c",
+    path: "/posts-list/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-00c90f3c").then(next)
+    },
+  },
+  {
+    path: "/posts-list/index.html",
+    redirect: "/posts-list/"
+  },
+  {
+    name: "v-45693f32",
+    path: "/posts-list/web.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-45693f32").then(next)
+    },
+  },
+  {
+    name: "v-3788614d",
+    path: "/posts-list/data.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-3788614d").then(next)
+    },
+  },
+  {
+    name: "v-7ef8878e",
+    path: "/posts-list/design.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-7ef8878e").then(next)
+    },
+  },
+  {
+    name: "v-c0c4dcaa",
+    path: "/posts-list/other.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-c0c4dcaa").then(next)
+    },
   },
   {
     path: '*',

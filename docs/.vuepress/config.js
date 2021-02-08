@@ -5,8 +5,13 @@ module.exports = {
   description: "Notes written by BenThomson when learning tech skills.",
   plugins: [
     "@kawarimidoll/tailwind",
-    require('./plugins/addListPage.js'),
-    require('./plugins/addTime.js'),
+    [
+      require('./plugins/generateListPages.js'),
+      {
+        pages: ['web', 'data', 'design', 'other']
+      }
+    ],
+    require('./plugins/addTag.js'),
   ],
   markdown: {
     anchor: {
@@ -15,7 +20,8 @@ module.exports = {
   },
   themeConfig: {
     author: 'BenThomson',
-    logo: '/img/Ben.png',
+    avatar: '/img/Ben.png',
+    // navbar: true,
     lastUpdated: true,
     socialMedia: [
       {
@@ -48,6 +54,12 @@ module.exports = {
         logo: '/img/weibo.svg',
         url: 'https://weibo.com/binbindesign'
       },
+    ],
+    nav: [
+      { text: 'Data', link: '/posts-list/data/' },
+      { text: 'Web', link: '/posts-list/web/' },
+      { text: 'design', link: '/posts-list/design/' },
+      { text: 'Other', link: '/posts-list/other/' },
     ]
   },
   alias: {
