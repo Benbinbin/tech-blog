@@ -2,38 +2,81 @@
   <div class="min-h-screen w-full flex flex-col bg-gray-100">
     <!-- <Navbar /> -->
     <Layout />
-    <div
-      class="container flex-grow mx-auto my-10 p-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
-    >
-      <div
-        v-for="post in posts"
-        class="relative opacity-80 hover:opacity-100 transform transition-all"
-        :class="{ series: post.frontmatter.type === 'series' }"
-      >
+    <div class="container mx-auto m-10 p-8 flex-grow">
+      <div class="border-b-2 mb-20 md:mx-10 lg:mx-20">
+        <TagsList :tags="tags" :currentTag="currentTag" />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         <div
-          class="p-6 h-full bg-gray-50 border-8 border-white rounded-md hover:shadow-md"
+          v-for="post in posts"
+          class="relative opacity-80 hover:opacity-100 transform transition-all"
+          :class="{ series: post.frontmatter.type === 'series' }"
+          :key="post.path"
         >
-          <a
-            :href="post.path"
-            target="_blank"
-            class="absolute inset-0 z-10"
-          ></a>
-          <h2 class="text-2xl">{{ post.title }}</h2>
-          <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
-          <p class="summary text-gray-500" v-if="post.frontmatter.summary">
-            {{ post.frontmatter.summary }}
-          </p>
-          <button
-            v-if="post.frontmatter.type === 'series'"
-            class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
+          <div
+            class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
           >
-            查看系列
-          </button>
+            <a
+              :href="post.path"
+              target="_blank"
+              class="absolute inset-0 z-10"
+            ></a>
+            <h2 class="text-2xl">{{ post.title }}</h2>
+            <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
+            <p class="summary text-gray-500" v-if="post.frontmatter.summary">
+              {{ post.frontmatter.summary }}
+            </p>
+            <ul>
+              <li></li>
+            </ul>
+            <button
+              v-if="post.frontmatter.type === 'series'"
+              class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
+              @click="isModalVisible=true"
+            >
+              查看系列
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <Navigator />
     <Footer />
+    <Modal v-if="isModalVisible" @closeModal="isModalVisible = false">
+      <div class="series-container">
+        <div
+          v-for="post in series"
+          class="relative opacity-80 hover:opacity-100 transform transition-all"
+          :class="{ series: post.frontmatter.type === 'series' }"
+          :key="post.path"
+        >
+          <div
+            class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
+          >
+            <a
+              :href="post.path"
+              target="_blank"
+              class="absolute inset-0 z-10"
+            ></a>
+            <h2 class="text-2xl">{{ post.title }}</h2>
+            <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
+            <p class="summary text-gray-500" v-if="post.frontmatter.summary">
+              {{ post.frontmatter.summary }}
+            </p>
+            <ul>
+              <li></li>
+            </ul>
+            <button
+              v-if="post.frontmatter.type === 'series'"
+              class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
+              @click="isModalVisible=true"
+            >
+              查看系列
+            </button>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -42,6 +85,8 @@
 import Layout from "@theme/layouts/Layout.vue";
 import Footer from "./utils/Footer.vue";
 import Navigator from "./utils/Navigator.vue";
+import TagsList from "./utils/TagsList.vue";
+import Modal from "./utils/Modal.vue";
 
 export default {
   components: {
@@ -49,15 +94,29 @@ export default {
     // Navbar,
     Footer,
     Navigator,
+    TagsList,
+    Modal
   },
   data() {
     return {
       posts: [],
+      tags: [],
+      currentTag: "",
+      isModalVisible: false,
+      series: [],
     };
   },
   watch: {
     $route() {
+      if (this.$route.hash) {
+        const hash = this.$route.hash.substring(1);
+        // console.log(hash);
+        this.currentTag = hash;
+      } else {
+        this.currentTag = "all";
+      }
       this.getPosts();
+      this.getTags();
     },
   },
   methods: {
@@ -72,7 +131,6 @@ export default {
     },
     getPosts() {
       this.posts = [];
-      console.log(this.$site);
       this.$site.pages.forEach((post) => {
         if (
           !post.relativePath ||
@@ -81,16 +139,51 @@ export default {
         )
           return;
         const category = post.relativePath.split("/")[0];
-        if (this.$page.frontmatter.site !== 'all' && category !== this.$page.frontmatter.site) return;
+        if (
+          this.$page.frontmatter.site !== "all" &&
+          category !== this.$page.frontmatter.site
+        )
+          return;
+        if (
+          this.currentTag !== "all" &&
+          !post.frontmatter.tags.includes(this.currentTag)
+        )
+          return;
         this.posts.push(post);
       });
       this.posts.sort((a, b) => {
         return new Date(this.time(b)) - new Date(this.time(a));
       });
+      console.log(this.posts);
+    },
+    getTags() {
+      this.tags = [];
+      let tagsSet = new Set();
+      const site = this.$page.frontmatter.site;
+      // console.log(site);
+      // console.log(this.$site);
+      this.$site.pages.forEach((post) => {
+        if (post.frontmatter.omitList) return;
+        if (post.frontmatter.tags) {
+          if (site !== "all" && !post.frontmatter.tags.includes(site)) return;
+          post.frontmatter.tags.forEach((tag) => {
+            tagsSet.add(tag);
+          });
+        }
+      });
+
+      tagsSet.delete(site);
+      this.tags = Array.from(tagsSet);
+      this.tags.unshift("all");
+
+      // console.log(tagsSet);
+      // console.log(this.tags);
     },
   },
   created() {
+    this.currentTag = "all";
     this.getPosts();
+    this.getTags();
   },
 };
 </script>

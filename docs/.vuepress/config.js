@@ -56,10 +56,11 @@ module.exports = {
       },
     ],
     nav: [
-      { text: 'Data', link: '/posts-list/data/' },
-      { text: 'Web', link: '/posts-list/web/' },
-      { text: 'design', link: '/posts-list/design/' },
-      { text: 'Other', link: '/posts-list/other/' },
+      { text: 'All', link: '/posts-list/index.html' },
+      { text: 'Data', link: '/posts-list/data.html' },
+      { text: 'Web', link: '/posts-list/web.html' },
+      { text: 'Design', link: '/posts-list/design.html' },
+      { text: 'Other', link: '/posts-list/other.html' },
     ]
   },
   alias: {

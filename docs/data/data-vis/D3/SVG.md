@@ -1,7 +1,6 @@
 ---
 tags:
-  - web
-  - data visualization
+  - data-visualization
 ---
 # SVG
 参考：
@@ -33,7 +32,7 @@ tags:
 
 SVG 绘制图形时需要使用坐标系统/网格系统，以页面的**左上角为 `(0,0)` 坐标点**，坐标以像素为单位，**x 轴正方向是向右**，**y 轴正方向是向下**。
 
-![Canvas_default_grid](./_v_images/20201016143051726_10893.png)
+![Canvas_default_grid](././_v_images/20201016143051726_10893.png)
 
 ## viewport 和 viewBox
 * viewport 视口是一个表示当前可见的计算机图形区域的概念。在 Web 浏览器术语中通常与**浏览器窗口相同**，但不包括浏览器的 UI（如菜单栏等），视口外的内容在被滚动进来前都是不可见的。。
@@ -211,11 +210,11 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 * `M x,y`  M stand for **Move To**, pick the pen off the paper, put it back down at (x,y)
 * `L x,y` L stand for **Line To**, draw a line from the previous point to the target point (x, y)
 
-![Line to](./_v_images/20201016155708549_11084.png)
+![Line to](././_v_images/20201016155708549_11084.png)
 
 * `C x,y x,y x,y` C stand for Curve To  (using Cubic Bézier Curve)
 
-![Cubic bezier curve to](./_v_images/20201016155707331_11257.png)
+![Cubic bezier curve to](././_v_images/20201016155707331_11257.png)
 
 :bulb: 每一个命令都有两种表示方式，一种是用**大写字母**，表示采用绝对定位；另一种是用**小写字母**，表示采用相对定位，如从上一个点开始，向上移动 `10px`，向左移动 `7px`。
 

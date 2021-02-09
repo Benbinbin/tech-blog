@@ -1,6 +1,6 @@
 module.exports = (options, ctx) => {
   let pagesOptions = [{
-    path: `/posts-list/`,
+    path: `/posts-list/index.html`,
     frontmatter: {
       layout: 'ListLayout',
       sidebar: false,

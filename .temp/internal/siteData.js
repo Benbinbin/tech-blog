@@ -59,7 +59,310 @@ export const siteData = {
       "relativePath": "README.md",
       "key": "v-50dc5f6e",
       "path": "/",
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
+    },
+    {
+      "title": "坐标轴模块",
+      "frontmatter": {
+        "permalink": "d3js-axis",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/坐标轴模块.md",
+      "key": "v-be80fe46",
+      "path": "/d3js-axis/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "创建坐标轴",
+          "slug": "创建坐标轴"
+        },
+        {
+          "level": 2,
+          "title": "渲染坐标轴",
+          "slug": "渲染坐标轴"
+        },
+        {
+          "level": 3,
+          "title": "坐标刻度",
+          "slug": "坐标刻度"
+        }
+      ]
+    },
+    {
+      "title": "SVG",
+      "frontmatter": {
+        "tags": [
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/SVG.html",
+      "relativePath": "data/data-vis/D3/SVG.md",
+      "key": "v-679d6378",
+      "path": "/data/data-vis/D3/SVG.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "坐标定位",
+          "slug": "坐标定位"
+        },
+        {
+          "level": 2,
+          "title": "viewport 和 viewBox",
+          "slug": "viewport-和-viewbox"
+        },
+        {
+          "level": 2,
+          "title": "基本形状",
+          "slug": "基本形状"
+        },
+        {
+          "level": 3,
+          "title": "矩形和圆角矩形",
+          "slug": "矩形和圆角矩形"
+        },
+        {
+          "level": 3,
+          "title": "圆形和椭圆",
+          "slug": "圆形和椭圆"
+        },
+        {
+          "level": 3,
+          "title": "线条和折线",
+          "slug": "线条和折线"
+        },
+        {
+          "level": 3,
+          "title": "多边形",
+          "slug": "多边形"
+        },
+        {
+          "level": 2,
+          "title": "路径",
+          "slug": "路径"
+        },
+        {
+          "level": 3,
+          "title": "直线",
+          "slug": "直线"
+        },
+        {
+          "level": 3,
+          "title": "曲线",
+          "slug": "曲线"
+        },
+        {
+          "level": 2,
+          "title": "文本",
+          "slug": "文本"
+        },
+        {
+          "level": 2,
+          "title": "工具",
+          "slug": "工具"
+        },
+        {
+          "level": 2,
+          "title": "资源",
+          "slug": "资源"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
+    },
+    {
+      "title": "基本图元模块",
+      "frontmatter": {
+        "permalink": "d3js-shapes",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%85%83%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/基本图元模块.md",
+      "key": "v-6ccfb9e3",
+      "path": "/d3js-shapes/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "Arcs",
+          "slug": "arcs"
+        },
+        {
+          "level": 2,
+          "title": "Pies",
+          "slug": "pies"
+        },
+        {
+          "level": 2,
+          "title": "Lines",
+          "slug": "lines"
+        },
+        {
+          "level": 2,
+          "title": "Areas",
+          "slug": "areas"
+        },
+        {
+          "level": 2,
+          "title": "Curves",
+          "slug": "curves"
+        },
+        {
+          "level": 2,
+          "title": "Custom Curves",
+          "slug": "custom-curves"
+        },
+        {
+          "level": 2,
+          "title": "Links",
+          "slug": "links"
+        }
+      ]
+    },
+    {
+      "title": "模块",
+      "frontmatter": {
+        "permalink": "d3js-modules",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/模块.md",
+      "key": "v-590e1812",
+      "path": "/d3js-modules/"
+    },
+    {
+      "title": "基础操作",
+      "frontmatter": {
+        "permalink": "d3js-basic",
+        "summary": "D3.js 基础操作，主要介绍选择器和 enter 和 exit 等核心思想。",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
+      "relativePath": "data/data-vis/D3/基础操作.md",
+      "key": "v-7cf560fa",
+      "path": "/d3js-basic/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "选择器",
+          "slug": "选择器"
+        },
+        {
+          "level": 2,
+          "title": "动态属性",
+          "slug": "动态属性"
+        },
+        {
+          "level": 2,
+          "title": "enter 和 exit",
+          "slug": "enter-和-exit"
+        },
+        {
+          "level": 2,
+          "title": "D3 不是一种新的表示方法",
+          "slug": "d3-不是一种新的表示方法"
+        },
+        {
+          "level": 2,
+          "title": "过渡",
+          "slug": "过渡"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
+    },
+    {
+      "title": "层级结构数据模块",
+      "frontmatter": {
+        "permalink": "d3js-hierarchy",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/层级结构数据模块.md",
+      "key": "v-349c8c62",
+      "path": "/d3js-hierarchy/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "Hierarchy",
+          "slug": "hierarchy"
+        },
+        {
+          "level": 2,
+          "title": "Tree",
+          "slug": "tree"
+        }
+      ]
+    },
+    {
+      "title": "比例尺模块",
+      "frontmatter": {
+        "permalink": "d3js-scale",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E6%AF%94%E4%BE%8B%E5%B0%BA%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/比例尺模块.md",
+      "key": "v-7852523a",
+      "path": "/d3js-scale/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "连续比例尺",
+          "slug": "连续比例尺"
+        },
+        {
+          "level": 3,
+          "title": "线性比例尺",
+          "slug": "线性比例尺"
+        },
+        {
+          "level": 2,
+          "title": "序数比例尺",
+          "slug": "序数比例尺"
+        },
+        {
+          "level": 3,
+          "title": "分段比例尺",
+          "slug": "分段比例尺"
+        },
+        {
+          "level": 3,
+          "title": "标点比例尺",
+          "slug": "标点比例尺"
+        }
+      ]
     },
     {
       "title": "简介",
@@ -68,9 +371,9 @@ export const siteData = {
         "type": "series",
         "series": "Getting started with d3.js",
         "tags": [
-          "data",
           "d3.js",
-          "data visualization"
+          "data-visualization",
+          "data"
         ]
       },
       "regularPath": "/data/data-vis/D3/%E7%AE%80%E4%BB%8B.html",
@@ -84,7 +387,63 @@ export const siteData = {
           "slug": "下载安装"
         }
       ],
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
+    },
+    {
+      "title": "获取数据模块",
+      "frontmatter": {
+        "permalink": "d3js-fetch",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/获取数据模块.md",
+      "key": "v-cdbc7aac",
+      "path": "/d3js-fetch/"
+    },
+    {
+      "title": "选择模块",
+      "frontmatter": {
+        "permalink": "d3js-selection",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E9%80%89%E6%8B%A9%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/选择模块.md",
+      "key": "v-59c48196",
+      "path": "/d3js-selection/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "选择元素",
+          "slug": "选择元素"
+        },
+        {
+          "level": 2,
+          "title": "修改元素",
+          "slug": "修改元素"
+        },
+        {
+          "level": 2,
+          "title": "绑定数据",
+          "slug": "绑定数据"
+        },
+        {
+          "level": 2,
+          "title": "处理事件",
+          "slug": "处理事件"
+        }
+      ]
     },
     {
       "title": "demo",
@@ -168,7 +527,7 @@ export const siteData = {
           "slug": "custom-containers"
         }
       ],
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
     },
     {
       "title": "CSS3",
@@ -263,135 +622,7 @@ export const siteData = {
           "slug": "获取网页字体"
         }
       ],
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
-    },
-    {
-      "title": "基础操作",
-      "frontmatter": {
-        "permalink": "d3js-basic",
-        "summary": "D3.js 基础操作，主要介绍选择器和 enter 和 exit 等核心思想。",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html",
-      "relativePath": "data/data-vis/D3/基础操作.md",
-      "key": "v-7cf560fa",
-      "path": "/d3js-basic/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "选择器",
-          "slug": "选择器"
-        },
-        {
-          "level": 2,
-          "title": "动态属性",
-          "slug": "动态属性"
-        },
-        {
-          "level": 2,
-          "title": "enter 和 exit",
-          "slug": "enter-和-exit"
-        },
-        {
-          "level": 2,
-          "title": "D3 不是一种新的表示方法",
-          "slug": "d3-不是一种新的表示方法"
-        },
-        {
-          "level": 2,
-          "title": "过渡",
-          "slug": "过渡"
-        }
-      ],
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
-    },
-    {
-      "title": "SVG",
-      "frontmatter": {
-        "tags": [
-          "web",
-          "data visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/SVG.html",
-      "relativePath": "data/data-vis/D3/SVG.md",
-      "key": "v-679d6378",
-      "path": "/data/data-vis/D3/SVG.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "坐标定位",
-          "slug": "坐标定位"
-        },
-        {
-          "level": 2,
-          "title": "viewport 和 viewBox",
-          "slug": "viewport-和-viewbox"
-        },
-        {
-          "level": 2,
-          "title": "基本形状",
-          "slug": "基本形状"
-        },
-        {
-          "level": 3,
-          "title": "矩形和圆角矩形",
-          "slug": "矩形和圆角矩形"
-        },
-        {
-          "level": 3,
-          "title": "圆形和椭圆",
-          "slug": "圆形和椭圆"
-        },
-        {
-          "level": 3,
-          "title": "线条和折线",
-          "slug": "线条和折线"
-        },
-        {
-          "level": 3,
-          "title": "多边形",
-          "slug": "多边形"
-        },
-        {
-          "level": 2,
-          "title": "路径",
-          "slug": "路径"
-        },
-        {
-          "level": 3,
-          "title": "直线",
-          "slug": "直线"
-        },
-        {
-          "level": 3,
-          "title": "曲线",
-          "slug": "曲线"
-        },
-        {
-          "level": 2,
-          "title": "文本",
-          "slug": "文本"
-        },
-        {
-          "level": 2,
-          "title": "工具",
-          "slug": "工具"
-        },
-        {
-          "level": 2,
-          "title": "资源",
-          "slug": "资源"
-        }
-      ],
-      "lastUpdated": "2/7/2021, 11:18:30 PM"
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
     },
     {
       "frontmatter": {
@@ -400,9 +631,9 @@ export const siteData = {
         "site": "all",
         "omitList": true
       },
-      "regularPath": "/posts-list/",
-      "key": "v-00c90f3c",
-      "path": "/posts-list/"
+      "regularPath": "/posts-list/index.html",
+      "key": "v-51fa9dae",
+      "path": "/posts-list/index.html"
     },
     {
       "frontmatter": {
@@ -487,20 +718,24 @@ export const siteData = {
     ],
     "nav": [
       {
+        "text": "All",
+        "link": "/posts-list/index.html"
+      },
+      {
         "text": "Data",
-        "link": "/posts-list/data/"
+        "link": "/posts-list/data.html"
       },
       {
         "text": "Web",
-        "link": "/posts-list/web/"
+        "link": "/posts-list/web.html"
       },
       {
-        "text": "design",
-        "link": "/posts-list/design/"
+        "text": "Design",
+        "link": "/posts-list/design.html"
       },
       {
         "text": "Other",
-        "link": "/posts-list/other/"
+        "link": "/posts-list/other.html"
       }
     ]
   }

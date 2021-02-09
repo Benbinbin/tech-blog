@@ -28,7 +28,7 @@
       <div
         v-for="card of cards"
         :key="card.name"
-        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transform hover:scale-105 transition-all"
+        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transform hover:scale-105 transition-all duration-300"
         :style="{ backgroundImage: `url(${card.bg})` }"
       >
         <a :href="`/posts-list/${card.name.toLowerCase()}/`" class="absolute inset-0 z-20"></a>

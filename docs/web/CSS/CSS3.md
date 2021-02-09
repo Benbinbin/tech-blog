@@ -1,7 +1,6 @@
 ---
 tags:
   - css
-  - web
 date: 2021-02-05
 author: BenThomson
 layout: LayoutTemplate

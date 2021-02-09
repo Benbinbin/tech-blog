@@ -21,36 +21,60 @@ export const routes = [
     redirect: "/"
   },
   {
-    name: "v-057e6eb2",
-    path: "/d3js-introduction/",
+    name: "v-be80fe46",
+    path: "/d3js-axis/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-057e6eb2").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-be80fe46").then(next)
     },
   },
   {
-    path: "/d3js-introduction/index.html",
-    redirect: "/d3js-introduction/"
+    path: "/d3js-axis/index.html",
+    redirect: "/d3js-axis/"
   },
   {
-    path: "/data/data-vis/D3/简介.html",
-    redirect: "/d3js-introduction/"
+    path: "/data/data-vis/D3/坐标轴模块.html",
+    redirect: "/d3js-axis/"
   },
   {
-    name: "v-e902cc16",
-    path: "/test.html",
+    name: "v-679d6378",
+    path: "/data/data-vis/D3/SVG.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-e902cc16").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-679d6378").then(next)
     },
   },
   {
-    name: "v-1055395e",
-    path: "/web/CSS/CSS3.html",
+    name: "v-6ccfb9e3",
+    path: "/d3js-shapes/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("LayoutTemplate", "v-1055395e").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-6ccfb9e3").then(next)
     },
+  },
+  {
+    path: "/d3js-shapes/index.html",
+    redirect: "/d3js-shapes/"
+  },
+  {
+    path: "/data/data-vis/D3/基本图元模块.html",
+    redirect: "/d3js-shapes/"
+  },
+  {
+    name: "v-590e1812",
+    path: "/d3js-modules/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-590e1812").then(next)
+    },
+  },
+  {
+    path: "/d3js-modules/index.html",
+    redirect: "/d3js-modules/"
+  },
+  {
+    path: "/data/data-vis/D3/模块.html",
+    redirect: "/d3js-modules/"
   },
   {
     name: "v-7cf560fa",
@@ -69,24 +93,108 @@ export const routes = [
     redirect: "/d3js-basic/"
   },
   {
-    name: "v-679d6378",
-    path: "/data/data-vis/D3/SVG.html",
+    name: "v-349c8c62",
+    path: "/d3js-hierarchy/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-679d6378").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-349c8c62").then(next)
     },
   },
   {
-    name: "v-00c90f3c",
-    path: "/posts-list/",
+    path: "/d3js-hierarchy/index.html",
+    redirect: "/d3js-hierarchy/"
+  },
+  {
+    path: "/data/data-vis/D3/层级结构数据模块.html",
+    redirect: "/d3js-hierarchy/"
+  },
+  {
+    name: "v-7852523a",
+    path: "/d3js-scale/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("ListLayout", "v-00c90f3c").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-7852523a").then(next)
     },
   },
   {
+    path: "/d3js-scale/index.html",
+    redirect: "/d3js-scale/"
+  },
+  {
+    path: "/data/data-vis/D3/比例尺模块.html",
+    redirect: "/d3js-scale/"
+  },
+  {
+    name: "v-057e6eb2",
+    path: "/d3js-introduction/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-057e6eb2").then(next)
+    },
+  },
+  {
+    path: "/d3js-introduction/index.html",
+    redirect: "/d3js-introduction/"
+  },
+  {
+    path: "/data/data-vis/D3/简介.html",
+    redirect: "/d3js-introduction/"
+  },
+  {
+    name: "v-cdbc7aac",
+    path: "/d3js-fetch/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-cdbc7aac").then(next)
+    },
+  },
+  {
+    path: "/d3js-fetch/index.html",
+    redirect: "/d3js-fetch/"
+  },
+  {
+    path: "/data/data-vis/D3/获取数据模块.html",
+    redirect: "/d3js-fetch/"
+  },
+  {
+    name: "v-59c48196",
+    path: "/d3js-selection/",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-59c48196").then(next)
+    },
+  },
+  {
+    path: "/d3js-selection/index.html",
+    redirect: "/d3js-selection/"
+  },
+  {
+    path: "/data/data-vis/D3/选择模块.html",
+    redirect: "/d3js-selection/"
+  },
+  {
+    name: "v-e902cc16",
+    path: "/test.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-e902cc16").then(next)
+    },
+  },
+  {
+    name: "v-1055395e",
+    path: "/web/CSS/CSS3.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("LayoutTemplate", "v-1055395e").then(next)
+    },
+  },
+  {
+    name: "v-51fa9dae",
     path: "/posts-list/index.html",
-    redirect: "/posts-list/"
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("ListLayout", "v-51fa9dae").then(next)
+    },
   },
   {
     name: "v-45693f32",
