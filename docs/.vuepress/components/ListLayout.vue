@@ -6,7 +6,7 @@
       <div class="border-b-2 mb-20 md:mx-10 lg:mx-20">
         <TagsList :tags="tags" :currentTag="currentTag" />
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
         <div
           v-for="post in posts"
           class="relative opacity-80 hover:opacity-100 transform transition-all"
@@ -32,7 +32,7 @@
             <button
               v-if="post.frontmatter.type === 'series'"
               class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
-              @click="isModalVisible=true"
+              @click="showSeries(post.frontmatter.series)"
             >
               查看系列
             </button>
@@ -43,37 +43,25 @@
     <Navigator />
     <Footer />
     <Modal v-if="isModalVisible" @closeModal="isModalVisible = false">
-      <div class="series-container">
+      <template v-slot:header>
+        <p>{{ currentSeries }}</p>
+      </template>
+      <div class="series-container space-y-4 h-full overflow-y-scroll">
         <div
           v-for="post in series"
-          class="relative opacity-80 hover:opacity-100 transform transition-all"
-          :class="{ series: post.frontmatter.type === 'series' }"
+          class="relative opacity-80 hover:opacity-100 p-4 bg-gray-50 border-8 border-white rounded-md shadow-md"
           :key="post.path"
         >
-          <div
-            class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
-          >
-            <a
-              :href="post.path"
-              target="_blank"
-              class="absolute inset-0 z-10"
-            ></a>
-            <h2 class="text-2xl">{{ post.title }}</h2>
-            <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
-            <p class="summary text-gray-500" v-if="post.frontmatter.summary">
-              {{ post.frontmatter.summary }}
-            </p>
-            <ul>
-              <li></li>
-            </ul>
-            <button
-              v-if="post.frontmatter.type === 'series'"
-              class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
-              @click="isModalVisible=true"
-            >
-              查看系列
-            </button>
-          </div>
+          <a
+            :href="post.path"
+            target="_blank"
+            class="absolute inset-0 z-10"
+          ></a>
+          <h2 class="text-lg">{{ post.title }}</h2>
+          <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
+          <p class="summary text-sm text-gray-500" v-if="post.frontmatter.summary">
+            {{ post.frontmatter.summary }}
+          </p>
         </div>
       </div>
     </Modal>
@@ -95,7 +83,7 @@ export default {
     Footer,
     Navigator,
     TagsList,
-    Modal
+    Modal,
   },
   data() {
     return {
@@ -103,6 +91,7 @@ export default {
       tags: [],
       currentTag: "",
       isModalVisible: false,
+      currentSeries: '',
       series: [],
     };
   },
@@ -110,7 +99,6 @@ export default {
     $route() {
       if (this.$route.hash) {
         const hash = this.$route.hash.substring(1);
-        // console.log(hash);
         this.currentTag = hash;
       } else {
         this.currentTag = "all";
@@ -154,14 +142,11 @@ export default {
       this.posts.sort((a, b) => {
         return new Date(this.time(b)) - new Date(this.time(a));
       });
-      console.log(this.posts);
     },
     getTags() {
       this.tags = [];
       let tagsSet = new Set();
       const site = this.$page.frontmatter.site;
-      // console.log(site);
-      // console.log(this.$site);
       this.$site.pages.forEach((post) => {
         if (post.frontmatter.omitList) return;
         if (post.frontmatter.tags) {
@@ -175,9 +160,23 @@ export default {
       tagsSet.delete(site);
       this.tags = Array.from(tagsSet);
       this.tags.unshift("all");
-
-      // console.log(tagsSet);
-      // console.log(this.tags);
+    },
+    showSeries(val) {
+      this.currentSeries = val
+      this.series = [];
+      this.$site.pages.forEach((post) => {
+        if (
+          post.frontmatter.series &&
+          post.frontmatter.series === this.currentSeries
+        ) {
+          this.series.push(post);
+        }
+      });
+      this.series.sort((a, b) => {
+        return new Date(this.time(b)) - new Date(this.time(a));
+      });
+      console.log(this.series);
+      this.isModalVisible = true;
     },
   },
   created() {
@@ -236,4 +235,8 @@ h2 {
     }
   }
 }
+
+// .series-container {
+//   overflow-y: auto;
+// }
 </style>

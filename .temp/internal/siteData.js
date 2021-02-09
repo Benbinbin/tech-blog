@@ -8,94 +8,6 @@ export const siteData = {
   "headTags": [],
   "pages": [
     {
-      "title": "Home",
-      "frontmatter": {
-        "layout": "HomeLayout",
-        "title": "Home",
-        "omitList": true,
-        "cards": [
-          {
-            "name": "Data",
-            "tags": [
-              "数据分析",
-              "数据可视化"
-            ],
-            "bg": "img/home/data.svg"
-          },
-          {
-            "name": "Web",
-            "tags": [
-              "前端开发",
-              "后端开发"
-            ],
-            "bg": "img/home/web.svg"
-          },
-          {
-            "name": "Design",
-            "tags": [
-              "平面设计",
-              "插画",
-              "人机交互"
-            ],
-            "bg": "img/home/design.svg"
-          },
-          {
-            "name": "Other",
-            "tags": [
-              "Git"
-            ],
-            "bg": "img/home/other.svg"
-          },
-          {
-            "name": "Toolbox",
-            "tags": [
-              "Design"
-            ],
-            "bg": "img/home/toolbox.svg"
-          }
-        ]
-      },
-      "regularPath": "/",
-      "relativePath": "README.md",
-      "key": "v-50dc5f6e",
-      "path": "/",
-      "lastUpdated": "2/9/2021, 12:32:36 AM"
-    },
-    {
-      "title": "坐标轴模块",
-      "frontmatter": {
-        "permalink": "d3js-axis",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data-visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%A8%A1%E5%9D%97.html",
-      "relativePath": "data/data-vis/D3/坐标轴模块.md",
-      "key": "v-be80fe46",
-      "path": "/d3js-axis/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "创建坐标轴",
-          "slug": "创建坐标轴"
-        },
-        {
-          "level": 2,
-          "title": "渲染坐标轴",
-          "slug": "渲染坐标轴"
-        },
-        {
-          "level": 3,
-          "title": "坐标刻度",
-          "slug": "坐标刻度"
-        }
-      ]
-    },
-    {
       "title": "SVG",
       "frontmatter": {
         "tags": [
@@ -174,7 +86,42 @@ export const siteData = {
           "slug": "资源"
         }
       ],
-      "lastUpdated": "2/9/2021, 12:32:36 AM"
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
+    },
+    {
+      "title": "坐标轴模块",
+      "frontmatter": {
+        "permalink": "d3js-axis",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/坐标轴模块.md",
+      "key": "v-be80fe46",
+      "path": "/d3js-axis/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "创建坐标轴",
+          "slug": "创建坐标轴"
+        },
+        {
+          "level": 2,
+          "title": "渲染坐标轴",
+          "slug": "渲染坐标轴"
+        },
+        {
+          "level": 3,
+          "title": "坐标刻度",
+          "slug": "坐标刻度"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "title": "基本图元模块",
@@ -228,7 +175,83 @@ export const siteData = {
           "title": "Links",
           "slug": "links"
         }
-      ]
+      ],
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
+    },
+    {
+      "title": "层级结构数据模块",
+      "frontmatter": {
+        "permalink": "d3js-hierarchy",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/层级结构数据模块.md",
+      "key": "v-349c8c62",
+      "path": "/d3js-hierarchy/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "Hierarchy",
+          "slug": "hierarchy"
+        },
+        {
+          "level": 2,
+          "title": "Tree",
+          "slug": "tree"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
+    },
+    {
+      "title": "比例尺模块",
+      "frontmatter": {
+        "permalink": "d3js-scale",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E6%AF%94%E4%BE%8B%E5%B0%BA%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/比例尺模块.md",
+      "key": "v-7852523a",
+      "path": "/d3js-scale/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "连续比例尺",
+          "slug": "连续比例尺"
+        },
+        {
+          "level": 3,
+          "title": "线性比例尺",
+          "slug": "线性比例尺"
+        },
+        {
+          "level": 2,
+          "title": "序数比例尺",
+          "slug": "序数比例尺"
+        },
+        {
+          "level": 3,
+          "title": "分段比例尺",
+          "slug": "分段比例尺"
+        },
+        {
+          "level": 3,
+          "title": "标点比例尺",
+          "slug": "标点比例尺"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "title": "模块",
@@ -243,7 +266,102 @@ export const siteData = {
       "regularPath": "/data/data-vis/D3/%E6%A8%A1%E5%9D%97.html",
       "relativePath": "data/data-vis/D3/模块.md",
       "key": "v-590e1812",
-      "path": "/d3js-modules/"
+      "path": "/d3js-modules/",
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
+    },
+    {
+      "title": "Home",
+      "frontmatter": {
+        "layout": "HomeLayout",
+        "title": "Home",
+        "omitList": true,
+        "cards": [
+          {
+            "name": "Data",
+            "tags": [
+              "数据分析",
+              "数据可视化"
+            ],
+            "bg": "img/home/data.svg"
+          },
+          {
+            "name": "Web",
+            "tags": [
+              "前端开发",
+              "后端开发"
+            ],
+            "bg": "img/home/web.svg"
+          },
+          {
+            "name": "Design",
+            "tags": [
+              "平面设计",
+              "插画",
+              "人机交互"
+            ],
+            "bg": "img/home/design.svg"
+          },
+          {
+            "name": "Other",
+            "tags": [
+              "Git"
+            ],
+            "bg": "img/home/other.svg"
+          },
+          {
+            "name": "Toolbox",
+            "tags": [
+              "Design"
+            ],
+            "bg": "img/home/toolbox.svg"
+          }
+        ]
+      },
+      "regularPath": "/",
+      "relativePath": "README.md",
+      "key": "v-50dc5f6e",
+      "path": "/",
+      "lastUpdated": "2/9/2021, 12:32:36 AM"
+    },
+    {
+      "title": "选择模块",
+      "frontmatter": {
+        "permalink": "d3js-selection",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E9%80%89%E6%8B%A9%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/选择模块.md",
+      "key": "v-59c48196",
+      "path": "/d3js-selection/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "选择元素",
+          "slug": "选择元素"
+        },
+        {
+          "level": 2,
+          "title": "修改元素",
+          "slug": "修改元素"
+        },
+        {
+          "level": 2,
+          "title": "绑定数据",
+          "slug": "绑定数据"
+        },
+        {
+          "level": 2,
+          "title": "处理事件",
+          "slug": "处理事件"
+        }
+      ],
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "title": "基础操作",
@@ -289,80 +407,7 @@ export const siteData = {
           "slug": "过渡"
         }
       ],
-      "lastUpdated": "2/9/2021, 12:32:36 AM"
-    },
-    {
-      "title": "层级结构数据模块",
-      "frontmatter": {
-        "permalink": "d3js-hierarchy",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data-visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
-      "relativePath": "data/data-vis/D3/层级结构数据模块.md",
-      "key": "v-349c8c62",
-      "path": "/d3js-hierarchy/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "Hierarchy",
-          "slug": "hierarchy"
-        },
-        {
-          "level": 2,
-          "title": "Tree",
-          "slug": "tree"
-        }
-      ]
-    },
-    {
-      "title": "比例尺模块",
-      "frontmatter": {
-        "permalink": "d3js-scale",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data-visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E6%AF%94%E4%BE%8B%E5%B0%BA%E6%A8%A1%E5%9D%97.html",
-      "relativePath": "data/data-vis/D3/比例尺模块.md",
-      "key": "v-7852523a",
-      "path": "/d3js-scale/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "连续比例尺",
-          "slug": "连续比例尺"
-        },
-        {
-          "level": 3,
-          "title": "线性比例尺",
-          "slug": "线性比例尺"
-        },
-        {
-          "level": 2,
-          "title": "序数比例尺",
-          "slug": "序数比例尺"
-        },
-        {
-          "level": 3,
-          "title": "分段比例尺",
-          "slug": "分段比例尺"
-        },
-        {
-          "level": 3,
-          "title": "标点比例尺",
-          "slug": "标点比例尺"
-        }
-      ]
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "title": "简介",
@@ -387,63 +432,7 @@ export const siteData = {
           "slug": "下载安装"
         }
       ],
-      "lastUpdated": "2/9/2021, 12:32:36 AM"
-    },
-    {
-      "title": "获取数据模块",
-      "frontmatter": {
-        "permalink": "d3js-fetch",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data-visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
-      "relativePath": "data/data-vis/D3/获取数据模块.md",
-      "key": "v-cdbc7aac",
-      "path": "/d3js-fetch/"
-    },
-    {
-      "title": "选择模块",
-      "frontmatter": {
-        "permalink": "d3js-selection",
-        "type": "series",
-        "series": "Getting started with d3.js",
-        "tags": [
-          "d3.js",
-          "data-visualization",
-          "data"
-        ]
-      },
-      "regularPath": "/data/data-vis/D3/%E9%80%89%E6%8B%A9%E6%A8%A1%E5%9D%97.html",
-      "relativePath": "data/data-vis/D3/选择模块.md",
-      "key": "v-59c48196",
-      "path": "/d3js-selection/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "选择元素",
-          "slug": "选择元素"
-        },
-        {
-          "level": 2,
-          "title": "修改元素",
-          "slug": "修改元素"
-        },
-        {
-          "level": 2,
-          "title": "绑定数据",
-          "slug": "绑定数据"
-        },
-        {
-          "level": 2,
-          "title": "处理事件",
-          "slug": "处理事件"
-        }
-      ]
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "title": "demo",
@@ -622,7 +611,25 @@ export const siteData = {
           "slug": "获取网页字体"
         }
       ],
-      "lastUpdated": "2/9/2021, 12:32:36 AM"
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
+    },
+    {
+      "title": "获取数据模块",
+      "frontmatter": {
+        "permalink": "d3js-fetch",
+        "type": "series",
+        "series": "Getting started with d3.js",
+        "tags": [
+          "d3.js",
+          "data-visualization",
+          "data"
+        ]
+      },
+      "regularPath": "/data/data-vis/D3/%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97.html",
+      "relativePath": "data/data-vis/D3/获取数据模块.md",
+      "key": "v-cdbc7aac",
+      "path": "/d3js-fetch/",
+      "lastUpdated": "2/9/2021, 10:23:10 PM"
     },
     {
       "frontmatter": {

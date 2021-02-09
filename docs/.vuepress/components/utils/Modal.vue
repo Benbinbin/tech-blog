@@ -28,10 +28,10 @@
           </svg>
         </button>
       </header>
-      <main>
+      <main class="p-6">
         <slot></slot>
       </main>
-      <footer class="flex  text-lg font-bold border-t-2 border-gray-200">
+      <footer class="flex text-lg font-bold border-t-2 border-gray-200">
         <slot name="footer">
           <button
             class="up w-full p-2 flex justify-center border-2 border-gray-100 rounded-bl-xl text-gray-400 hover:bg-blue-400 hover:text-white"
@@ -87,6 +87,9 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-  max-height: 80vh;
+  main {
+    max-height: 80vh;
+    overflow-y: overlay;
+  }
 }
 </style>
