@@ -5,6 +5,7 @@ module.exports = {
   description: "Notes written by BenThomson when learning tech skills.",
   plugins: [
     "@kawarimidoll/tailwind",
+    '@vuepress/back-to-top',
     [
       require('./plugins/generateListPages.js'),
       {
@@ -12,6 +13,7 @@ module.exports = {
       }
     ],
     require('./plugins/addTag.js'),
+    require('./plugins/useLayout.js'),
   ],
   markdown: {
     anchor: {
@@ -22,7 +24,7 @@ module.exports = {
     author: 'BenThomson',
     avatar: '/img/Ben.png',
     // navbar: true,
-    lastUpdated: true,
+    lastUpdated: '更新时间',
     socialMedia: [
       {
         name: 'email',

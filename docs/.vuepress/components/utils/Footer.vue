@@ -7,7 +7,7 @@
       <img :src="avatar" alt="avatar" class="w-auto h-12 rounded-full" />
     </button>
     <div class="copyright py-5 md:py-0">
-      <p class="text-center">
+      <p class="text-center text-sm">
         &copy;{{ new Date().getFullYear() }}
         <span class="author">{{ author }}</span
         >. All Right Reserved.

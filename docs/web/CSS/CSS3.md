@@ -3,7 +3,7 @@ tags:
   - css
 date: 2021-02-05
 author: BenThomson
-layout: LayoutTemplate
+layout: PostLayout
 summary: 介绍 CSS3 选择器相关内容。
 ---
 
@@ -18,7 +18,7 @@ CSS3 新增了多种[基本选择器](D:/Front_end/CSS/选择器.md)：
 * 通用兄弟选择器 `~`：选择该元素后的所有匹配的同级元素
 * 群组选择器：设置多个选择器，并用逗号 `,` 分隔，以为匹配的元素设置同样的样式
 
-### 结构选择器
+#### 结构选择器
 参考：详细讲解参考[群里讨论的一个选择器问题（一定要看）](https://mp.weixin.qq.com/s/nS_kcIqBwO03mvF97BZCBQ)
 
 基于 HTML 层级关系结构匹配元素的选择器
@@ -40,10 +40,10 @@ CSS3 新增了多种[基本选择器](D:/Front_end/CSS/选择器.md)：
 
 * `element:empty` 匹配没有内容（没有子元素和文本节点）的元素
 
-### 否定选择器
+##### 否定选择器
 `parent:not(element/selector)` 匹配在父元素 `parent` 中除了指定条件 `element/selector` 以外的所有子元素
 
-### 属性选择器
+###### 属性选择器
 CSS3 新增了属性选择器，可以匹配带有特定属性/属性值的元素
 
 * `element[attribute]` 匹配元素 `element` 它们有属性 `attribute`

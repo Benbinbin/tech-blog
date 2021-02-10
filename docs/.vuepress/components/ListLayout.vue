@@ -2,51 +2,61 @@
   <div class="min-h-screen w-full flex flex-col bg-gray-100">
     <!-- <Navbar /> -->
     <Layout />
-    <div class="container mx-auto m-10 p-8 flex-grow">
-      <div class="border-b-2 mb-20 md:mx-10 lg:mx-20">
-        <TagsList :tags="tags" :currentTag="currentTag" />
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-        <div
-          v-for="post in posts"
-          class="relative opacity-80 hover:opacity-100 transform transition-all"
-          :class="{ series: post.frontmatter.type === 'series' }"
-          :key="post.path"
-        >
+    <div class="main flex flex-col flex-grow">
+      <div class="container mx-auto my-8 p-8 flex-grow">
+        <h2 class="text-center text-gray-800 text-5xl font-extrabold mb-8">
+          {{ $page.frontmatter.site.toUpperCase() }}
+        </h2>
+        <div class="border-b-2 mb-10 md:mx-10 lg:mx-20">
+          <TagsList :tags="tags" :currentTag="currentTag" />
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           <div
-            class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
+            v-for="post in posts"
+            class="relative opacity-80 hover:opacity-100 transform transition-all"
+            :class="{ series: post.frontmatter.type === 'series' }"
+            :key="post.path"
           >
-            <a
-              :href="post.path"
-              target="_blank"
-              class="absolute inset-0 z-10"
-            ></a>
-            <h2 class="text-2xl">{{ post.title }}</h2>
-            <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
-            <p class="summary text-gray-500" v-if="post.frontmatter.summary">
-              {{ post.frontmatter.summary }}
-            </p>
-            <ul>
-              <li></li>
-            </ul>
-            <button
-              v-if="post.frontmatter.type === 'series'"
-              class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
-              @click="showSeries(post.frontmatter.series)"
+            <div
+              class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
             >
-              查看系列
-            </button>
+              <a
+                :href="post.path"
+                target="_blank"
+                class="absolute inset-0 z-10"
+              ></a>
+              <h2 class="text-2xl">{{ post.title }}</h2>
+              <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
+              <p class="summary text-gray-500" v-if="post.frontmatter.summary">
+                {{ post.frontmatter.summary }}
+              </p>
+              <ul>
+                <li></li>
+              </ul>
+              <button
+                v-if="post.frontmatter.type === 'series'"
+                class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
+                @click="showSeries(post.frontmatter.series)"
+              >
+                查看系列
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <BackTop
+        :direction="'top'"
+        class="sticky bottom-6 flex justify-end items-center mb-4"
+      />
     </div>
-    <Navigator />
+
+    <!-- <Navigator /> -->
     <Footer />
     <Modal v-if="isModalVisible" @closeModal="isModalVisible = false">
       <template v-slot:header>
         <p>{{ currentSeries }}</p>
       </template>
-      <div class="series-container space-y-4 h-full overflow-y-scroll">
+      <div class="series-container space-y-2 h-full overflow-y-scroll">
         <div
           v-for="post in series"
           class="relative opacity-80 hover:opacity-100 p-4 bg-gray-50 border-8 border-white rounded-md shadow-md"
@@ -59,7 +69,10 @@
           ></a>
           <h2 class="text-lg">{{ post.title }}</h2>
           <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
-          <p class="summary text-sm text-gray-500" v-if="post.frontmatter.summary">
+          <p
+            class="summary text-sm text-gray-500"
+            v-if="post.frontmatter.summary"
+          >
             {{ post.frontmatter.summary }}
           </p>
         </div>
@@ -75,6 +88,7 @@ import Footer from "./utils/Footer.vue";
 import Navigator from "./utils/Navigator.vue";
 import TagsList from "./utils/TagsList.vue";
 import Modal from "./utils/Modal.vue";
+import BackTop from "./utils/BackTop.vue";
 
 export default {
   components: {
@@ -84,6 +98,7 @@ export default {
     Navigator,
     TagsList,
     Modal,
+    BackTop,
   },
   data() {
     return {
@@ -91,7 +106,7 @@ export default {
       tags: [],
       currentTag: "",
       isModalVisible: false,
-      currentSeries: '',
+      currentSeries: "",
       series: [],
     };
   },
@@ -162,7 +177,7 @@ export default {
       this.tags.unshift("all");
     },
     showSeries(val) {
-      this.currentSeries = val
+      this.currentSeries = val;
       this.series = [];
       this.$site.pages.forEach((post) => {
         if (
@@ -204,39 +219,42 @@ h2 {
   &::after {
     content: "";
     position: absolute;
-    top: -8px;
-    bottom: -8px;
-    left: -10px;
-    right: -6px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     background: rgba(196, 181, 253, 1);
     border: 8px solid white;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 0.375rem;
-    transform: rotate(2deg);
+    // transform: rotate(2deg);
   }
   &::before {
     content: "";
     position: absolute;
-    top: -10px;
-    bottom: -6px;
-    left: -6px;
-    right: -10px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     background: rgba(253, 230, 138, 1);
     border: 8px solid white;
     border-radius: 0.375rem;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transform: rotate(-2deg);
   }
   &:hover {
     button {
       opacity: 1;
     }
+    &::before {
+      transition: all 300ms;
+      transform: rotate(5deg);
+    }
+    &::after {
+      transition: all 300ms;
+      transform: rotate(-6deg);
+    }
   }
 }
-
-// .series-container {
-//   overflow-y: auto;
-// }
 </style>

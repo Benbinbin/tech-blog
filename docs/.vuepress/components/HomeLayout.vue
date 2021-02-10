@@ -23,15 +23,18 @@
     <Content class="main flex-grow" />
 
     <div
-      class="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-6 md:px-10 my-10"
+      class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-6 md:px-10 my-10"
     >
       <div
         v-for="card of cards"
         :key="card.name"
-        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transform hover:scale-105 transition-all duration-300"
+        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transition-all "
         :style="{ backgroundImage: `url(${card.bg})` }"
       >
-        <a :href="`/posts-list/${card.name.toLowerCase()}/`" class="absolute inset-0 z-20"></a>
+        <a
+          :href="`/posts-list/${card.name.toLowerCase()}/`"
+          class="absolute inset-0 z-20"
+        ></a>
         <div class="card-body my-32 relative z-10">
           <h3 class="text-white text-5xl font-extrabold">{{ card.name }}</h3>
         </div>
@@ -79,15 +82,21 @@ export default {
   box-sizing: border-box;
 }
 
-.card::after {
-  content: "";
-  background-color: rgba(0, 0, 0, 0.4);
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  border-radius: 1rem;
+.card {
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.4);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 1rem;
+  }
 }
 </style>

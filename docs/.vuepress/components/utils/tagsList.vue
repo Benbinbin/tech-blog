@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="text-center text-gray-400 text-xl font-extrabold mb-4">Tags</h2>
     <ul class="flex flex-wrap">
       <li v-for="tag of tags" class="mr-6 mb-6">
         <a
