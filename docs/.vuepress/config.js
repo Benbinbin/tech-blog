@@ -25,6 +25,7 @@ module.exports = {
     avatar: '/img/Ben.png',
     // navbar: true,
     lastUpdated: '更新时间',
+    sidebar: false,
     socialMedia: [
       {
         name: 'email',
