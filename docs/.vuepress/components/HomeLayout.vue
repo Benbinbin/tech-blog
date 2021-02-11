@@ -28,7 +28,7 @@
       <div
         v-for="card of cards"
         :key="card.name"
-        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transition-all "
+        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md"
         :style="{ backgroundImage: `url(${card.bg})` }"
       >
         <a

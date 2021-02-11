@@ -3,12 +3,13 @@
     <div class="relative flex-grow">
       <Layout />
       <div
-        class="catalog-container absolute top-0 right-4 h-full hidden lg:block"
-        :style="{width: `${catalogWidth}px`}"
+        class="catalog-container absolute top-0 right-0 h-full hidden lg:block"
+        :style="{ width: `${catalogWidth}px` }"
       >
-        <Catalog :headings="headings" class="sticky top-40"  />
+        <Catalog :headings="headings" :activeHeading="activeHeading" class="sticky top-40" />
       </div>
     </div>
+    <div class="catalog-btn"></div>
     <BackTop
       :direction="'top'"
       class="sticky bottom-6 flex justify-end items-center mb-4"
@@ -42,14 +43,33 @@ export default {
     return {
       headings: [],
       catalogWidth: 0,
+      resizeTimer: null,
+      scrollTimer: null,
+      content: null,
+      activeHeading: ''
     };
   },
-  created() {
-    console.log(this.$page);
+  methods: {
+    setCatalogWidth() {
+      this.catalogWidth =
+        (document.documentElement.clientWidth - this.content.offsetWidth) / 2;
+      console.log(this.catalogWidth);
+    },
+    getScrollTop() {
+      return (
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0
+      );
+    },
   },
+  // created() {
+  //   console.log(this.$page);
+  // },
   mounted() {
-    const content = document.getElementsByClassName("theme-default-content")[0];
-    const list = content.querySelectorAll("h2, h3, h4, h5, h6");
+    this.content = document.getElementsByClassName("theme-default-content")[0];
+    const list = this.content.querySelectorAll("h2, h3, h4, h5, h6");
     list.forEach((item) => {
       this.headings.push({
         level: headingsMap[item.nodeName],
@@ -57,10 +77,37 @@ export default {
         text: item.innerHTML,
       });
     });
-    console.log(this.headings);
-    this.catalogWidth =
-      (document.documentElement.clientWidth - content.offsetWidth) / 2;
-    console.log(this.catalogWidth);
+
+    this.setCatalogWidth();
+    // console.log(this.headings);
+    // listening to window resize event and recalculate the catagory width
+    window.onresize = () => {
+      if (this.resizeTimer) {
+        clearTimeout(this.resizeTimer);
+      }
+      this.resizeTimer = setTimeout(() => {
+        this.setCatalogWidth();
+        this.resizeTimer = null;
+      }, 300);
+    };
+    window.onscroll = () => {
+      if (this.scrollTimer) {
+        clearTimeout(this.scrollTimer);
+      }
+      this.scrollTimer = setTimeout(() => {
+        const scrollTop = this.getScrollTop();
+        const headingsList = Array.from(list);
+
+        headingsList.find((heading) => {
+          if (heading.offsetTop && scrollTop <= heading.offsetTop) {
+            this.activeHeading = heading.id;
+            console.log(this.activeHeading);
+            return true
+          }
+        });
+        this.scrollTimer = null;
+      }, 300);
+    };
   },
 };
 </script>
@@ -71,8 +118,4 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
-// .catalog {
-//   max-width: 10rem;
-// }
 </style>
