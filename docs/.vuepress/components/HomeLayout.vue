@@ -23,12 +23,12 @@
     <Content class="main flex-grow" />
 
     <div
-      class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-6 md:px-10 my-10"
+      class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-6 md:px-10 my-10 "
     >
       <div
         v-for="card of cards"
         :key="card.name"
-        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md"
+        class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transition-all duration-300 ease-in-out"
         :style="{ backgroundImage: `url(${card.bg})` }"
       >
         <a

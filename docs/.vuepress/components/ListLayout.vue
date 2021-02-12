@@ -13,7 +13,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           <div
             v-for="post in posts"
-            class="relative opacity-80 hover:opacity-100 transform transition-all"
+            class="relative opacity-60 hover:opacity-100 transform transition-all"
             :class="{ series: post.frontmatter.type === 'series' }"
             :key="post.path"
           >
@@ -59,7 +59,7 @@
       <div class="series-container space-y-2 h-full overflow-y-scroll">
         <div
           v-for="post in series"
-          class="relative opacity-80 hover:opacity-100 p-4 bg-gray-50 border-8 border-white rounded-md shadow-md"
+          class="relative opacity-60 hover:opacity-100 p-4 bg-gray-50 border-8 border-white rounded-md shadow-md transform transition-opacity"
           :key="post.path"
         >
           <a

@@ -6,7 +6,11 @@
         class="catalog-container absolute top-0 right-0 h-full hidden lg:block"
         :style="{ width: `${catalogWidth}px` }"
       >
-        <Catalog :headings="headings" :activeHeading="activeHeading" class="sticky top-40" />
+        <Catalog
+          :headings="headings"
+          :activeHeading="activeHeading"
+          class="sticky top-40"
+        />
       </div>
     </div>
     <div class="catalog-btn"></div>
@@ -46,7 +50,7 @@ export default {
       resizeTimer: null,
       scrollTimer: null,
       content: null,
-      activeHeading: ''
+      activeHeading: "",
     };
   },
   methods: {
@@ -97,12 +101,15 @@ export default {
       this.scrollTimer = setTimeout(() => {
         const scrollTop = this.getScrollTop();
         const headingsList = Array.from(list);
-
+        const lastHeading = headingsList[headingsList.length - 1];
+        if (scrollTop >= lastHeading.offsetTop) {
+          this.activeHeading = lastHeading.id;
+          this.scrollTimer = null;
+        }
         headingsList.find((heading) => {
           if (heading.offsetTop && scrollTop <= heading.offsetTop) {
             this.activeHeading = heading.id;
-            console.log(this.activeHeading);
-            return true
+            return true;
           }
         });
         this.scrollTimer = null;

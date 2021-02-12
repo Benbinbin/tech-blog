@@ -23,7 +23,7 @@
         <a
           :href="`#${heading.id}`"
           class="px-3 py-2 border-l border-dashed border-gray-300 text-sm font-light"
-          :class="{ 'font-black': heading.text === activeHeading }"
+          :class="{ 'font-black': heading.id === activeHeading }"
           >{{ heading.text }}</a
         >
       </li>
@@ -33,11 +33,11 @@
 
 <script>
 const levelSizemap = {
-  2: 0.6,
+  2: 0.75,
   3: 0.5,
-  4: 0.5,
-  5: 0.4,
-  6: 0.3,
+  4: 0.4,
+  5: 0.3,
+  6: 0.2,
 };
 
 const levelColorMap = {
@@ -53,6 +53,11 @@ export default {
     return {
       scrollTimer: null,
     };
+  },
+  watch: {
+    activeHeading() {
+      console.log(this.activeHeading);
+    }
   },
   methods: {
     levelColor(level) {
