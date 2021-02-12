@@ -3,46 +3,101 @@
     <!-- <Navbar /> -->
     <Layout />
     <div class="main flex flex-col flex-grow">
-      <div class="container mx-auto my-8 p-8 flex-grow">
+      <div class="container mx-auto my-8 p-8 flex flex-col flex-grow">
         <h2 class="text-center text-gray-800 text-5xl font-extrabold mb-8">
-          {{ $page.frontmatter.site.toUpperCase() }}
+          {{ site.toUpperCase() }}
         </h2>
-        <div class="border-b-2 mb-10 md:mx-10 lg:mx-20">
-          <TagsList :tags="tags" :currentTag="currentTag" />
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          <div
-            v-for="post in posts"
-            class="relative opacity-60 hover:opacity-100 transform transition-all"
-            :class="{ series: post.frontmatter.type === 'series' }"
-            :key="post.path"
-          >
+        <div
+          v-if="mode === 'list'"
+          class="listMode flex-grow"
+          ref="listContainer"
+        >
+          <div class="border-b-2 mb-10 md:mx-10 lg:mx-20">
+            <TagsList :tags="tags" :currentTag="currentTag" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <div
-              class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
+              v-for="post in posts"
+              class="relative opacity-60 hover:opacity-100 transform transition-all"
+              :class="{ series: post.frontmatter.type === 'series' }"
+              :key="post.path"
             >
-              <a
-                :href="post.path"
-                target="_blank"
-                class="absolute inset-0 z-10"
-              ></a>
-              <h2 class="text-2xl">{{ post.title }}</h2>
-              <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
-              <p class="summary text-gray-500" v-if="post.frontmatter.summary">
-                {{ post.frontmatter.summary }}
-              </p>
-              <ul>
-                <li></li>
-              </ul>
-              <button
-                v-if="post.frontmatter.type === 'series'"
-                class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
-                @click="showSeries(post.frontmatter.series)"
+              <div
+                class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
               >
-                查看系列
-              </button>
+                <a
+                  :href="post.path"
+                  target="_blank"
+                  class="absolute inset-0 z-10"
+                ></a>
+                <h2 class="text-2xl">{{ post.title }}</h2>
+                <p class="time text-gray-400 text-xs pb-4">{{ time(post) }}</p>
+                <p
+                  class="summary text-gray-500"
+                  v-if="post.frontmatter.summary"
+                >
+                  {{ post.frontmatter.summary }}
+                </p>
+                <ul>
+                  <li></li>
+                </ul>
+                <button
+                  v-if="post.frontmatter.type === 'series'"
+                  class="opacity-0 px-4 py-2 absolute right-5 bottom-5 z-20 bg-yellow-300 text-white text-sm font-semibold rounded-full shadow border-2 border-yellow-300 hover:bg-yellow-400 transition-all duration-300"
+                  @click="showSeries(post.frontmatter.series)"
+                >
+                  查看系列
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        <div v-if="mode === 'nav'" class="navMode flex-grow" ref="navContainer">
+          <Navigator :site="site" :width="width" :height="height" />
+        </div>
+      </div>
+      <div
+        class="mode-btn sticky bottom-16 flex justify-end items-center mb-4"
+      >
+        <button v-show="mode === 'list'" @click="mode = 'nav'">
+          <div
+            class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+              />
+            </svg>
+            <p class="pl-2 hidden text-xs">列表模式</p>
+          </div>
+        </button>
+        <button v-show="mode === 'nav'" @click="mode = 'list'">
+          <div
+            class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              style="transform: rotate(-90deg)"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"
+              />
+            </svg>
+            <p class="pl-2 hidden text-xs">导航模式</p>
+          </div>
+        </button>
       </div>
       <BackTop
         :direction="'top'"
@@ -93,7 +148,6 @@ import BackTop from "./utils/BackTop.vue";
 export default {
   components: {
     Layout,
-    // Navbar,
     Footer,
     Navigator,
     TagsList,
@@ -102,16 +156,23 @@ export default {
   },
   data() {
     return {
+      site: "",
+      mode: "list",
       posts: [],
       tags: [],
       currentTag: "",
       isModalVisible: false,
       currentSeries: "",
       series: [],
+      width: 0,
+      height: 0,
+      resizeTimer: null,
     };
   },
   watch: {
     $route() {
+      this.site = this.$page.frontmatter.site;
+
       if (this.$route.hash) {
         const hash = this.$route.hash.substring(1);
         this.currentTag = hash;
@@ -123,6 +184,11 @@ export default {
     },
   },
   methods: {
+    getSize() {
+      this.width = this.$refs[`${this.mode}Container`].clientWidth;
+      this.height = this.$refs[`${this.mode}Container`].clientHeight;
+    },
+
     time(post) {
       let date = null;
       if (post.frontmatter.date) {
@@ -134,6 +200,7 @@ export default {
     },
     getPosts() {
       this.posts = [];
+
       this.$site.pages.forEach((post) => {
         if (
           !post.relativePath ||
@@ -142,11 +209,7 @@ export default {
         )
           return;
         const category = post.relativePath.split("/")[0];
-        if (
-          this.$page.frontmatter.site !== "all" &&
-          category !== this.$page.frontmatter.site
-        )
-          return;
+        if (this.site !== "all" && category !== this.site) return;
         if (
           this.currentTag !== "all" &&
           !post.frontmatter.tags.includes(this.currentTag)
@@ -161,18 +224,18 @@ export default {
     getTags() {
       this.tags = [];
       let tagsSet = new Set();
-      const site = this.$page.frontmatter.site;
       this.$site.pages.forEach((post) => {
         if (post.frontmatter.omitList) return;
         if (post.frontmatter.tags) {
-          if (site !== "all" && !post.frontmatter.tags.includes(site)) return;
+          if (this.site !== "all" && !post.frontmatter.tags.includes(this.site))
+            return;
           post.frontmatter.tags.forEach((tag) => {
             tagsSet.add(tag);
           });
         }
       });
 
-      tagsSet.delete(site);
+      tagsSet.delete(this.site);
       this.tags = Array.from(tagsSet);
       this.tags.unshift("all");
     },
@@ -190,14 +253,28 @@ export default {
       this.series.sort((a, b) => {
         return new Date(this.time(b)) - new Date(this.time(a));
       });
-      console.log(this.series);
+      // console.log(this.series);
       this.isModalVisible = true;
     },
   },
   created() {
+    this.site = this.$page.frontmatter.site;
     this.currentTag = "all";
     this.getPosts();
     this.getTags();
+  },
+  mounted() {
+    this.getSize();
+    window.onresize = () => {
+      if (this.resizeTimer) {
+        clearTimeout(this.resizeTimer);
+      }
+      this.resizeTimer = setTimeout(() => {
+        this.getSize();
+        console.log(this.width, this.height);
+        this.resizeTimer = null;
+      }, 300);
+    };
   },
 };
 </script>

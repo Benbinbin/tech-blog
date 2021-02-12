@@ -15,7 +15,7 @@
       </div>
     </div>
     <div
-      class="catalog-btn hidden sticky bottom-16 md:flex justify-end items-center mb-4"
+      class="catalog-btn hidden sticky bottom-16 lg:flex justify-end items-center mb-4"
     >
       <button @click="showCataglog = !showCataglog">
         <div
