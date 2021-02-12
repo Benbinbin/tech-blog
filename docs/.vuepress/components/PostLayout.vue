@@ -7,13 +7,38 @@
         :style="{ width: `${catalogWidth}px` }"
       >
         <Catalog
+          v-show="showCataglog"
           :headings="headings"
           :activeHeading="activeHeading"
           class="sticky top-40"
         />
       </div>
     </div>
-    <div class="catalog-btn"></div>
+    <div
+      class="catalog-btn hidden sticky bottom-16 md:flex justify-end items-center mb-4"
+    >
+      <button @click="showCataglog = !showCataglog">
+        <div
+          class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white transition-all duration-500"
+          :class="showCataglog ? 'bg-gray-600' : 'bg-gray-300'"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+            />
+          </svg>
+          <p v-show="!showCataglog" class="pl-2 hidden text-xs">显示目录</p>
+          <p v-show="showCataglog" class="pl-2 hidden text-xs">关闭目录</p>
+        </div>
+      </button>
+    </div>
     <BackTop
       :direction="'top'"
       class="sticky bottom-6 flex justify-end items-center mb-4"
@@ -51,6 +76,7 @@ export default {
       scrollTimer: null,
       content: null,
       activeHeading: "",
+      showCataglog: true,
     };
   },
   methods: {

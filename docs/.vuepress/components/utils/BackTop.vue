@@ -3,7 +3,7 @@
     <button @click="scrollTo">
       <slot name="content">
         <div
-          class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transform transition-all duration-500"
+          class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
