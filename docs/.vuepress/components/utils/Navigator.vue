@@ -194,7 +194,8 @@ export default {
       return text;
     },
     clickHandler(node) {
-      // console.log(node);
+      console.log(node);
+      if (!node.data.data || !node.parent) return;
       window.open(node.data.data.path);
     },
     zoomHandler(event) {
@@ -211,8 +212,8 @@ export default {
   },
   mounted() {
     // 响应用户主动缩放和拖移操作
-    const zoom = d3.zoom().scaleExtent([0.5, 10]).on('zoom', this.zoomHandler);
-    d3.select('.tree-diagram').call(zoom);
+    const zoom = d3.zoom().scaleExtent([0.5, 10]).on("zoom", this.zoomHandler);
+    d3.select(".tree-diagram").call(zoom);
   },
 };
 
