@@ -1,17 +1,12 @@
 <template>
-  <div class="min-h-screen w-full flex flex-col bg-gray-100">
-    <!-- <Navbar /> -->
+  <div class="h-screen w-full flex flex-col bg-gray-100">
     <Layout />
-    <div class="main flex flex-col flex-grow">
-      <div class="container mx-auto my-8 p-8 flex flex-col flex-grow">
-        <h2 class="text-center text-gray-800 text-5xl font-extrabold mb-8">
+    <div class="flex-grow overflow-auto flex flex-col mt-6" ref="container">
+      <div class="flex flex-col flex-grow" v-if="mode === 'list'">
+        <h2 class="text-center text-gray-800 text-5xl font-extrabold mt-10 mb-4">
           {{ site.toUpperCase() }}
         </h2>
-        <div
-          v-if="mode === 'list'"
-          class="listMode flex-grow"
-          ref="listContainer"
-        >
+        <div class="container mx-auto px-8 flex-grow">
           <div class="border-b-2 mb-10 md:mx-10 lg:mx-20">
             <TagsList :tags="tags" :currentTag="currentTag" />
           </div>
@@ -52,14 +47,40 @@
             </div>
           </div>
         </div>
-        <div v-if="mode === 'nav'" class="navMode flex-grow" ref="navContainer">
-          <Navigator :site="site" :width="width" :height="height" />
+        <BackTop
+          :direction="'top'"
+          :elem="'container'"
+          class="sticky bottom-16 flex justify-end items-center mb-4"
+        />
+        <div
+          class="mode-btn sticky bottom-6 flex justify-end items-center mb-4"
+        >
+          <button @click="mode = 'nav'">
+            <div
+              class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                />
+              </svg>
+              <p class="pl-2 hidden text-xs">切换模式</p>
+            </div>
+          </button>
         </div>
+        <Footer />
       </div>
-      <div
-        class="mode-btn sticky bottom-16 flex justify-end items-center mb-4"
-      >
-        <button v-show="mode === 'list'" @click="mode = 'nav'">
+      <div v-if="mode === 'nav'" class="navMode relative flex-grow">
+        <Navigator :site="site" :width="width" :height="height" />
+
+        <button class="absolute bottom-6 right-0" @click="mode = 'list'">
           <div
             class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
           >
@@ -75,38 +96,12 @@
                 d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
               />
             </svg>
-            <p class="pl-2 hidden text-xs">列表模式</p>
-          </div>
-        </button>
-        <button v-show="mode === 'nav'" @click="mode = 'list'">
-          <div
-            class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              style="transform: rotate(-90deg)"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"
-              />
-            </svg>
-            <p class="pl-2 hidden text-xs">导航模式</p>
+            <p class="pl-2 hidden text-xs">切换模式</p>
           </div>
         </button>
       </div>
-      <BackTop
-        :direction="'top'"
-        class="sticky bottom-6 flex justify-end items-center mb-4"
-      />
     </div>
 
-    <!-- <Navigator /> -->
-    <Footer />
     <Modal v-if="isModalVisible" @closeModal="isModalVisible = false">
       <template v-slot:header>
         <p>{{ currentSeries }}</p>
@@ -185,10 +180,10 @@ export default {
   },
   methods: {
     getSize() {
-      this.width = this.$refs[`${this.mode}Container`].clientWidth;
-      this.height = this.$refs[`${this.mode}Container`].clientHeight;
+      this.width = this.$refs.container.clientWidth;
+      this.height = this.$refs.container.clientHeight;
+      // console.log(this.width, this.height);
     },
-
     time(post) {
       let date = null;
       if (post.frontmatter.date) {
@@ -271,7 +266,7 @@ export default {
       }
       this.resizeTimer = setTimeout(() => {
         this.getSize();
-        console.log(this.width, this.height);
+        // console.log(this.width, this.height);
         this.resizeTimer = null;
       }, 300);
     };
