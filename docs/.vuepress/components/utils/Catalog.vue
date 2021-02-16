@@ -1,7 +1,7 @@
 <template>
-  <div class="heading-list-container">
+  <div class="headings-list-container">
     <ul
-      class="m-1 p-7 opacity-60 hover:opacity-100 transition-all duration-300"
+      class="m-2 lg:pl-7 xl:pl-11 py-7 opacity-60 hover:opacity-100 transition-all duration-300"
     >
       <li
         v-for="heading of headings"
@@ -9,12 +9,12 @@
         class="flex justify-start items-center relative"
       >
         <span
-          class="opacity-0 absolute t-0 -left-7 text-xs transition-all duration-300"
+          class="opacity-0 absolute -left-7 text-xs transition-all duration-300"
           :class="`text-${levelColor(heading.level)}`"
           >{{ `H${heading.level}` }}</span
         >
         <div
-          class="dot-icon absolute t-0 ring-4 opacity-0 ring-opacity-30 rounded-full transition-all duration-300"
+          class="dot-icon absolute ring-4 opacity-0 ring-opacity-30 rounded-full transition-all duration-300"
           :class="`bg-${levelColor(heading.level)} ring-${levelColor(
             heading.level
           )}`"
@@ -56,8 +56,8 @@ export default {
   },
   watch: {
     activeHeading() {
-      console.log(this.activeHeading);
-    }
+      // console.log(this.activeHeading);
+    },
   },
   methods: {
     levelColor(level) {
@@ -79,9 +79,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.heading-list-container {
+.headings-list-container {
   ul {
-    max-height: 80vh;
+    max-height: 65vh;
     overflow: overlay;
     // border-left: 1px solid gray;
     &:hover {

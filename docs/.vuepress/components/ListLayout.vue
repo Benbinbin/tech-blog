@@ -293,27 +293,29 @@ h2 {
     position: absolute;
     top: 0px;
     bottom: 0px;
-    left: 0px;
-    right: 0px;
+    left: 4px;
+    right: 4px;
     background: rgba(196, 181, 253, 1);
     border: 8px solid white;
+    border-radius: 0.375rem;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 0.375rem;
-    // transform: rotate(2deg);
+    transform: translateY(6px)
   }
   &::before {
     content: "";
     position: absolute;
     top: 0px;
     bottom: 0px;
-    left: 0px;
-    right: 0px;
+    left: 8px;
+    right: 8px;
     background: rgba(253, 230, 138, 1);
     border: 8px solid white;
     border-radius: 0.375rem;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform: translateY(12px)
+
   }
   &:hover {
     button {
