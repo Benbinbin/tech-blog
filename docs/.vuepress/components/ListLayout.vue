@@ -23,7 +23,7 @@
                 class="p-6 h-full bg-gray-50 border-8 border-white rounded-md shadow-md"
               >
                 <a
-                  :href="post.path"
+                  :href="$withBase(post.path)"
                   target="_blank"
                   class="absolute inset-0 z-10"
                 ></a>
@@ -52,10 +52,10 @@
         <BackTop
           :direction="'top'"
           :elem="'container'"
-          class="sticky bottom-16 flex justify-end items-center mb-4"
+          class="sticky bottom-20 flex justify-end items-center mb-4"
         />
         <div
-          class="sticky bottom-6 flex justify-end items-center mb-4"
+          class="sticky bottom-10 flex justify-end items-center mb-4"
         >
           <button class="mode-btn" @click="mode = 'nav'">
             <div
@@ -82,7 +82,7 @@
       <div v-if="mode === 'nav'" class="navMode relative flex-grow">
         <Navigator :site="site" :width="width" :height="height" />
 
-        <button class="mode-btn absolute bottom-6 right-0" @click="mode = 'list'">
+        <button class="mode-btn absolute bottom-10 right-0" @click="mode = 'list'">
           <div
             class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
           >

@@ -32,7 +32,7 @@
         :style="{ backgroundImage: 'url('+ $withBase(card.bg) +')' }"
       >
         <a
-          :href="`/posts-list/${card.name.toLowerCase()}.html`"
+          :href="$withBase(`/posts-list/${card.name.toLowerCase()}.html`)"
           class="absolute inset-0 z-20"
         ></a>
         <div class="card-body my-32 relative z-10">

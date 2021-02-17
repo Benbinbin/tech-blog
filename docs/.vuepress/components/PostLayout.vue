@@ -52,10 +52,10 @@
       v-show="!showCataglogBottom"
     >
       <div
-        class="px-1 py-2 flex justify-center items-center rounded-l-md text-white transition-all duration-500"
+        class="py-1 flex justify-center items-center rounded-l-md text-white transition-all duration-500"
         :class="showBtn ? 'bg-gray-600' : 'bg-gray-300'"
       >
-        <button v-show="!showBtn" @click="showBtn = true">
+        <button class="p-2" v-show="!showBtn" @click="showBtn = true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -69,7 +69,7 @@
             />
           </svg>
         </button>
-        <button v-show="showBtn" @click="showBtn = false">
+        <button class="p-2" v-show="showBtn" @click="showBtn = false">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -85,14 +85,14 @@
         </button>
         <button
           v-show="showBtn"
-          class="mx-1 pl-1 border-l flex justify-center items-center"
+          class="p-2 border-l flex justify-center items-center"
           @click="showCataglogBottomHandler"
         >
           <span class="pl-1 text-xs">打开目录</span>
         </button>
         <button
           v-show="showBtn"
-          class="mx-1 pl-1 border-l flex justify-center items-center"
+          class="p-2 border-l flex justify-center items-center"
           @click="scrollTop"
         >
           <span class="pl-1 text-xs">返回顶部</span>
