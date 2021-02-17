@@ -11,7 +11,7 @@
         class="dividing-line flex items-center w-full max-w-screen-lg px-10 md:px-20 m-10"
       >
         <div class="before w-full" style="border: 0.05rem solid #dfe6e9"></div>
-        <img src="img/tech-blog.svg" alt="logo" class="mx-5 md:mx-10 w-16" />
+        <img :src="$withBase('/img/tech-blog.svg')" alt="logo" class="mx-5 md:mx-10 w-16" />
         <div class="after w-full" style="border: 0.05rem solid #dfe6e9"></div>
       </div>
       <Content
@@ -29,7 +29,7 @@
         v-for="card of cards"
         :key="card.name"
         class="card rounded-2xl px-6 py-4 relative bg-cover bg-center bg-no-repeat hover:shadow-md transition-all duration-300 ease-in-out"
-        :style="{ backgroundImage: `url(${card.bg})` }"
+        :style="{ backgroundImage: 'url('+ $withBase(card.bg) +')' }"
       >
         <a
           :href="`/posts-list/${card.name.toLowerCase()}.html`"

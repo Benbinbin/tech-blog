@@ -4,7 +4,7 @@
   >
     <button class="relative">
       <a href="/" class="absolute top-0 right-0 w-full h-full"></a>
-      <img :src="avatar" alt="avatar" class="w-auto h-12 rounded-full" />
+      <img :src="$withBase(avatar)" alt="avatar" class="w-auto h-12 rounded-full" />
     </button>
     <div class="copyright py-5 md:py-0">
       <p class="text-center text-sm">
@@ -35,7 +35,7 @@
           :target="item.name === 'email' ? '' : '_blank'"
           class="absolute top-0 right-0 w-full h-full"
         ></a>
-        <img :src="item.logo" :alt="item.name" class="w-auto h-5" />
+        <img :src="$withBase(item.logo)" :alt="item.name" class="w-auto h-5" />
       </button>
     </div>
   </footer>

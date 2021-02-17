@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  base: "/tech-blog/",
   title: "Tech Blog",
   description: "Notes written by BenThomson when learning tech skills.",
   plugins: [
