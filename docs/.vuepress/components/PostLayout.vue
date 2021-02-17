@@ -52,7 +52,8 @@
       v-show="!showCataglogBottom"
     >
       <div
-        class="px-1 py-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white transition-all duration-500"
+        class="px-1 py-2 flex justify-center items-center rounded-l-md text-white transition-all duration-500"
+        :class="showBtn ? 'bg-gray-600' : 'bg-gray-300'"
       >
         <button v-show="!showBtn" @click="showBtn = true">
           <svg
@@ -128,7 +129,6 @@
           :data="headings"
           :data-value="'id'"
           :tooltip="'none'"
-          @change="changeHandler"
           @drag-end="dragEndHandler"
           @drag-start="dragStartHandler"
         >
@@ -154,7 +154,7 @@
       </button>
     </div>
     <div
-    v-show="showTooltip"
+      v-show="showTooltip"
       class="tooltip fixed inset-x-4 top-20 z-10 border bg-gray-50 bg-opacity-95 rounded-xl border-gray-300 shadow"
     >
       <CatalogTooltip :headings="headings" :selectedHeading="selectedHeading" />
@@ -165,12 +165,15 @@
 <script>
 import Footer from "./utils/Footer.vue";
 import Catalog from "./utils/Catalog.vue";
-import CatalogBottom from "./utils/CatalogBottom.vue";
 import CatalogTooltip from "./utils/CatalogTooltip.vue";
 import Layout from "@theme/layouts/Layout.vue";
 import BackTop from "./utils/BackTop.vue";
-import VueSlider from "vue-slider-component";
-// import "vue-slider-component/theme/default.css";
+// import component
+import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
+import "vue-slider-component/dist-css/vue-slider-component.css";
+
+// import theme
+import "vue-slider-component/theme/default.css";
 
 const headingsMap = {
   H2: 2,
@@ -185,7 +188,6 @@ export default {
     Layout,
     Footer,
     Catalog,
-    CatalogBottom,
     CatalogTooltip,
     VueSlider,
     BackTop,
@@ -202,7 +204,8 @@ export default {
       showCataglog: true,
       showBtn: false,
       showCataglogBottom: false,
-      showTooltip: false
+      showTooltip: false,
+      dynamicComponent: null,
     };
   },
   methods: {
@@ -227,10 +230,10 @@ export default {
       this.showBtn = false;
     },
     dragStartHandler() {
-      this.showTooltip = true
+      this.showTooltip = true;
     },
     dragEndHandler() {
-      this.showTooltip = false
+      this.showTooltip = false;
       const currentHeading = this.headings.find((heading) => {
         // console.log(heading);
         if (heading.id === this.selectedHeading) return true;
@@ -239,9 +242,6 @@ export default {
       this.$router.push(`#${currentHeading.id}`);
     },
   },
-  // created() {
-  //   console.log(this.$page);
-  // },
   mounted() {
     this.content = document.getElementsByClassName("theme-default-content")[0];
     const list = this.content.querySelectorAll("h2, h3, h4, h5, h6");
@@ -276,15 +276,19 @@ export default {
         const lastHeading = headingsList[headingsList.length - 1];
         if (scrollTop >= lastHeading.offsetTop) {
           this.activeHeading = lastHeading.id;
+          this.selectedHeading = this.activeHeading;
+          this.scrollTimer = null;
+        } else {
+          const target = headingsList.find((heading) => {
+            if (heading.offsetTop && scrollTop <= heading.offsetTop) {
+              return true;
+            }
+          });
+
+          this.activeHeading = target.id;
+          this.selectedHeading = this.activeHeading;
           this.scrollTimer = null;
         }
-        headingsList.find((heading) => {
-          if (heading.offsetTop && scrollTop <= heading.offsetTop) {
-            this.activeHeading = heading.id;
-            return true;
-          }
-        });
-        this.scrollTimer = null;
       }, 300);
     };
   },
@@ -293,10 +297,10 @@ export default {
 
 <style lang="scss">
 /* 设置组件的主题颜色 */
-$themeColor: #60a5fa;
+// $themeColor: #60a5fa;
 
 /* 导入主题样式 */
-@import "~vue-slider-component/lib/theme/default.scss";
+// @import "~vue-slider-component/lib/theme/default.scss";
 
 * {
   margin: 0;

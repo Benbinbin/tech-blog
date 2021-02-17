@@ -9,10 +9,11 @@
         :key="heading.id"
         :ref="heading.id"
         class="w-full flex flex-col items-center relative"
+        :class="{'opacity-75': heading.id !== selectedHeading}"
       >
         <span
           class="absolute inset-x-0 -top-7 text-xs text-center"
-          :class="`text-${levelColor(heading.level)}`"
+          :class="{'font-black': heading.id === selectedHeading }"
           >{{ `H${heading.level}` }}</span
         >
         <div

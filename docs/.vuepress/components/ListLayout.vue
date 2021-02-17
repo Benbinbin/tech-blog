@@ -3,7 +3,9 @@
     <Layout />
     <div class="flex-grow overflow-auto flex flex-col mt-6" ref="container">
       <div class="flex flex-col flex-grow" v-if="mode === 'list'">
-        <h2 class="text-center text-gray-800 text-5xl font-extrabold mt-10 mb-4">
+        <h2
+          class="text-center text-gray-800 text-5xl font-extrabold mt-10 mb-4"
+        >
           {{ site.toUpperCase() }}
         </h2>
         <div class="container mx-auto px-8 flex-grow">
@@ -53,9 +55,9 @@
           class="sticky bottom-16 flex justify-end items-center mb-4"
         />
         <div
-          class="mode-btn sticky bottom-6 flex justify-end items-center mb-4"
+          class="sticky bottom-6 flex justify-end items-center mb-4"
         >
-          <button @click="mode = 'nav'">
+          <button class="mode-btn" @click="mode = 'nav'">
             <div
               class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
             >
@@ -71,7 +73,7 @@
                   d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
                 />
               </svg>
-              <p class="pl-2 hidden text-xs">切换模式</p>
+              <span class="pl-2 hidden text-xs">切换模式</span>
             </div>
           </button>
         </div>
@@ -80,7 +82,7 @@
       <div v-if="mode === 'nav'" class="navMode relative flex-grow">
         <Navigator :site="site" :width="width" :height="height" />
 
-        <button class="absolute bottom-6 right-0" @click="mode = 'list'">
+        <button class="mode-btn absolute bottom-6 right-0" @click="mode = 'list'">
           <div
             class="p-2 flex justify-center items-center rounded-l-md bg-gray-300 text-white hover:bg-gray-600 transition-all duration-500"
           >
@@ -96,7 +98,7 @@
                 d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
               />
             </svg>
-            <p class="pl-2 hidden text-xs">切换模式</p>
+            <span class="pl-2 hidden text-xs">切换模式</span>
           </div>
         </button>
       </div>
@@ -300,7 +302,7 @@ h2 {
     border-radius: 0.375rem;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transform: translateY(6px)
+    transform: translateY(6px);
   }
   &::before {
     content: "";
@@ -314,8 +316,7 @@ h2 {
     border-radius: 0.375rem;
     z-index: -1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transform: translateY(12px)
-
+    transform: translateY(12px);
   }
   &:hover {
     button {
@@ -328,6 +329,17 @@ h2 {
     &::after {
       transition: all 300ms;
       transform: rotate(-6deg);
+    }
+  }
+}
+
+.mode-btn {
+  button:focus {
+    outline: none;
+  }
+  &:hover {
+    span {
+      display: block;
     }
   }
 }

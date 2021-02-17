@@ -194,7 +194,7 @@ export default {
       return text;
     },
     clickHandler(node) {
-      console.log(node);
+      // console.log(node);
       if (!node.data.data || !node.parent) return;
       window.open(node.data.data.path);
     },

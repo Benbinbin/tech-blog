@@ -32,7 +32,7 @@
         :style="{ backgroundImage: `url(${card.bg})` }"
       >
         <a
-          :href="`/posts-list/${card.name.toLowerCase()}/`"
+          :href="`/posts-list/${card.name.toLowerCase()}.html`"
           class="absolute inset-0 z-20"
         ></a>
         <div class="card-body my-32 relative z-10">
@@ -58,18 +58,10 @@ export default {
   },
   data() {
     return {
-      // title: "",
-      // author: "",
-      // avatar: "",
-      // socialMedia: [],
       cards: null,
     };
   },
   created() {
-    // this.title = this.$site.title;
-    // this.author = this.$site.themeConfig.author;
-    // this.avatar = this.$site.themeConfig.logo;
-    // this.socialMedia = this.$site.themeConfig.socialMedia;
     this.cards = this.$page.frontmatter.cards;
   },
 };

@@ -2,7 +2,7 @@
   <div class="modal-container">
     <div
       class="modal-bg fixed inset-0 bg-black bg-opacity-50 z-20"
-      @click="$emit('closeModal')"
+      @click="closeModalHandler"
     ></div>
     <div
       class="modal container w-4/5 sm:w-9/12 md:w-3/5 lg:w-3/6 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-gray-100 rounded-xl"
@@ -14,7 +14,7 @@
           <p>系列</p>
         </slot>
         <button
-          @click="$emit('closeModal')"
+          @click="closeModalHandler"
           class="text-gray-400 hover:text-gray-800"
         >
           <svg
@@ -132,11 +132,14 @@ export default {
   data() {
     return {};
   },
-  created() {
-    document.body.style.overflow = "hidden";
+  methods: {
+    closeModalHandler() {
+      document.body.style.overflow = "overlay";
+      this.$emit("closeModal");
+    },
   },
-  destroyed() {
-    document.body.style.overflow = "overlay";
+  mounted() {
+    document.body.style.overflow = "hidden";
   },
 };
 </script>
