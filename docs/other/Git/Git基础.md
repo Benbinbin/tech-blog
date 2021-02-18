@@ -12,7 +12,7 @@ Git 是一个分布式版本控制系统，其核心功能是追踪文件的变�
 ## 术语
 版本控制系统，简称 VCS 是一个管理源代码不同版本的工具。源代码管理器，简称 SCM 是版本控制系统的另一个名称。Git 是一个 SCM（因此也是 VCS！）。Git 网站：[https://git-scm.com/](https://git-scm.com/) （注意它的域名中直接包含“SCM”！）。
 
-参考：[Git 关键术语](_v_attachments/20191120170555447_6092/Git%20关键术语.pdf) | [英文版](_v_attachments/20191120170555447_6092/ud123-git-keyterms.pdf)
+参考：[Git关键术语](./_v_attachments/20191120170555447_6092/Git-terms-cheatsheet.pdf) | [英文版](./_v_attachments/20191120170555447_6092/ud123-git-keyterms.pdf)
 ### 提交 commit
 Git 将数据看做微型文件系统的一组**快照**。每次 commit （在 Git 中保持项目状态）它都对文件当时的状况拍照，并存储对该快照的引用，类似游戏中的保存点，它会保存项目的文件和关于文件的所有信息。commit 是 Git 中的基本单位。
 
