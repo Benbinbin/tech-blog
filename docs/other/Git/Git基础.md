@@ -370,7 +370,7 @@ $ git branch backup
 
 使用命令 `git rebase -i HEAD~3` 将最近三个 commit 压制为一个
 
-[压制 commit 操作视频演示](https://www.jianguoyun.com/p/DWRuB6MQjNDGBxiQ9OAD)
+:cinema: [压制 commit](https://www.jianguoyun.com/p/DeXt5i8QjNDGBxjL-uAD)
 
 * 在此操作中我必要进行**强制推送**分支。我不得不这样做，因为 GitHub 试图阻止我意外删除 commit。因为我使用了 `git rebase` 命令，实际上清除三个分别记录我添加了佛罗里达、巴黎和苏格兰的 commit。我使用 git rebase 将这些 commit 合并或压制为单个 commit，相当于创建一个具有新 SHA 的提交。当我尝试使用 `git push` 将此 commit 推送至 GitHub 时，GitHub 知道接受此推送会删除那三个单独 commit，所以它拒绝了（这实际上是对你的一种帮助，确保你已经审查过正在推送的 commit 和 GitHub 上的 commit，以验证你不会意外覆盖你在远程仓库上存储的内容！）。因此，我不得不使用 `git push -f` 强制推送这些 commit。
 
@@ -509,7 +509,7 @@ $ git merge <name-of-branch-to-merge-in>
 
 发生合并时 git 查看分支的历史记录，并寻找两个分支的 commit 历史记录中都有的单个 commit 进行覆盖，而单个分支上更改的代码行进行合并（合并指的是另一个分支上的更改将出现在当前检出的分支上，即合并是将其他分支合并到当前（检出的）分支上，不是将两个分支合并到一个新的分支上），提交一个 commit 并添加到检出分支/当前分支（另一分支不影响），以记录合并操作
 
-[合并演示视频](https://youtu.be/gQiWicrreJg)
+:cinema: [合并](https://www.jianguoyun.com/p/DfQmUG4QjNDGBxjN-uAD)
 
 如果在错误的分支上进行了合并，可使用命令 `git reset --hard HEAD^`撤消合并（字符 `^` 表示相对 commit 引用，即父级 commit）
 

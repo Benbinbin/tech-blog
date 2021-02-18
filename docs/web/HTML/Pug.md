@@ -1,9 +1,10 @@
 ---
 tags:
   - jade
+  - pug
 ---
 
-# jade
+# Pug
 jade，现称为 [pug](https://pugjs.org/)，是一种 HTML 模板语言，可以在项目中作为 HTML 页面的框架，复用以生成大量类似的网页。
 
 文件后缀为 `.jade` 或 `.pug` 通过编译，如 Gulp 插件 [gulp-jade](https://www.npmjs.com/package/gulp-jade)，生成相应的  HTML 文档。

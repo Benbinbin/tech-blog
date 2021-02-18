@@ -194,9 +194,10 @@ export default {
       return text;
     },
     clickHandler(node) {
+      // console.log(this.$withBase(node.data.data.path));
       // console.log(node);
       if (!node.data.data || !node.parent) return;
-      window.open(node.data.data.path);
+      window.open(this.$withBase(node.data.data.path));
     },
     zoomHandler(event) {
       // this.zoomType = "click";

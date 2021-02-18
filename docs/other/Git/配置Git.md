@@ -56,4 +56,4 @@ git config --global core.editor "code --wait"
 参考：Udacity 的课程 *[Version Control with Git](https://www.udacity.com/course/version-control-with-git--ud123)*
 1. 下载所需的[配置文件](http://video.udacity-data.com.s3.amazonaws.com/topher/2017/March/58d31ce3_ud123-udacity-terminal-config/ud123-udacity-terminal-config.zip)
 
-2. 根据视频教程（[Windows 版](https://youtu.be/CCYjHfBk9hw)/[Mac、Linux 版）](https://youtu.be/h00n9QLfbqU)进行操作
+2. 根据 :cinema: 教程（[Windows 版](https://youtu.be/CCYjHfBk9hw)/[Mac、Linux 版）](https://youtu.be/h00n9QLfbqU)进行操作

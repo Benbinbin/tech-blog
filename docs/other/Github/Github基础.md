@@ -90,7 +90,7 @@ tags:
 
 命令 `git fetch <remote-shortname> <branch>`  也可以从远程仓库分支检索 commit 并下载到本地，但**不会**自动将本地分支与远程跟踪分支**合并**。只是将跟踪分支指向最新的 commit，而当前分支并不移动。使用 `git fetch` 而不是 `git pull` 的一个主要情形是当你的远程分支和本地分支都拥有对方所没有的更改时，直接合并会出现合并冲突。可以将 `git fetch` 想象成 `git pull` 它的一半操作，先获取远程更改，将它们存储到本地分支中，然后再使用命令 `git merge <branch>`手动执行合并。
 
-[git fetch 演示视频](https://www.jianguoyun.com/p/DVZ9l5oQjNDGBxj19OAD)
+:cinema: [git fetch 演示视频](https://www.jianguoyun.com/p/DajSvLgQjNDGBxjS-uAD)
 
 ## fork 仓库
 在版本控制术语中，fork 一个仓库是指复制它。当你 fork 仓库时会创建与原始仓库完全相同的副本，新副本也是一个远程仓库，并将该副本移动到你的帐户，你对 fork 的仓库拥有完全控制权（与之相对应的是克隆，克隆仓库发生在本地计算机上，将远程仓库复制到本地，获得完全一样的仓库副本）。
@@ -127,7 +127,7 @@ fork 项目后你的 GitHub 配置文件名称旁边会显示新的项目名称�
 * 将 commit 推送回你的 fork
 * 创建一个新的 Pull Request，并选择包含你的新 commit 的分支。
 
-[创建 Pull Request 演示视频](https://www.jianguoyun.com/p/DYkkHCgQjNDGBxj89OAD)
+:cinema: [创建 Pull Request](https://www.jianguoyun.com/p/DSSbTUkQjNDGBxjP-uAD)
 
 
 * 当创建一个 Pull Request 时，要将所有更改放在一个专用于这些更改的特性分支上
