@@ -1,6 +1,8 @@
 ---
 type: series
 series: git
+tags:
+  - git
 ---
 # 配置 Git
 

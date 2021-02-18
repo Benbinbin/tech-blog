@@ -1,24 +1,21 @@
 ---
 tags:
   - css
-date: 2021-02-05
-author: BenThomson
-summary: 介绍 CSS3 选择器相关内容。
 ---
 
 # CSS3
 
 ## 选择器
 ### 基础选择器
-CSS3 新增了多种[基本选择器](D:/Front_end/CSS/选择器.md)：
+CSS3 新增了多种[基本选择器](./选择器.md)：
 
 * 子元素选择器 `>`：选择直接后代中的匹配元素（即子元素）
 * 相邻兄弟元素选择器 `+`：选择最近一个匹配的同级元素
 * 通用兄弟选择器 `~`：选择该元素后的所有匹配的同级元素
 * 群组选择器：设置多个选择器，并用逗号 `,` 分隔，以为匹配的元素设置同样的样式
 
-#### 结构选择器
-参考：详细讲解参考[群里讨论的一个选择器问题（一定要看）](https://mp.weixin.qq.com/s/nS_kcIqBwO03mvF97BZCBQ)
+### 结构选择器
+参考：[群里讨论的一个选择器问题（一定要看）](https://mp.weixin.qq.com/s/nS_kcIqBwO03mvF97BZCBQ)
 
 基于 HTML 层级关系结构匹配元素的选择器
 
@@ -39,10 +36,10 @@ CSS3 新增了多种[基本选择器](D:/Front_end/CSS/选择器.md)：
 
 * `element:empty` 匹配没有内容（没有子元素和文本节点）的元素
 
-##### 否定选择器
+### 否定选择器
 `parent:not(element/selector)` 匹配在父元素 `parent` 中除了指定条件 `element/selector` 以外的所有子元素
 
-###### 属性选择器
+### 属性选择器
 CSS3 新增了属性选择器，可以匹配带有特定属性/属性值的元素
 
 * `element[attribute]` 匹配元素 `element` 它们有属性 `attribute`
@@ -98,7 +95,7 @@ CSS 3 提供动态选择器以匹配元素的特定状态进行样式设置
 
 * 线性渐变 `background: linear-gradient(direction, color1, color2, color3)` 支持设置不同方向（以目标方向为基准)，默认从上到下 `to bottom`，支持对角线如从左上角到右下角 `to right bottom`，支持设置多种颜色
     :bulb: 方向可以使用角度来进行更精准的设置，单位是 `deg`，如 `0deg` 创建一个从下到上的渐变，`90deg` 创建一个从左往右的渐变
-    ![degree](./images/20200404211840883_31670.png)
+    ![degree](./_v_images/20200404211840883_31670.png)
     :bulb: 颜色值后可以附上百分比，以控制颜色（纯色）渐变的起始/结束的节点
     :bulb: 颜色采用 `rgba(x,x,x,x)` 可设置透明值
 
