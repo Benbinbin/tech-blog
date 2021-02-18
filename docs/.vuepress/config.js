@@ -70,26 +70,26 @@ module.exports = {
   alias: {
     'styles': path.resolve(__dirname, './styles'),
   },
-  chainWebpack: (config, isServer) => {
+  chainWebpack: config => {
+    /** Webpack rule to handle some non-image assets that we'll use */
     config.module
-      .rule('pdfs')
+      .rule('pdf')
       .test(/\.pdf$/)
       .use('file-loader')
       .loader('file-loader')
       .options({
-        name: `[name].[ext]`,
+        name: `assets/pdf/[name].[ext]`,
       });
-
-    // config.module
-    //   .rule('vue')
-    //   .uses.store
-    //   .get('vue-loader').store
-    //   .get('options').transformAssetUrls = {
-    //     video: ['src', 'poster'],
-    //     source: 'src',
-    //     img: 'src',
-    //     image: ['xlink:href', 'href'],
-    //     a: 'href'
-    //   };
-  },
+    config.module
+      .rule('vue')
+      .uses.store
+      .get('vue-loader').store
+      .get('options').transformAssetUrls = {
+      video: ['src', 'poster'],
+      source: 'src',
+      img: 'src',
+      image: ['xlink:href', 'href'],
+      a: 'href'
+    };
+  }
 }
