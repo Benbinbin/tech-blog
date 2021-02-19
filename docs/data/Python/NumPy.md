@@ -249,7 +249,8 @@ X =
 
     :hammer:
 
-    ```shellx = [4 5 6 7 8 9]
+    ```shell
+    x = [4 5 6 7 8 9]
     x has dimensions: (6,)
     x is an object of type: class 'numpy.ndarray'
     The elements in x are of type: int64
@@ -320,7 +321,8 @@ print('The elements in x are of type:', x.dtype)
 
 :hammer:
 
-```shellx = [ 0. 2.5 5. 7.5 10. 12.5 15. 17.5 20. 22.5]
+```shell
+x = [ 0. 2.5 5. 7.5 10. 12.5 15. 17.5 20. 22.5]
 x has dimensions: (10,)
 x is an object of type: class 'numpy.ndarray'
 The elements in x are of type: float64
