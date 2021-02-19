@@ -313,4 +313,28 @@ export default {
     display: block;
   }
 }
+
+// video {
+//   display: none;
+//   width: 100%;
+//   margin: 2rem 0;
+// }
+
+.video-wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  // height: 1.5rem;
+  padding-bottom: 56.25%;
+  margin: 30px auto;
+
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+  }
+}
 </style>
