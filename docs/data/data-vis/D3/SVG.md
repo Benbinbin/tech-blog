@@ -1,7 +1,9 @@
 ---
 tags:
-  - data-visualization
+  - web
+  - data-vis
 ---
+
 # SVG
 参考：
 
@@ -35,7 +37,7 @@ SVG 绘制图形时需要使用坐标系统/网格系统，以页面的**左上�
 ![Canvas_default_grid](./_v_images/20201016143051726_10893.png)
 
 ## viewport 和 viewBox
-* viewport 视口是一个表示当前可见的计算机图形区域的概念。在 Web 浏览器术语中通常与**浏览器窗口相同**，但不包括浏览器的 UI（如菜单栏等），视口外的内容在被滚动进来前都是不可见的。。
+* viewport 视口是一个表示当前可见的计算机图形区域的概念。在 Web 浏览器术语中通常与**浏览器窗口相同**，但不包括浏览器的 UI（如菜单栏等），视口外的内容在被滚动进来前都是不可见的。
 
 * viewBox 是 `<svg>` 标签的一个属性，包含**四个参数（以空格或逗号分隔） `<svg viewBox="min-x min-y width height">` 指定一个容器（宽和高）以显示图形元素**
 
@@ -48,24 +50,15 @@ SVG 绘制图形时需要使用坐标系统/网格系统，以页面的**左上�
 
 ```html
 <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-  <!-- 更大的 viewBox，这样半径长度 4 是以 30 为基准进行解析，图像就显得小 -->
+  <!-- 较大的 viewBox，这样半径长度 4 是以 30 为基准进行解析，图像就显得小 -->
   <circle cx="50%" cy="50%" r="4" fill="orange"/>
 </svg>
 
 <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-    <!-- 更大的 viewBox，这样半径长度 4 是以 10 为基准进行解析，图像就显得大 -->
+    <!-- 较小的 viewBox，这样半径长度 4 是以 10 为基准进行解析，图像就显得大 -->
   <circle cx="50%" cy="50%" r="4" fill="orange"/>
 </svg>
 ```
-
-<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50%" cy="50%" r="4" fill="orange"/>
-</svg>
-
-
-<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50%" cy="50%" r="4" fill="orange"/>
-</svg>
 
 
 
@@ -205,7 +198,7 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 
 [元素 `<path>` 绘制线条、曲线、弧形等图形](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths)，是SVG基本形状中最强大的一个，可以通过脚本生成 path 而绘制出复杂的图形。
 
-其关键参数是 `d`：设置一个「命令+参数」的集合描述/定义 *define* 如何绘制路径。其中每一个命令都用一个关键字母表示，如 `M` 命令取自 Move to 表示间点移动到相应的坐标，字母后面是一对点数据 `x, y`，表示 x 和 y 轴坐标参数。
+其关键参数是 `d`：设置一个「命令+参数」的集合描述/定义 *define* 如何绘制路径。其中每一个命令都用一个关键字母表示，如 `M` 命令取自 Move to 表示将点移动到相应的坐标，字母后面是一对点数据 `x, y`，表示 x 和 y 轴坐标参数。
 
 * `M x,y`  M stand for **Move To**, pick the pen off the paper, put it back down at (x,y)
 * `L x,y` L stand for **Line To**, draw a line from the previous point to the target point (x, y)
@@ -214,7 +207,7 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 
 * `C x,y x,y x,y` C stand for Curve To  (using Cubic Bézier Curve)
 
-![Cubic bezier curve to](././_v_images/20201016155707331_11257.png)
+![Cubic bezier curve to](./_v_images/20201016155707331_11257.png)
 
 :bulb: 每一个命令都有两种表示方式，一种是用**大写字母**，表示采用绝对定位；另一种是用**小写字母**，表示采用相对定位，如从上一个点开始，向上移动 `10px`，向左移动 `7px`。
 

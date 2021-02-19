@@ -757,7 +757,7 @@ alert( document.body instanceof EventTarget ); // true
 </script>
 ```
 
-输出
+:hammer:
 
 ![textContent output](./_v_images/20200506121427538_1963.png)
 

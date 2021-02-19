@@ -94,7 +94,8 @@ $("body").append(detachedListItem);
 $( "div.demo-container" ).html( "<p>All new content. <em>You bet!</em></p>" );
 ```
 
-输出
+:hammer:
+
 ```html
 <div class="demo-container">
   <p>All new content. <em>You bet!</em></p>
@@ -161,7 +162,8 @@ $(":header").addClass(function(index) {
 $( "div.tumble" ).toggleClass( "bounce" )
 ```
 
-输出
+:hammer:
+
 ```html
 <div class="tumble bounce">Some text.</div>
 ```
@@ -171,7 +173,8 @@ $( "div.tumble" ).toggleClass( "bounce" )
 $( "div.tumble" ).toggleClass( "bounce" )
 ```
 
-输出
+:hammer:
+
 ```html
 <div class="tumble">Some text.</div>
 ```

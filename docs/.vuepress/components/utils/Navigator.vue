@@ -11,7 +11,7 @@
       >
         <path
           v-for="link of links"
-          :key="link.target.data.name"
+          :key="link.target.data.children ? link.target.data.name : link.target.data.data.key"
           :d="linkPath(link)"
         ></path>
       </g>
@@ -22,7 +22,7 @@
       >
         <g
           v-for="node of nodes"
-          :key="node.data.name"
+          :key="node.data.children ? node.data.name: node.data.data.key"
           :cursor="node.data.children ? 'default' : 'pointer'"
           @click="clickHandler(node)"
           :transform="`translate(${node.y}, ${node.x})`"
@@ -147,6 +147,7 @@ export default {
     },
     getTreeData() {
       const postsList = this.getPosts();
+      // console.log(postsList);
       const data = buildTreeData(postsList);
 
       const treeData = {
@@ -160,6 +161,7 @@ export default {
 
       this.tree = d3.hierarchy(treeData);
       this.level = this.tree.height;
+      // console.log(this.tree);
     },
     buildTree() {
       // 计算节点的层次布局，为 this.root 的每个节点添加坐标属性

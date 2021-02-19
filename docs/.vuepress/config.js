@@ -81,6 +81,22 @@ module.exports = {
         name: `assets/pdf/[name].[ext]`,
       });
     config.module
+      .rule('python')
+      .test(/\.py$/)
+      .use('file-loader')
+      .loader('file-loader')
+      .options({
+        name: `assets/python/[name].[ext]`,
+      });
+    config.module
+      .rule('ipynb')
+      .test(/\.ipynb$/)
+      .use('file-loader')
+      .loader('file-loader')
+      .options({
+        name: `assets/ipynb/[name].[ext]`,
+      });
+    config.module
       .rule('vue')
       .uses.store
       .get('vue-loader').store
