@@ -4,7 +4,7 @@ omitList: true
 ---
 
 # demo
-
+Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
 ## heading
 
 ## heading
@@ -159,7 +159,7 @@ Duplicated footnote reference[^second].
 [^second]: Footnote text.
 
 
-## [Custom containers](https://github.com/markdown-it/markdown-it-container)
+## Custom containers
 
 ::: warning
 *here be dragons*

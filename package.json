@@ -12,6 +12,7 @@
   "author": "BenThomson",
   "license": "MIT",
   "devDependencies": {
+    "@maginapp/vuepress-plugin-katex": "^1.0.10",
     "vuepress": "^1.8.0"
   },
   "dependencies": {

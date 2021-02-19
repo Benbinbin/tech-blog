@@ -6,7 +6,7 @@ module.exports = {
   description: "Notes written by BenThomson when learning tech skills.",
   plugins: [
     "@kawarimidoll/tailwind",
-    '@vuepress/back-to-top',
+    '@maginapp/vuepress-plugin-katex',
     [
       require('./plugins/generateListPages.js'),
       {
