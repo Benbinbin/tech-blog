@@ -115,7 +115,7 @@
           :key="post.path"
         >
           <a
-            :href="post.path"
+            :href="$withBase(post.path)"
             target="_blank"
             class="absolute inset-0 z-10"
           ></a>
