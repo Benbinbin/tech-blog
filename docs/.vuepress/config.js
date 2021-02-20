@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     "@kawarimidoll/tailwind",
     '@maginapp/vuepress-plugin-katex',
+    '@vuepress/medium-zoom',
     [
       require('./plugins/generateListPages.js'),
       {

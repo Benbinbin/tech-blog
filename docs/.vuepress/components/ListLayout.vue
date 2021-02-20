@@ -322,14 +322,14 @@ h2 {
     button {
       opacity: 1;
     }
-    &::before {
-      transition: all 300ms;
-      transform: rotate(5deg);
-    }
-    &::after {
-      transition: all 300ms;
-      transform: rotate(-6deg);
-    }
+    // &::before {
+    //   transition: all 300ms;
+    //   transform: rotate(5deg);
+    // }
+    // &::after {
+    //   transition: all 300ms;
+    //   transform: rotate(-6deg);
+    // }
   }
 }
 

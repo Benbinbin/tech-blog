@@ -35,14 +35,14 @@
           :href="$withBase(`/posts-list/${card.name.toLowerCase()}.html`)"
           class="absolute inset-0 z-20"
         ></a>
-        <div class="card-body my-32 relative z-10">
+        <div class="card-body my-40 relative z-10">
           <h3 class="text-white text-5xl font-extrabold">{{ card.name }}</h3>
         </div>
-        <div class="card-footer space-x-4 relative z-10">
+        <!-- <div class="card-footer space-x-4 relative z-10">
           <span class="tag text-white font-semibold" v-for="tag in card.tags"
             >#{{ tag }}</span
           >
-        </div>
+        </div> -->
       </div>
     </div>
     <Footer />
