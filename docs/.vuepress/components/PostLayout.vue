@@ -312,7 +312,7 @@ export default {
   word-wrap: break-word
 }
 
-.catalog-btn:hover {
+.catalog-btn>button:hover {
   span {
     display: block;
   }

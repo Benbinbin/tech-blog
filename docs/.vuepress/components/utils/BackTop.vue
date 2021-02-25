@@ -59,7 +59,7 @@ export default {
   button:focus {
     outline: none;
   }
-  &:hover {
+  &>button:hover {
     span {
       display: block;
     }

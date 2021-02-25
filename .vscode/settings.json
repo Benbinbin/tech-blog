@@ -5,6 +5,7 @@
         "frontmatter",
         "ipynb",
         "kawarimidoll",
-        "photoshop"
+        "photoshop",
+        "postgresql"
     ]
 }
