@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <div class="relative flex-grow">
-      <Layout />
+      <Layout/>
       <div
         class="catalog-container absolute top-0 right-0 h-full hidden lg:block"
         :style="{ width: `${catalogWidth}px` }"
@@ -306,6 +306,10 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.page {
+  word-wrap: break-word
 }
 
 .catalog-btn:hover {
