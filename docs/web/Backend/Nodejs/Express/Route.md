@@ -49,7 +49,7 @@ app.get('/users/:userId', function (req, res) {
 ```
 
 ## 查询参数 query
-在路由 URL 中可能存在查询参数，即 URL 中在 `?` 后的参数，可以有多个查询参数以 `&` 分隔。如果希望使用路由 URL 查询参数，在处理程序函数（回调函数）请求对象 `req` 中使用参数 `query` 来访问，它是一个包含 **路由 URL 查询参数** 的对象
+在路由 URL 中可能存在查询参数，即 URL 中在 `?` 后的参数，可以有多个查询参数以 `&` 分隔。如果希望使用路由 URL 的查询参数，在处理程序函数（回调函数）请求对象 `req` 中使用属性 `query` 来访问，它是一个包含 **路由 URL 查询参数** 的对象
 
 ```js
 app.get('/user/:name/', function (req, res) {
@@ -82,7 +82,7 @@ const express = require('express');
 // 使用 express.Router() 管理路由
 const router = express.Router();
 
-// 路由处理程序的 path 都是针对父目录 user 而言的
+// 路由处理程序的 path 都是针对父目录 /user 而言的
 router.get('/edit-profile', function(req, res) {
   res.send('profile');
 });

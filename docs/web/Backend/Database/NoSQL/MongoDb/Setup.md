@@ -16,7 +16,7 @@ tags:
 
 2. 可以通过 MongoDB 安装的 GUI 界面 [MongoDB Compass](https://www.mongodb.com/products/compass) 来启动并操作数据库；但推荐使用命令行界面来操作数据库， 在安装 MongDB 数据库服务器时，会安装一个交互式的 JavaScript 命令行工具 [mongo shell](https://docs.mongodb.com/manual/mongo/)，（Windows 系统）可以在安装目录下的 `bin` 子文件夹中双击 `mongo.exe` 开启它（也可以将该应用的目录添加到系统的 PATH 环境，然后可以直接在 Windows 的命令行工具中调用 mongo shell）
 
-3. 在 mongo shell 中输入以下命令连接本地的 MongoDB 实例
+3. 打开 mongo shell 或在系统自带的 Terminal 中输入以下命令连接本地的 MongoDB 实例
 
 ```bash
 mongo
@@ -28,7 +28,7 @@ mongo
 mongo --port 28015
 ```
 
-:bulb: 连接一个远程的 MongoDB 实例，需要显性地指明主机名和端口号（如果需要可以提供验证信息）
+:bulb: 连接一个远程的 MongoDB 实例，需要显性地指明**主机名**和端口号（如果需要可以提供验证信息）
 
 ```bash
 mongo "mongodb://mongodb0.example.com:28015"

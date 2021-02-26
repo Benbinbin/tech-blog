@@ -6,7 +6,7 @@ tags:
 
 # Express 常用 API
 ## Response
-`res` 对象表示 Express 应用在收到 HTTP 请求后返回的 HTTP 响应。
+`res` 对象表示 Express 应用在收到 HTTP 请求后，返回的 HTTP 响应。
 
 :bulb: 虽然响应对象名称可以任意，但在中间件或路由处理程序中一般称为 `res`（并且相应的 HTTP 请求为 `req`），也可以使用 `response`（相应的 HTTP 请求为 `request`）。
 

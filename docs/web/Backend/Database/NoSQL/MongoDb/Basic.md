@@ -15,9 +15,9 @@ tags:
 
 可以使用 GUI 界面 [MongoDB Compass](https://www.mongodb.com/products/compass) 来操作数据库；但推荐使用命令行界面 [mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/) 来进行更高效的操作，可使用的详细命令可参考官方文档 [mongo Shell Methods](https://docs.mongodb.com/manual/reference/method/)。
 
-:bulb: 可以使用链式来组合不同的命令构成复杂的查询语句，如 `db.posts.find().limit(2).sort({ title: 1 }).pretty()`
+:bulb: 可以使用**链式**来组合不同的命令构成复杂的查询语句，如 `db.posts.find().limit(2).sort({ title: 1 }).pretty()`
 
-* `db.posts.find()` 命令查询当前数据库 `db` 集合 `posts` 中所有的文档
+* `db.posts.find()` 查询当前数据库 `db` 的集合 `posts` 中所有的文档
 * `.limit(2)` 限制最多打印前 2 个文档
 * `.sort({ title: 1 })` 输出的文档基于其中的 `title` 域升序排列
 * `.pretty()` 以更易于阅读的方式打印文档内容
@@ -109,7 +109,7 @@ tags:
 * `db.<CollectionName>.findOne({key: 'value'})` 按照条件查询集合第一个匹配的文档
 
 ### 索引
-给文档建立索引可以便于搜寻，MongoDB 默认使用软件给每个文档生成的 `_id` 作为索引。
+给文档建立索引可以便于搜寻，**MongoDB 默认使用软件给每个文档生成的 `_id` 作为索引**。
 
 * `db.<CollectionName>.getIndexes()` 获取集合中文档的所有索引
 * `db.<CollectionName>.createIndex({rank:-1})` 添加以排名作为索引，顺序为降序排列，如果需要索引值唯一可以设置参数 `db.<CollectionName>.createIndex({rank:-1}, {unique: true})`
