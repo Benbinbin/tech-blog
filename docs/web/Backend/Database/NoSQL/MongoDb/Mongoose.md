@@ -72,7 +72,7 @@ const GistSchema = new mongoose.Schema({
 
 :bulb: schema 是 model 的构建（配置）模块，可以通过 schema 的组合（继承）来构建出复杂的 model。
 
-4. 创建 model，第一个参数是 Model 的名称（Schema 创建 Model），第二个参数是基于的 Schema
+4. 创建 model，第一个参数是 Model 的名称（Schema 创建 Model，相当于数据库中的 Collection 名称，使用单数单词，Mongoose 会自动在数据库中自动匹配/创建复数名称的 Collection），第二个参数是基于的 Schema
 
 ```js
 const GistModel = mongoose.model('Gist', GistSchema);
@@ -130,13 +130,13 @@ let peopleArray = [
 Person.create(peopleArray, (error, People) => {
     if(error){
       console.log(error)
-    }else{
+    } else {
       console.log(People)
     }
   });
 ```
 ### 查询
-* `<modelName>.find(<query>, (error, doc) => {// do something})` 查询所有符合条件的模型所对应的实例，以数组的形式返回。**如果不传递查询条件 `<query>`，返回数据库中所有数据**；如果希望获取特定的数据，可以传递 `<query>` 作为（可选）第一个参数
+* `<modelName>.find(<query>, (error, docs) => {// do something})` 查询所有符合条件的模型所对应的实例，以数组的形式返回。**如果不传递查询条件 `<query>`，返回数据库中所有数据**；如果希望获取特定的数据，可以传递 `<query>` 作为（可选）第一个参数
 
 ```js
 // 获取所有 name 以 "fluff" 开头的文档数据
@@ -147,7 +147,7 @@ Kitten.find({ name: /^fluff/ }, callback);
 
 * `<modelName>.findById(id, (error, doc) => {// do something})` **MongoDB 会为每个文档创建一个字段 `_id`，可以通过该值查询文档**。
 
-:bulb: 由于与数据库的交互是异步的，可以使用**链式**调用的方式来实现复杂的查询：
+:bulb: 由于与数据库的交互是**异步**的，可以使用**链式**调用的方式来实现复杂的查询：
 
 * 使用[方法 `.sort()`](https://mongoosejs.com/docs/api/query.html#query_Query-sort) 对查询结果进行排序，如设置为 `{age: 'asc'}` 文档基于字段 `age` 升序 ascending 排列；如果需要降序可以将字段对应的值设置为 `desc`
 * 使用[方法 `.limit(n)`](https://mongoosejs.com/docs/api/query.html#query_Query-limit) 限制返回的文档数量最多为 `n`
@@ -182,8 +182,8 @@ Person.find({favoriteFoods: {$all: ['Salad']}})
 
 ```js
 Person.findOneAndUpdate(
-  {name: 'Ben'},
-  {age: 26},
+  {name: 'Ben'},   // 查询字段 name 的值为 Ben 的文档 
+  {age: 26},   // 更新文档字段 age 的值为 26
   {new: true},   // 返回修改后的值
   (err, data) => {
     if(err) console.log(err);

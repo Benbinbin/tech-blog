@@ -476,7 +476,9 @@ git 默认分支为 `MASTER`，可通过命令 `git branch new_branch` 创建新
 ![可视化所有分支和 commit](./_v_images/20191125000547267_1280.png)
 
 ### 切换分支
-命令 `git checkout branch_name` 将 `HEAD` 指针（`HEAD` 表示当前分支，即活跃分支）切换到指定分支上，在进行 commit 时，该 commit 将添加到当前分支上。添加选项 `-b` 可以同时实现创建并切换到新分支 `git checkout -b new_branch`
+命令 `git checkout branch_name` 将 `HEAD` 指针（`HEAD` 表示当前分支，即活跃分支）切换到指定分支上，在进行 commit 时，该 commit 将添加到当前分支上。
+
+:bulb: 添加选项 `-b` 可以同时实现创建并切换到新分支 `git checkout -b new_branch`
 
 
 ```bash

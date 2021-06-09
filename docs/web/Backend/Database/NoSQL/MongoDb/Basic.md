@@ -105,7 +105,7 @@ tags:
     :bulb: 可以传递第二个参数（可选） `db.collection.find(<query>, <projection>)` 设置抽取文档要返回的**部分域/字段）**，需要返回的字段需要显示地设置为 `true` 或 `1` 否则默认不返回（除了 `_id` 字段，它是默认打印的），如 `db.posts.find({}, {title:true, rank:1, _id:0})` 返回所有文档的 `title` 和  `rank` 字段， 但不输出 `_id` 字段（默认会打印）
 * `db.<CollectionName>.find().sort({key: 1})` 将查询得到的文档以给定字段升序排列，如果需要降序排列可以设置为 `key: -1`
 * `db.<CollectionName>.find().limit(n)`  只输出查询得到的前 `n` 个文档
-* `db.<CollectionName>.find().skip()` 跳过查询得到的前 `n` 个文档，结合 `.limit()` 可以实现分页查询
+* `db.<CollectionName>.find().skip()` 跳过查询得到的前 `n` 个文档，结合 `.limit()` 可以实现**分页查询**
 * `db.<CollectionName>.findOne({key: 'value'})` 按照条件查询集合第一个匹配的文档
 
 ### 索引

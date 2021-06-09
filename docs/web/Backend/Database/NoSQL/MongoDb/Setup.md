@@ -6,7 +6,7 @@ tags:
 
 # MongoDb 安装与启动
 
-可以下载开源的社区版数据库服务器软件 [MongoDB Community Server](https://www.mongodb.com/try/download/community) 安装在本地，也可以直接使用在线云数据库 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)（有[免费额度](https://www.mongodb.com/pricing)）。
+:bulb: 可以下载开源的社区版数据库服务器软件 [MongoDB Community Server](https://www.mongodb.com/try/download/community) 安装在本地，也可以直接使用在线云数据库 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)（有[免费额度](https://www.mongodb.com/pricing)）。
 
 ## MongoDB Community Server
 1. [下载](https://www.mongodb.com/try/download/community)与系统相符的软件安装包到本地并安装，具体安装步骤可以参考[官方文档](https://docs.mongodb.com/manual/administration/install-community/)。
