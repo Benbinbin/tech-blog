@@ -1,6 +1,6 @@
 # Tech Blog
 
-This blog records some of my notes on learning skills.
+A blog shows some of the notes I took while learning skills.
 
 ## Category and Tags
 

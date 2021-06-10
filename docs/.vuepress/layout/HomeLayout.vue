@@ -1,0 +1,125 @@
+<template>
+  <div class="bg-gray-100">
+    <header
+      class="
+        h-screen
+        flex flex-col
+        justify-center
+        items-center
+        bg-gray-400
+        text-white
+      "
+    >
+      <h1 class="p-8 text-center text-5xl md:text-8xl font-bold">技术部落格</h1>
+      <div class="container w-full p-8 flex justify-center items-center">
+        <div class="before flex-grow h-0.5 bg-white"></div>
+        <img
+          class="flex-shrink-0 px-4 w-20 sm:w-24"
+          :src="$withBase('/images/icons/tech-blog.svg')"
+          alt="tech blog logo"
+        />
+        <div class="after flex-grow h-0.5 bg-white"></div>
+      </div>
+      <p class="p-8 text-center text-lg font-bold">
+        我是
+        <a
+          class="text-blue-300 underline font-bold"
+          href="https://benbinbin.github.io/Portfolio/"
+          target="_blank"
+          >{{ author }}</a
+        >，该博客的大部分内容是我学习过程中做的笔记。
+      </p>
+    </header>
+
+    <main class="px-8 py-16 bg-white">
+      <div
+        class="
+          container
+          mx-auto
+          grid grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          xl:grid-cols-4
+          gap-6
+        "
+      >
+        <div
+          v-for="card of cards"
+          :key="card.name"
+          class="
+            card
+            rounded-2xl
+            px-6
+            py-4
+            relative
+            bg-cover bg-center bg-no-repeat
+            hover:shadow-2xl
+            hover:text-blue-400
+            text-white
+            transition-all
+          "
+          :style="{
+            backgroundImage:
+              'url(' + $withBase(`/images/home/${card.image}`) + ')',
+          }"
+        >
+          <a
+            :href="$withBase(`/posts-list/${card.name.toLowerCase()}.html`)"
+            class="absolute inset-0 z-20"
+          ></a>
+          <div class="card-body my-40 relative z-10">
+            <h3 class="text-5xl font-bold">{{ card.name }}</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Footer from "../components/Footer.vue";
+import { usePageFrontmatter } from "@vuepress/client";
+import { ref, reactive, toRefs } from "vue";
+
+export default {
+  components: {
+    Footer,
+  },
+  setup(props) {
+    const data = reactive({
+      author: "",
+      cards: [],
+    });
+
+    data.author = __AUTHOR__ || "";
+    data.cards = usePageFrontmatter().value.cards || [];
+    console.log(usePageFrontmatter().value.cards);
+
+    const refData = toRefs(data);
+    return {
+      ...refData,
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+.card {
+  //   &:hover {
+  //     transform: scale(1.01);
+  //   }
+
+  &::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 1rem;
+  }
+}
+</style>
