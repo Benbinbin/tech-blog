@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-200 w-full p-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <footer class="bg-gray-200 p-8 grid grid-cols-1 md:grid-cols-3 gap-4">
     <div class="flex justify-center md:justify-start items-center">
       <a
         class="p-2 hover:bg-gray-300 rounded-md"
@@ -39,7 +39,7 @@
         justify-center
         md:justify-end
         items-center
-        space-x-2
+        space-x-0.5
       "
     >
       <a

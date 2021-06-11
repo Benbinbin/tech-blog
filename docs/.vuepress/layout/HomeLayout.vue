@@ -23,15 +23,15 @@
       <p class="p-8 text-center text-lg font-bold">
         我是
         <a
-          class="text-blue-300 underline font-bold"
+          class="hover:text-blue-400 underline font-bold transition-colors"
           href="https://benbinbin.github.io/Portfolio/"
           target="_blank"
           >{{ author }}</a
-        >，该博客的大部分内容是我学习过程中做的笔记。
+        >，该 blog 是我学习技术过程中做的笔记。
       </p>
     </header>
 
-    <main class="px-8 py-16 bg-white">
+    <main class="px-8 py-16">
       <div
         class="
           container
@@ -49,11 +49,10 @@
           class="
             card
             rounded-2xl
-            px-6
-            py-4
+            pl-6
             relative
             bg-cover bg-center bg-no-repeat
-            hover:shadow-2xl
+            hover:shadow-lg
             hover:text-blue-400
             text-white
             transition-all
@@ -64,7 +63,7 @@
           }"
         >
           <a
-            :href="$withBase(`/posts-list/${card.name.toLowerCase()}.html`)"
+            :href="card.name === 'Toolbox' ? '#' : $withBase(`postslist/${card.name.toLowerCase()}.html`)"
             class="absolute inset-0 z-20"
           ></a>
           <div class="card-body my-40 relative z-10">
@@ -105,14 +104,12 @@ export default {
 </script>
 
 <style lang="scss">
-.card {
-  //   &:hover {
-  //     transform: scale(1.01);
-  //   }
+// @tailwind components;
+// @tailwind utilities;
 
-  &::after {
+.card::after {
     content: "";
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -121,5 +118,5 @@ export default {
     left: 0px;
     border-radius: 1rem;
   }
-}
+
 </style>

@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 ::-webkit-scrollbar {
     width: 11px;
     height: 11px;
@@ -26,22 +22,19 @@ body {
     overflow: overlay;
 }
 
-.theme-container {
-    .navbar .site-name {
-        display: none;
-    }
+/* .theme-container .navbar .site-name {
+    display: none;
+} */
+
+.theme-default-content h1 {
+    text-align: center;
+    padding-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
-.theme-default-content {
-    h1 {
-        text-align: center;
-        padding-bottom: 3rem;
-        font-size: 3rem;
-        font-weight: bold;
-    }
-    img {
-        margin: 1rem;
-    }
+.theme-default-content img {
+    margin: 1rem;
 }
 
 .highlight {

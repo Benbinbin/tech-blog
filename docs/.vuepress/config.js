@@ -5,19 +5,23 @@ module.exports = {
   description: 'A blog shows some of the notes I took while learning skills.',
   head: [
     ['link', { rel: 'icon', href: '/images/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css' }],
+    // ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
   ],
   bundler: '@vuepress/vite',
   bundlerConfig: {
-    // css: {
-    //   postcss: {
-    //     plugins: [
-    //       require("tailwindcss"),
-    //       require("autoprefixer"),
-    //     ],
-    //   }
-    // }
+    // vite 打包工具的选项
+    viteOptions: {
+      css: {
+        postcss: {
+            plugins: [
+              require('tailwindcss'),
+              require('autoprefixer')
+            ]
+        }
+      },
+    }
   },
   plugins: [
     [require('./plugins/createHomePage.js'),
@@ -45,14 +49,28 @@ module.exports = {
         },
       ]
     }],
+    [require('./plugins/generateListPages.js'),
+    {
+      postsList: ['web', 'data', 'design', 'other']
+    }],
   ],
   theme: '@vuepress/default',
   themeConfig: {
     logo: '/images/Ben.png',
+    sidebar: false,
+    contributors: false,
+    lastUpdatedText: '更新时间',
+    navbar: [
+      { text: 'All', link: '/postslist/all.html' },
+      { text: 'Data', link: '/postslist/data.html' },
+      { text: 'Web', link: '/postslist/web.html' },
+      { text: 'Design', link: '/postslist/design.html' },
+      { text: 'Other', link: '/postslist/other.html' },
+    ],
     themePlugins: {
-      backToTop: false
+      backToTop: false,
+      nprogress: false,
     }
-
   },
   markdown: {
     links: {
