@@ -1,3 +1,8 @@
+---
+show: true
+tags:
+  - javascript
+---
 # JavaScript 简介
 
 ## 脚本
