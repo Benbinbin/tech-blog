@@ -24,6 +24,7 @@ module.exports = {
     }
   },
   plugins: [
+    require('./plugins/addTime.js'),
     [require('./plugins/createHomePage.js'),
     {
       cards: [
@@ -51,7 +52,7 @@ module.exports = {
     }],
     [require('./plugins/generateListPages.js'),
     {
-      postsList: ['web', 'data', 'design', 'other']
+      postClassifications: ['web', 'data', 'design', 'other']
     }],
   ],
   theme: '@vuepress/default',
@@ -115,5 +116,6 @@ module.exports = {
         url: 'https://weibo.com/binbindesign'
       },
     ],
+    __CLASSIFICATIONS__: ['All','Data', 'Web', 'Design','Other'],
   },
 }

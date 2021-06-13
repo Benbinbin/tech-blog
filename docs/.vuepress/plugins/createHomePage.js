@@ -19,7 +19,7 @@ const createHomePage = (options, app) => {
         // 把它添加到 `app.pages`
         app.pages.push(homepage)
       }
-    }
+    },
   }
 }
 

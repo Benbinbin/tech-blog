@@ -63,7 +63,11 @@
           }"
         >
           <a
-            :href="card.name === 'Toolbox' ? '#' : $withBase(`postslist/${card.name.toLowerCase()}.html`)"
+            :href="
+              card.name === 'Toolbox'
+                ? '#'
+                : $withBase(`postslist/${card.name.toLowerCase()}.html`)
+            "
             class="absolute inset-0 z-20"
           ></a>
           <div class="card-body my-40 relative z-10">
@@ -103,20 +107,19 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // @tailwind components;
 // @tailwind utilities;
 
 .card::after {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.2);
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    border-radius: 1rem;
-  }
-
+  content: "";
+  background-color: rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 1rem;
+}
 </style>

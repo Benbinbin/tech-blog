@@ -9,7 +9,7 @@
         <img
           :src="$withBase(`/images/${avatar}`)"
           alt="avatar"
-          class="w-12 h-12 rounded-full"
+          class="w-10 h-10 rounded-full"
         />
       </a>
     </div>
@@ -52,7 +52,7 @@
         <img
           :src="$withBase(`/images/icons/${item.logo}`)"
           :alt="item.name"
-          class="w-auto h-5"
+          class="w-auto h-6"
         />
       </a>
     </div>
@@ -60,8 +60,7 @@
 </template>
 
 <script>
-import { useSiteData, useSiteLocaleData } from "@vuepress/client";
-import { ref, reactive, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
 
 export default {
   setup(props) {

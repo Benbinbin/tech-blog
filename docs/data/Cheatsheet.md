@@ -1,6 +1,6 @@
 ---
 show: true
-data: 2021-06-12
+date: 2021-06-12
 series: MIT 18.06SC Linear Algebra
 tags:
   - linear-algebra
