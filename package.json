@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@neilsustc/markdown-it-katex": "^0.13.5",
-    "execa": "^5.1.1"
+    "execa": "^5.1.1",
+    "masonry-layout": "^4.2.2"
   }
 }

@@ -29,7 +29,9 @@ const generateListPages = (options, app) => {
           createdTime: page.frontmatter.createdTime || null,
           updatedTime: page.frontmatter.updatedTime || null,
           date: page.frontmatter.date || null,
-          description: page.frontmatter.description || '',
+          summary: page.frontmatter.summary || '',
+          collection: page.frontmatter.collection || '',
+          cover: page.frontmatter.cover || ''
         }
 
         postClassifications.all.posts.push(post);
