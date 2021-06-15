@@ -6,13 +6,11 @@
       <h2 class="py-10 text-5xl font-bold text-center border-0">
         {{ classification.toUpperCase() }}
       </h2>
-      <div
-        v-if="postsList.tags && postsList.tags.length > 0"
-        class="container p-10 mx-auto flex flex-wrap space-x-4"
-      >
+      <div v-if="tags.length > 0" class="container p-10 mx-auto">
         <a
-          class="tag text-gray-400 hover:text-gray-600 text-sm font-bold"
-          v-for="item of postsList.tags"
+          class="tag p-2 text-gray-400 hover:text-gray-600 text-sm font-bold"
+          :class="{ 'text-gray-800': currentTag === item }"
+          v-for="item of tags"
           :key="item"
           :href="`#${item}`"
           >#{{ item }}</a
@@ -20,19 +18,19 @@
       </div>
       <hr class="container w-4/5 mx-auto" />
       <div class="container p-10 mx-auto flex justify-between">
-        <div class="space-x-2">
+        <div class="flex items-center space-x-2">
           <button
-            class="p-2 bg-gray-100 hover:bg-gray-200 rounded"
+            class="p-2 rounded"
             :class="{
-              'text-blue-500': layout === 'grid',
-              'text-gray-500': layout !== 'grid',
+              'bg-blue-500 hover:bg-blue-600 text-white': layout === 'grid',
+              'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'grid',
             }"
             title="网格布局"
             @click="setLayout('grid')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="currentColor"
               viewBox="0 0 16 16"
             >
@@ -42,17 +40,18 @@
             </svg>
           </button>
           <button
-            class="p-2 bg-gray-100 hover:bg-gray-200 rounded"
+            class="hidden sm:block p-2 rounded"
             :class="{
-              'text-blue-500': layout === 'masonry',
-              'text-gray-500': layout !== 'masonry',
+              'bg-blue-500 hover:bg-blue-600 text-white': layout === 'masonry',
+              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+                layout !== 'masonry',
             }"
             title="瀑布流式布局"
             @click="setLayout('masonry')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="currentColor"
               viewBox="0 0 16 16"
             >
@@ -62,17 +61,17 @@
             </svg>
           </button>
           <button
-            class="p-2 bg-gray-100 hover:bg-gray-200 rounded"
+            class="p-2 rounded"
             :class="{
-              'text-blue-500': layout === 'list',
-              'text-gray-500': layout !== 'list',
+              'bg-blue-500 hover:bg-blue-600 text-white': layout === 'list',
+              'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'list',
             }"
             title="列表布局"
             @click="setLayout('list')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="currentColor"
               viewBox="0 0 16 16"
             >
@@ -83,19 +82,31 @@
             </svg>
           </button>
         </div>
-        <div class="space-x-2">
+        <div class="flex items-center space-x-2">
           <button
-            class="p-2 bg-gray-100 hover:bg-gray-200 rounded"
+            class="p-2 text-xs rounded"
             :class="{
-              'text-blue-500': sortType === 'ascend',
-              'text-gray-500': sortType !== 'ascend',
+              'bg-blue-500 hover:bg-blue-600 text-white': sortByUpdated,
+              'bg-gray-100 hover:bg-gray-200 text-gray-500': !sortByUpdated,
             }"
-            title="旧发表的文章在前"
+            title="按更新时间排序"
+            @click="sortByUpdated = !sortByUpdated"
+          >
+            Updated
+          </button>
+          <button
+            class="p-2 rounded"
+            :class="{
+              'bg-blue-500 hover:bg-blue-600 text-white': sortType === 'ascend',
+              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+                sortType !== 'ascend',
+            }"
+            title="旧的文章在前"
             @click="setSortType('ascend')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="currentColor"
               viewBox="0 0 16 16"
             >
@@ -112,17 +123,19 @@
             </svg>
           </button>
           <button
-            class="p-2 bg-gray-100 hover:bg-gray-200 rounded"
+            class="p-2 rounded"
             :class="{
-              'text-blue-500': sortType === 'descend',
-              'text-gray-500': sortType !== 'descend',
+              'bg-blue-500 hover:bg-blue-600 text-white':
+                sortType === 'descend',
+              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+                sortType !== 'descend',
             }"
-            title="新发表的文章在前"
+            title="新的文章在前"
             @click="setSortType('descend')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="currentColor"
               viewBox="0 0 16 16"
             >
@@ -138,7 +151,8 @@
         </div>
       </div>
       <div
-        v-if="postsList.posts && postsList.posts.length > 0"
+        v-if="sortPosts && sortPosts.length > 0"
+        v-show="layout !== 'list'"
         id="cards-container"
         class="container p-8 mx-auto"
         :class="{
@@ -148,11 +162,110 @@
       >
         <post-card
           :class="{ 'grid-item': layout === 'masonry' }"
-          v-for="item of postsList.posts"
+          v-for="item of sortPosts"
           :key="item.title"
           :layout="layout"
           :post="item"
         ></post-card>
+      </div>
+      <div
+        v-if="sortPosts && sortPosts.length > 0"
+        v-show="layout === 'list'"
+        class="container p-8 mx-auto divide-y divide-gray-200"
+      >
+        <div class="w-full py-2" v-for="post of sortPosts" :key="post.title">
+          <h3 class="py-2 text-lg sm:text-xl font-bold">{{ post.title }}</h3>
+          <div
+            class="
+              sm:flex
+              justify-between
+              item-center
+              sm:space-x-4
+              space-y-2
+              sm:space-y-0
+            "
+          >
+            <div class="flex-shrink-0 flex space-x-2">
+              <div
+                v-if="post.date || post.createdTime || post.updatedTime"
+                class="flex items-center text-gray-400 space-x-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-3 h-3"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
+                  />
+                  <path
+                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
+                  />
+                </svg>
+                <span v-if="post.date || post.createdTime" class="text-xs">{{
+                  formatTime(post, "createdTime")
+                }}</span>
+                <span
+                  v-if="(post.date || post.createdTime) && post.updatedTime"
+                >
+                  -
+                </span>
+                <span v-if="post.updatedTime" class="text-xs"
+                  >Update {{ formatTime(post, "updatedTime") }}</span
+                >
+              </div>
+
+              <button
+                v-if="post.collection"
+                class="
+                  p-2
+                  flex-shrink-0
+                  hover:bg-gray-300
+                  rounded
+                  text-blue-500
+                "
+                title="查看系列文章"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="
+                tags
+                flex
+                items-center
+                flex-nowrap
+                overflow-x-auto
+                space-x-2
+              "
+            >
+              <a
+                v-for="tag of post.tags"
+                :key="tag"
+                class="
+                  flex-shrink-0
+                  text-gray-400
+                  font-bold
+                  text-xs
+                  hover:text-gray-800
+                "
+                :href="`#${tag}`"
+                >#{{ tag }}</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -161,7 +274,7 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, onMounted, watch, nextTick } from "vue";
+import { ref, reactive, toRefs, onMounted, computed, nextTick } from "vue";
 import Masonry from "masonry-layout";
 import { usePageData, useRouteLocale } from "@vuepress/client";
 
@@ -171,11 +284,11 @@ import PostCard from "../components/PostCard.vue";
 
 // masonry layout
 function createMasonryLayout(container, item) {
-  console.log("masonry initilized");
   return new Masonry(container, {
     itemSelector: item,
     gutter: 28,
     horizontalOrder: true,
+    transitionDuration: 0,
   });
 }
 
@@ -188,15 +301,17 @@ export default {
   setup(props) {
     const data = reactive({
       classification: "",
-      postsList: {},
+      posts: [],
+      tags: [],
+      currentTag: "",
       layout: "grid",
       sortType: "descend",
+      sortByUpdated: false,
       masonry: null,
       setLayout(value) {
         if (data.layout === "masonry" && data.masonry) {
           data.masonry.destroy();
           data.masonry = null;
-          console.log("masonry destroyed");
         }
 
         localStorage.setItem("layout", value);
@@ -215,6 +330,25 @@ export default {
         localStorage.setItem("sortType", value);
         data.sortType = value;
       },
+      formatTime(post, type) {
+        let time = null;
+        if (type === "createdTime") {
+          if (post.date) {
+            time = new Date(post.date);
+          } else if (post.createdTime) {
+            time = new Date(post.createdTime);
+          }
+          return `${time.getFullYear()}/${
+            time.getMonth() + 1
+          }/${time.getDate()}`;
+        } else if (type === "updatedTime" && post.updatedTime) {
+          time = new Date(post.updatedTime);
+          return `${time.getFullYear()}/${
+            time.getMonth() + 1
+          }/${time.getDate()}`;
+        }
+        return "";
+      },
     });
 
     // layout
@@ -230,41 +364,66 @@ export default {
     }
 
     onMounted(() => {
+      if (location.hash) {
+        data.currentTag = location.hash.slice(1);
+      }
+
       if (data.layout === "masonry") {
         data.masonry = createMasonryLayout("#cards-container", ".grid-item");
       }
-      console.log(data.masonry);
-    });
-
-    watch(data.layout, (newValue, oldValue) => {
-      // if (newValue === "masonry") {
-      //   // this.$nextTick(() => {
-      //   //   this.setMasonryControllers();
-      //   // });
-      //   data.masonry = createMasonryLayout(".cards-container", ".grid-item");
-      // } else if (oldValue === "masonry") {
-      //   // this.masonryControllers.forEach((masonry) => {
-      //   //   masonry.destroy();
-      //   //   this.$nextTick(() => {
-      //   //     this.setQuotesWidth();
-      //   //   });
-      //   // });
-      //   data.masonry.destroy();
-      // }
-      console.log(data.masonry);
     });
 
     const page = usePageData();
-    // const route = useRouteLocale();
-    // console.log(route);
 
     data.classification = page.value.frontmatter.classification;
-    data.postsList = page.value.postsList;
+    data.posts = page.value.postsList.posts;
+    data.tags = ["all", ...page.value.postsList.tags];
+
+    window.onhashchange = function (event) {
+      console.log(location.hash);
+      data.currentTag = location.hash.slice(1);
+    };
+
+    // sort posts
+    const sortPosts = computed(() => {
+      let posts = data.posts;
+      if (data.currentTag && data.currentTag !== "all") {
+        posts = data.posts.filter((post) => {
+          return post.tags.includes(data.currentTag);
+        });
+      } else if (data.currentTag && data.currentTag === "all") {
+        posts = data.posts;
+      }
+      posts.sort((postA, postB) => {
+        let timeA = null;
+        let timeB = null;
+        if (data.sortByUpdated) {
+          timeA = postA.updatedTime || postA.date || postA.createdTime;
+          timeB = postB.updatedTime || postB.date || postB.createdTime;
+        } else {
+          timeA = postA.date || postA.createdTime;
+          timeB = postB.date || postB.createdTime;
+        }
+        if (timeA && timeB) {
+          return data.sortType === "descend"
+            ? new Date(timeB) - new Date(timeA)
+            : new Date(timeA) - new Date(timeB);
+        }
+      });
+      if (data.layout === "masonry" && data.masonry) {
+        nextTick(() => {
+          data.masonry.reloadItems();
+          data.masonry.layout();
+        });
+      }
+      return posts;
+    });
 
     const refData = toRefs(data);
 
     return {
       ...refData,
+      sortPosts,
     };
   },
 };
@@ -272,14 +431,14 @@ export default {
 
 <style lang="scss" scoped>
 .grid-item {
-  width: calc(100% - 4rem)
+  width: calc(100% - 4rem);
 }
 
 // breakpoint: sm
 // 2 cols
 @media (min-width: 640px) {
   .grid-item {
-    width: calc(50% - 14px - 2rem)
+    width: calc(50% - 14px - 2rem);
   }
 }
 
@@ -287,7 +446,7 @@ export default {
 // 3 cols
 @media (min-width: 1280px) {
   .grid-item {
-    width: calc(33% - 20px - 1.5rem)
+    width: calc(33% - 20px - 1.5rem);
   }
 }
 
@@ -295,11 +454,21 @@ export default {
 // 4 cols
 @media (min-width: 1536px) {
   .grid-item {
-    width: calc(25% - 21px - 1rem)
+    width: calc(25% - 21px - 1rem);
   }
 }
 
 .grid-item {
   margin-bottom: 28px;
 }
+
+// .tags {
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563;
+}
+// }
 </style>

@@ -28,7 +28,7 @@
       >
         <h3 class="px-6 py-4 text-2xl font-bold">{{ post.title }}</h3>
         <div
-          v-if="createdTime"
+          v-if="createdTime || updatedTime"
           class="px-6 flex items-center text-gray-400 space-x-1"
         >
           <svg
@@ -44,7 +44,9 @@
               d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
             />
           </svg>
-          <span class="text-xs">{{ createdTime }}</span>
+          <span v-if="createdTime" class="text-xs">{{ createdTime }}</span>
+          <span v-if="createdTime && updatedTime"> - </span>
+          <span v-if="updatedTime" class="text-xs">Update {{ updatedTime }}</span>
         </div>
       </div>
       <div class="card-body bg-gray-50 flex-grow p-6">
