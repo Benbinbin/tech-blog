@@ -31,6 +31,7 @@ const generateListPages = (options, app) => {
           date: page.frontmatter.date || null,
           summary: page.frontmatter.summary || '',
           collection: page.frontmatter.collection || '',
+          collectionOrder: page.frontmatter.collectionOrder || 0,
           cover: page.frontmatter.cover || ''
         }
 
@@ -54,7 +55,7 @@ const generateListPages = (options, app) => {
       let listOptions = [{
         path: '/postslist/all.html',
         frontmatter: {
-          layout: 'PostsListLayout',
+          layout: 'ClassificationLayout',
           classification: 'all',
         }
       }];
@@ -63,7 +64,7 @@ const generateListPages = (options, app) => {
         listOptions.push({
           path: `/postslist/${item}.html`,
           frontmatter: {
-            layout: 'PostsListLayout',
+            layout: 'ClassificationLayout',
             classification: item
           }
         })

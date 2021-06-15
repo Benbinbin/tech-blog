@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <Navbar class="sticky top-0 z-50 bg-white" />
+    <Navbar class="sticky top-0 z-20 bg-white" />
 
     <main class="flex-grow">
       <h2 class="py-10 text-5xl font-bold text-center border-0">
@@ -162,10 +162,10 @@
       >
         <post-card
           :class="{ 'grid-item': layout === 'masonry' }"
-          v-for="item of sortPosts"
-          :key="item.title"
-          :layout="layout"
-          :post="item"
+          v-for="post of sortPosts"
+          :key="post.title"
+          :post="post"
+          @setCollection="setCollectionHandler(post.collection)"
         ></post-card>
       </div>
       <div
@@ -173,7 +173,7 @@
         v-show="layout === 'list'"
         class="container p-8 mx-auto divide-y divide-gray-200"
       >
-        <div class="w-full py-2" v-for="post of sortPosts" :key="post.title">
+        <!-- <div class="w-full py-2" v-for="post of sortPosts" :key="post.title">
           <h3 class="py-2 text-lg sm:text-xl font-bold">{{ post.title }}</h3>
           <div
             class="
@@ -204,7 +204,7 @@
                   />
                 </svg>
                 <span v-if="post.date || post.createdTime" class="text-xs">{{
-                  formatTime(post, "createdTime")
+                  getTime(post, "createdTime")
                 }}</span>
                 <span
                   v-if="(post.date || post.createdTime) && post.updatedTime"
@@ -212,7 +212,7 @@
                   -
                 </span>
                 <span v-if="post.updatedTime" class="text-xs"
-                  >Update {{ formatTime(post, "updatedTime") }}</span
+                  >Update {{ getTime(post, "updatedTime") }}</span
                 >
               </div>
 
@@ -265,22 +265,37 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
+        <post-list
+          class="w-full py-2"
+          v-for="post of sortPosts"
+          :key="post.title"
+          :post="post"
+          @setCollection="setCollectionHandler(post.collection)"
+        ></post-list>
       </div>
     </main>
 
     <Footer />
+
+    <teleport to="body">
+      <collection-modal v-if="collectionModalOpen && collection"
+      :collection="collection"
+      @closeCollectionModal="closeCollectionModalHandler"></collection-modal>
+    </teleport>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs, onMounted, computed, nextTick } from "vue";
+import { reactive, toRefs, onMounted, computed, nextTick } from "vue";
 import Masonry from "masonry-layout";
 import { usePageData, useRouteLocale } from "@vuepress/client";
 
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
 import PostCard from "../components/PostCard.vue";
+import PostList from "../components/PostList.vue";
+import CollectionModal from "../components/CollectionModal.vue";
 
 // masonry layout
 function createMasonryLayout(container, item) {
@@ -297,6 +312,8 @@ export default {
     Navbar,
     Footer,
     PostCard,
+    PostList,
+    CollectionModal,
   },
   setup(props) {
     const data = reactive({
@@ -308,6 +325,8 @@ export default {
       sortType: "descend",
       sortByUpdated: false,
       masonry: null,
+      collectionModalOpen: false,
+      collection: null,
       setLayout(value) {
         if (data.layout === "masonry" && data.masonry) {
           data.masonry.destroy();
@@ -330,25 +349,23 @@ export default {
         localStorage.setItem("sortType", value);
         data.sortType = value;
       },
-      formatTime(post, type) {
-        let time = null;
-        if (type === "createdTime") {
-          if (post.date) {
-            time = new Date(post.date);
-          } else if (post.createdTime) {
-            time = new Date(post.createdTime);
+      setCollectionHandler(value) {
+        let collectionPosts = []
+        data.posts.forEach(post => {
+          if(post.collection && post.collection === value) {
+            collectionPosts.push(post)
           }
-          return `${time.getFullYear()}/${
-            time.getMonth() + 1
-          }/${time.getDate()}`;
-        } else if (type === "updatedTime" && post.updatedTime) {
-          time = new Date(post.updatedTime);
-          return `${time.getFullYear()}/${
-            time.getMonth() + 1
-          }/${time.getDate()}`;
+        })
+        data.collection = {
+          title: value,
+          posts: collectionPosts
         }
-        return "";
+        data.collectionModalOpen = true;
       },
+      closeCollectionModalHandler() {
+        data.collectionModalOpen = false;
+        data.collection = null
+      }
     });
 
     // layout
@@ -430,6 +447,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// masonry layout style
 .grid-item {
   width: calc(100% - 4rem);
 }
@@ -461,14 +479,4 @@ export default {
 .grid-item {
   margin-bottom: 28px;
 }
-
-// .tags {
-::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #4b5563;
-}
-// }
 </style>

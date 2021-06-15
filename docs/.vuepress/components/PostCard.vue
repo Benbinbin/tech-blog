@@ -46,7 +46,9 @@
           </svg>
           <span v-if="createdTime" class="text-xs">{{ createdTime }}</span>
           <span v-if="createdTime && updatedTime"> - </span>
-          <span v-if="updatedTime" class="text-xs">Update {{ updatedTime }}</span>
+          <span v-if="updatedTime" class="text-xs"
+            >Update {{ updatedTime }}</span
+          >
         </div>
       </div>
       <div class="card-body bg-gray-50 flex-grow p-6">
@@ -80,6 +82,7 @@
         v-if="post.collection"
         class="p-2 flex-shrink-0 hover:bg-gray-300 rounded text-blue-500"
         title="查看系列文章"
+        @click="$emit('setCollection')"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -98,15 +101,11 @@
 
 <script>
 import { reactive, toRefs } from "vue";
-
-function formatTime(value) {
-  const time = new Date(value);
-  return `${time.getFullYear()}/${time.getMonth() + 1}/${time.getDate()}`;
-}
+import formatTime from '../utils/formatTime'
 
 export default {
-  props: ["layout", "post"],
-  setup({ layout, post }) {
+  props: ["post"],
+  setup({ post }) {
     const data = reactive({
       createdTime: null,
       updatedTime: null,
@@ -154,13 +153,13 @@ export default {
   &::before {
     left: 16px;
     right: 16px;
-    background: #D1D5DB;
+    background: #d1d5db;
   }
 
   &::after {
     left: 8px;
     right: 8px;
-    background: #E5E7EB;
+    background: #e5e7eb;
   }
 }
 

@@ -10,6 +10,7 @@ tags:
   - linear-algebra
 summary: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro laboriosam quasi perspiciatis labore assumenda adipisci ipsam, voluptas unde vero minus modi illum praesentium quaerat.
 collection: linear-algebra
+collectionOrder: 2
 ---
 
 # Cheatsheet
