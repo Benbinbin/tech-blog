@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <Navbar class="sticky top-0 z-20 bg-white" />
+    <Navbar class="sticky top-0 z-20 bg-white" :navbar-type="'classification'" />
 
     <main class="flex-grow">
       <h2 class="py-10 text-5xl font-bold text-center border-0">
@@ -20,7 +20,7 @@
       <div class="container p-10 mx-auto flex justify-between">
         <div class="flex items-center space-x-2">
           <button
-            class="p-2 rounded"
+            class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'grid',
               'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'grid',
@@ -38,9 +38,10 @@
                 d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"
               />
             </svg>
+            <span class="text-xs hidden sm:block">Grid</span>
           </button>
           <button
-            class="hidden sm:block p-2 rounded"
+            class="hidden p-2 rounded sm:flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'masonry',
               'bg-gray-100 hover:bg-gray-200 text-gray-500':
@@ -59,9 +60,10 @@
                 d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"
               />
             </svg>
+            <span class="text-xs hidden sm:block">Masonry</span>
           </button>
           <button
-            class="p-2 rounded"
+            class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'list',
               'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'list',
@@ -80,6 +82,7 @@
                 d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
               />
             </svg>
+            <span class="text-xs hidden sm:block">List</span>
           </button>
         </div>
         <div class="flex items-center space-x-2">
@@ -95,7 +98,7 @@
             Updated
           </button>
           <button
-            class="p-2 rounded"
+            class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': sortType === 'ascend',
               'bg-gray-100 hover:bg-gray-200 text-gray-500':
@@ -121,9 +124,10 @@
                 d="M4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"
               />
             </svg>
+            <span class="text-xs hidden sm:block">Ascend</span>
           </button>
           <button
-            class="p-2 rounded"
+            class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white':
                 sortType === 'descend',
@@ -147,6 +151,7 @@
                 d="M12.438 8.668V14H11.39V9.684h-.051l-1.211.859v-.969l1.262-.906h1.046zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"
               />
             </svg>
+            <span class="text-xs hidden sm:block">Descend</span>
           </button>
         </div>
       </div>
@@ -173,99 +178,6 @@
         v-show="layout === 'list'"
         class="container p-8 mx-auto divide-y divide-gray-200"
       >
-        <!-- <div class="w-full py-2" v-for="post of sortPosts" :key="post.title">
-          <h3 class="py-2 text-lg sm:text-xl font-bold">{{ post.title }}</h3>
-          <div
-            class="
-              sm:flex
-              justify-between
-              item-center
-              sm:space-x-4
-              space-y-2
-              sm:space-y-0
-            "
-          >
-            <div class="flex-shrink-0 flex space-x-2">
-              <div
-                v-if="post.date || post.createdTime || post.updatedTime"
-                class="flex items-center text-gray-400 space-x-1"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-3 h-3"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
-                  />
-                  <path
-                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
-                  />
-                </svg>
-                <span v-if="post.date || post.createdTime" class="text-xs">{{
-                  getTime(post, "createdTime")
-                }}</span>
-                <span
-                  v-if="(post.date || post.createdTime) && post.updatedTime"
-                >
-                  -
-                </span>
-                <span v-if="post.updatedTime" class="text-xs"
-                  >Update {{ getTime(post, "updatedTime") }}</span
-                >
-              </div>
-
-              <button
-                v-if="post.collection"
-                class="
-                  p-2
-                  flex-shrink-0
-                  hover:bg-gray-300
-                  rounded
-                  text-blue-500
-                "
-                title="查看系列文章"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div
-              class="
-                tags
-                flex
-                items-center
-                flex-nowrap
-                overflow-x-auto
-                space-x-2
-              "
-            >
-              <a
-                v-for="tag of post.tags"
-                :key="tag"
-                class="
-                  flex-shrink-0
-                  text-gray-400
-                  font-bold
-                  text-xs
-                  hover:text-gray-800
-                "
-                :href="`#${tag}`"
-                >#{{ tag }}</a
-              >
-            </div>
-          </div>
-        </div> -->
         <post-list
           class="w-full py-2"
           v-for="post of sortPosts"
@@ -279,9 +191,11 @@
     <Footer />
 
     <teleport to="body">
-      <collection-modal v-if="collectionModalOpen && collection"
-      :collection="collection"
-      @closeCollectionModal="closeCollectionModalHandler"></collection-modal>
+      <collection-modal
+        v-if="collectionModalOpen && collection"
+        :collection="collection"
+        @closeCollectionModal="closeCollectionModalHandler"
+      ></collection-modal>
     </teleport>
   </div>
 </template>
@@ -289,7 +203,7 @@
 <script>
 import { reactive, toRefs, onMounted, computed, nextTick } from "vue";
 import Masonry from "masonry-layout";
-import { usePageData, useRouteLocale } from "@vuepress/client";
+import { usePageData } from "@vuepress/client";
 
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
@@ -350,22 +264,35 @@ export default {
         data.sortType = value;
       },
       setCollectionHandler(value) {
-        let collectionPosts = []
-        data.posts.forEach(post => {
-          if(post.collection && post.collection === value) {
-            collectionPosts.push(post)
+        let collectionPosts = [];
+        data.posts.forEach((post) => {
+          if (post.collection && post.collection === value) {
+            collectionPosts.push(post);
           }
-        })
+        });
+        collectionPosts.sort((postA, postB) => {
+          const timeA = postA.date || postA.createdTime;
+          const timeB = postB.date || postB.createdTime;
+          const orderA = postA.collectionOrder;
+          const orderB = postB.collectionOrder;
+          if (orderA && orderB && orderA !== orderB) {
+            return orderA - orderB;
+          } else if (timeA && timeB) {
+            return new Date(timeA) - new Date(timeB);
+          } else {
+            return 0;
+          }
+        });
         data.collection = {
           title: value,
-          posts: collectionPosts
-        }
+          posts: collectionPosts,
+        };
         data.collectionModalOpen = true;
       },
       closeCollectionModalHandler() {
         data.collectionModalOpen = false;
-        data.collection = null
-      }
+        data.collection = null;
+      },
     });
 
     // layout

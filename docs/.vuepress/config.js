@@ -54,6 +54,10 @@ module.exports = {
     {
       postClassifications: ['web', 'data', 'design', 'other']
     }],
+    [require('./plugins/generateFolderPages.js'),
+    {
+      postFolders: ['web', 'data', 'design', 'other']
+    }],
   ],
   theme: '@vuepress/default',
   themeConfig: {
@@ -117,5 +121,6 @@ module.exports = {
       },
     ],
     __CLASSIFICATIONS__: ['All','Data', 'Web', 'Design','Other'],
+    __FOLDERS__: ['Data', 'Web', 'Design','Other'],
   },
 }

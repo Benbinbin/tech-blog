@@ -19,12 +19,19 @@ const generateListPages = (options, app) => {
     async onInitialized(app) {
       // rearrange posts to different classification type
       app.pages.forEach((page) => {
-        if (!page.frontmatter.show) return
+        let classification = '';
+        if (page.frontmatter.show && page.filePathRelative) {
+          classification = page.filePathRelative.split("/")[0]
+          if (!(classification in postClassifications)) return
+        } else {
+          return
+        }
+
         const post = {
           title: page.title,
           path: page.path,
           pathRelative: page.htmlFilePathRelative,
-          filePath: page.filePathRelative,
+          filePathRelative: page.filePathRelative,
           tags: page.frontmatter.tags || [],
           createdTime: page.frontmatter.createdTime || null,
           updatedTime: page.frontmatter.updatedTime || null,
@@ -36,20 +43,12 @@ const generateListPages = (options, app) => {
         }
 
         postClassifications.all.posts.push(post);
-        postClassifications.all.tags = [...new Set([...postClassifications.all.tags, ...page.frontmatter.tags])]
+        postClassifications.all.tags = [...new Set([...postClassifications.all.tags, ...post.tags])]
 
-        let classification = '';
-        if (page.filePathRelative) {
-          classification = page.filePathRelative.split("/")[0]
-        }
-        if (classification in postClassifications) {
-          postClassifications[classification].posts.push(post);
-          postClassifications[classification].tags = [...new Set([...postClassifications[classification].tags, ...page.frontmatter.tags])]
-        }
+
+        postClassifications[classification].posts.push(post);
+        postClassifications[classification].tags = [...new Set([...postClassifications[classification].tags, ...post.tags])]
       })
-
-      // console.log("------postClassifications------")
-      // console.log(postClassifications);
 
       // set list page data
       let listOptions = [{
@@ -83,8 +82,6 @@ const generateListPages = (options, app) => {
 
     },
     extendsPageData: (page, app) => {
-      // console.log("extendsPageDate");
-      // console.log(page)
       if (page.frontmatter.classification) {
         return {
           postsList: postClassifications[page.frontmatter.classification]

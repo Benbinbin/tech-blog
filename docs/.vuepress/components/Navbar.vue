@@ -7,20 +7,23 @@
         class="w-10 h-10 rounded-full"
       />
     </a>
-    <div class="classifications hidden sm:flex items-center space-x-0.5">
+    <div class="navbar-items hidden sm:flex items-center space-x-0.5">
       <a
         class="
           p-2
           text-sm
           font-bold
-          text-gray-500
-          hover:text-gray-800
+          hover:text-gray-900
           hover:bg-gray-100
           rounded-md
         "
-        v-for="item of classifications"
+        :class="{
+          'text-gray-900': currentItem === item.toLowerCase(),
+          'text-gray-400': currentItem !== item.toLowerCase(),
+        }"
+        v-for="item of navbarItemsList"
         :key="item"
-        :href="$withBase(`postslist/${item.toLowerCase()}.html`)"
+        :href="$withBase(`${baseURL}/${item.toLowerCase()}.html`)"
       >
         {{ item }}
       </a>
@@ -74,28 +77,26 @@
           space-y-2
           bg-gray-100
           rounded-md
-          opacity-80
+          opacity-90
         "
       >
         <button
           class="
             px-4
             py-2
-            text-sm
-            text-center
+            text-sm text-center
             font-bold
-            hover:text-gray-800
+            hover:text-gray-900
             hover:bg-gray-200
             rounded-md
           "
           :class="{
-            'text-gray-800 bg-gray-200':
-              currentClassification === item.toLowerCase(),
-            'text-gray-500': currentClassification !== item.toLowerCase(),
+            'text-gray-900': currentItem === item.toLowerCase(),
+            'text-gray-400': currentItem !== item.toLowerCase(),
           }"
-          v-for="item of classifications"
+          v-for="item of navbarItemsList"
           :key="item"
-          @click="changeClassification(item)"
+          @click="changeURL(item)"
         >
           {{ item }}
         </button>
@@ -109,21 +110,31 @@ import { reactive, toRefs } from "vue";
 import { usePageData } from "@vuepress/client";
 
 export default {
+  props: ["navbarType"],
   setup(props) {
     const data = reactive({
-      currentClassification: "",
       avatar: "",
-      classifications: [],
+      baseURL: "",
+      navbarItemsList: [],
+      currentItem: "",
       showMoreModal: false,
-      changeClassification(link) {
+      changeURL(link) {
         window.location.href = `${link.toLowerCase()}.html`;
         this.showMoreModal = false;
-      }
+      },
     });
     const page = usePageData();
-    data.currentClassification = page.value.frontmatter.classification;
+
     data.avatar = __AVATAR__ || "";
-    data.classifications = __CLASSIFICATIONS__ || [];
+    if (props.navbarType === "classification") {
+      data.currentItem = page.value.frontmatter.classification;
+      data.navbarItemsList = __CLASSIFICATIONS__ || [];
+      data.baseURL = "postslist";
+    } else if (props.navbarType === "folder") {
+      data.currentItem = page.value.frontmatter.folder;
+      data.navbarItemsList = __FOLDERS__ || [];
+      data.baseURL = "folder";
+    }
 
     const refData = toRefs(data);
     return {

@@ -3,14 +3,9 @@ show: true
 date: 2021-06-12
 tags:
   - linear-algebra
-  - linear-algebra
-  - linear-algebra
-  - linear-algebra
-  - linear-algebra
-  - linear-algebra
 summary: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro laboriosam quasi perspiciatis labore assumenda adipisci ipsam, voluptas unde vero minus modi illum praesentium quaerat.
 collection: linear-algebra
-collectionOrder: 2
+collectionOrder: 4
 ---
 
 # Cheatsheet

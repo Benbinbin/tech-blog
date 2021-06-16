@@ -43,7 +43,7 @@
           gap-6
         "
       >
-        <div
+        <button
           v-for="card of cards"
           :key="card.name"
           class="
@@ -61,19 +61,13 @@
             backgroundImage:
               'url(' + $withBase(`/images/home/${card.image}`) + ')',
           }"
+          @click.exact="clickHandler(card.name)"
+          @click.ctrl.shift.exact="ctrlShiftClickHandler(card.name)"
         >
-          <a
-            :href="
-              card.name === 'Toolbox'
-                ? '#'
-                : $withBase(`postslist/${card.name.toLowerCase()}.html`)
-            "
-            class="absolute inset-0 z-20"
-          ></a>
           <div class="card-body my-40 relative z-10">
-            <h3 class="text-5xl font-bold">{{ card.name }}</h3>
+            <h3 class="text-5xl text-left font-bold">{{ card.name }}</h3>
           </div>
-        </div>
+        </button>
       </div>
     </main>
     <Footer />
@@ -83,7 +77,7 @@
 <script>
 import Footer from "../components/Footer.vue";
 import { usePageFrontmatter } from "@vuepress/client";
-import { ref, reactive, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
 
 export default {
   components: {
@@ -93,11 +87,28 @@ export default {
     const data = reactive({
       author: "",
       cards: [],
+      clickHandler(value) {
+        let link = "";
+        if (value !== "Toolbox") {
+          link = `postslist/${value.toLowerCase()}.html`;
+        } else if (value === "Toolbox") {
+          link = "#";
+        }
+        window.open(link);
+      },
+      ctrlShiftClickHandler(value) {
+        let link = "";
+        if (value !== "Toolbox") {
+          link = `folder/${value.toLowerCase()}.html`;
+        } else if (value === "Toolbox") {
+          link = "#";
+        }
+        window.open(link);
+      },
     });
 
     data.author = __AUTHOR__ || "";
     data.cards = usePageFrontmatter().value.cards || [];
-    console.log(usePageFrontmatter().value.cards);
 
     const refData = toRefs(data);
     return {
@@ -113,7 +124,7 @@ export default {
 
 .card::after {
   content: "";
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.25);
   background-size: cover;
   position: absolute;
   top: 0px;
