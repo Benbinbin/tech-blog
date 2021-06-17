@@ -1,63 +1,96 @@
 const { createPage } = require('@vuepress/core');
 
-function getLocation(array, key, value) {
-  let t = 0; // t is used as a counter
-  while (t < array.length && array[t][key] !== value) {
-    t++;
-  }
+// function getLocation(array, key, value) {
+//   let t = 0; // t is used as a counter
+//   while (t < array.length && array[t][key] !== value) {
+//     t++;
+//   }
 
-  if (t < array.length) {
-    return array[t];
-  } else {
-    return false;
-  }
-}
+//   if (t < array.length) {
+//     return array[t];
+//   } else {
+//     return false;
+//   }
+// }
 
-function buildPostsTree(rootName, postsList) {
-  let tree = {
-    name: rootName,
-    children: [],
-    type: 'root',
-  }
+// function buildPostsTree(rootName, postsList) {
+//   let tree = {
+//     name: rootName,
+//     type: 'root',
+//     parent: null,
+//     children: [],
+//   }
 
-  postsList.forEach((post) => {
-    const paths = post.filePathRelative.split("/").slice(1);
-    const mdReg = /\.md$/;
-    let currentLevel = tree.children;
-    paths.forEach((path) => {
-      let existingPath = getLocation(currentLevel, "name", path);
+//   const mdReg = /\.md$/;
 
-      if (existingPath) {
-        currentLevel = existingPath.children;
-      } else if (mdReg.test(path)) {
-        const newPath = {
-          name: path,
-          data: post,
-          type: 'post',
-        };
-        currentLevel.push(newPath);
-      } else {
-        const newPath = {
-          name: path,
-          children: [],
-          type: 'folder',
-        };
+//   postsList.forEach((post) => {
+//     const paths = post.filePathRelative.split("/").slice(1);
+//     // let parentLevel = tree;
+//     let currentLevel = tree.children;
 
-        currentLevel.push(newPath);
-        currentLevel = newPath.children;
-      }
-    });
-  });
+//     for(let index=0; index<paths.length; index++) {
+//       const path = paths[index];
+//       let existingPath = getLocation(currentLevel, "name", path);
+//       if (existingPath) {
+//         currentLevel = existingPath.children;
+//       } else if (mdReg.test(path)) {
+//         const newPath = {
+//           name: path,
+//           type: 'post',
+//           // parent: parentLevel,
+//           data: post,
+//         };
+//         currentLevel.push(newPath);
+//       } else {
+//         const newPath = {
+//           name: path,
+//           type: 'folder',
+//           // parent: parentLevel,
+//           children: [],
+//         };
 
-  return tree;
-}
+//         currentLevel.push(newPath);
+//         // parentLevel = currentLevel;
+//         currentLevel = newPath.children;
+//       }
+//     }
+//     // paths.forEach((path) => {
+//     //   let existingPath = getLocation(currentLevel, "name", path);
+
+//     //   if (existingPath) {
+//     //     currentLevel = existingPath.children;
+//     //   } else if (mdReg.test(path)) {
+//     //     const newPath = {
+//     //       name: path,
+//     //       type: 'post',
+//     //       parent: parentLevel,
+//     //       data: post,
+//     //     };
+//     //     currentLevel.push(newPath);
+//     //   } else {
+//     //     const newPath = {
+//     //       name: path,
+//     //       type: 'folder',
+//     //       parent: parentLevel,
+//     //       children: [],
+//     //     };
+
+//     //     currentLevel.push(newPath);
+//     //     parentLevel = currentLevel;
+//     //     currentLevel = newPath.children;
+//     //   }
+//     // });
+//   });
+
+//   return tree;
+// }
 
 
 const generateFolderPages = (options, app) => {
   let postFolders = {}
   options.postFolders.forEach(folder => {
     postFolders[folder] = {
-      postsTree: {},
+      // postsTree: {},
       posts: [],
       tags: []
     }
@@ -76,8 +109,6 @@ const generateFolderPages = (options, app) => {
           return
         }
 
-        console.log(page);
-
         const post = {
           title: page.title,
           path: page.path,
@@ -95,9 +126,9 @@ const generateFolderPages = (options, app) => {
         postFolders[folder].tags = [...new Set([...postFolders[folder].tags, ...post.tags])]
       })
 
-      options.postFolders.forEach(folder => {
-        postFolders[folder].postsTree = buildPostsTree(folder, postFolders[folder].posts)
-      })
+      // options.postFolders.forEach(folder => {
+      //   postFolders[folder].postsTree = buildPostsTree(folder, postFolders[folder].posts)
+      // })
 
       // set folder page data
       let folderOptions = [];

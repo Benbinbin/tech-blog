@@ -23,7 +23,7 @@
             class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'grid',
-              'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'grid',
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white': layout !== 'grid',
             }"
             title="网格布局"
             @click="setLayout('grid')"
@@ -44,7 +44,7 @@
             class="hidden p-2 rounded sm:flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'masonry',
-              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white':
                 layout !== 'masonry',
             }"
             title="瀑布流式布局"
@@ -66,7 +66,7 @@
             class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'list',
-              'bg-gray-100 hover:bg-gray-200 text-gray-500': layout !== 'list',
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white': layout !== 'list',
             }"
             title="列表布局"
             @click="setLayout('list')"
@@ -90,7 +90,7 @@
             class="p-2 text-xs rounded"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': sortByUpdated,
-              'bg-gray-100 hover:bg-gray-200 text-gray-500': !sortByUpdated,
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white': !sortByUpdated,
             }"
             title="按更新时间排序"
             @click="sortByUpdated = !sortByUpdated"
@@ -101,7 +101,7 @@
             class="p-2 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': sortType === 'ascend',
-              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white':
                 sortType !== 'ascend',
             }"
             title="旧的文章在前"
@@ -131,7 +131,7 @@
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white':
                 sortType === 'descend',
-              'bg-gray-100 hover:bg-gray-200 text-gray-500':
+              'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white':
                 sortType !== 'descend',
             }"
             title="新的文章在前"
@@ -170,7 +170,7 @@
           v-for="post of sortPosts"
           :key="post.title"
           :post="post"
-          @setCollection="setCollectionHandler(post.collection)"
+          @setCollection="setCollectionHandler"
         ></post-card>
       </div>
       <div
@@ -183,7 +183,7 @@
           v-for="post of sortPosts"
           :key="post.title"
           :post="post"
-          @setCollection="setCollectionHandler(post.collection)"
+          @setCollection="setCollectionHandler"
         ></post-list>
       </div>
     </main>
@@ -324,7 +324,6 @@ export default {
     data.tags = ["all", ...page.value.postsList.tags];
 
     window.onhashchange = function (event) {
-      console.log(location.hash);
       data.currentTag = location.hash.slice(1);
     };
 
@@ -352,6 +351,8 @@ export default {
           return data.sortType === "descend"
             ? new Date(timeB) - new Date(timeA)
             : new Date(timeA) - new Date(timeB);
+        } else {
+          return 0
         }
       });
       if (data.layout === "masonry" && data.masonry) {

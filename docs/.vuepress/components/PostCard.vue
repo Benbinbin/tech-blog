@@ -61,8 +61,8 @@
       ></a>
     </div>
 
-    <div class="card-footer p-4 h-14 relative z-10 flex items-center space-x-2">
-      <div class="tags flex-grow flex flex-nowrap overflow-x-auto space-x-2">
+    <div class="card-footer px-4 h-14 relative z-10 flex justify-between items-center space-x-2">
+      <div class="tags h-full flex flex-nowrap items-center overflow-x-auto space-x-2">
         <a
           v-for="tag of post.tags"
           :key="tag"
@@ -82,7 +82,7 @@
         v-if="post.collection"
         class="p-2 flex-shrink-0 hover:bg-gray-300 rounded text-blue-500"
         title="查看系列文章"
-        @click="$emit('setCollection')"
+        @click="$emit('setCollection', post.collection)"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -134,6 +134,10 @@ export default {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #4b5563;
+}
+
+.tags {
+  overflow: overlay;
 }
 
 .collection {
