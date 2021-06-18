@@ -20,45 +20,18 @@
         <div class="flex items-center space-x-2">
           <button
             class="
-              p-2
+              p-3
               rounded
               flex
               items-center
               space-x-1
               bg-gray-100
-              hover:bg-blue-600
-              text-gray-500
-              hover:text-white
-            "
-            title="根目录"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-4 h-4"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
-              />
-            </svg>
-            <span class="text-xs hidden sm:block">
-              {{ folder.toUpperCase() }}</span
-            >
-          </button>
-          <button
-            class="
-              p-2
-              rounded
-              flex
-              items-center
-              space-x-1
-              bg-gray-100
-              hover:bg-blue-600
+              hover:bg-blue-500
               text-gray-500
               hover:text-white
             "
             title="返回"
+            @click="setFolderHandler(currentFolder.parent)"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,10 +46,59 @@
             </svg>
             <span class="text-xs hidden sm:block">Back</span>
           </button>
+          <div class="flex items-center space-x-1">
+            <template
+              v-for="item of breadcrumb"
+              :key="item.name"
+              class="space-x-1"
+            >
+              <span v-if="!(item.type === 'root')">/</span>
+              <button
+                class="
+                  p-3
+                  rounded
+                  flex
+                  items-center
+                  space-x-1
+                  text-gray-500
+                  hover:text-white
+                  hover:bg-blue-500
+                "
+                title="根目录"
+                @click="setFolderHandler(item)"
+              >
+                <div v-if="item.type === 'root'" class="hidden sm:block">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+                    />
+                  </svg>
+                </div>
+                <div v-if="item.type === 'folder'" class="hidden sm:block">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 hidden sm:block"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"
+                    />
+                  </svg>
+                </div>
+                <span class="text-xs"> {{ item.name.toUpperCase() }}</span>
+              </button>
+            </template>
+          </div>
         </div>
         <div class="flex items-center space-x-2">
           <button
-            class="p-2 rounded flex items-center space-x-1"
+            class="p-3 rounded flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'grid',
               'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white':
@@ -98,7 +120,7 @@
             <span class="text-xs hidden sm:block">Grid</span>
           </button>
           <button
-            class="hidden p-2 rounded sm:flex items-center space-x-1"
+            class="hidden p-3 rounded sm:flex items-center space-x-1"
             :class="{
               'bg-blue-500 hover:bg-blue-600 text-white': layout === 'tree',
               'bg-gray-100 hover:bg-blue-500 text-gray-500 hover:text-white':
@@ -136,24 +158,29 @@
         </div>
       </div>
       <div
-        v-if="currentFolder && currentFolder.length > 0"
+        v-if="folderContent && folderContent.length > 0"
         v-show="layout === 'grid'"
         class="
           container
           p-8
           mx-auto
-          grid grid-cols-1
+          grid grid-flow-row-dense grid-cols-1
           sm:grid-cols-2
           xl:grid-cols-3
           2xl:grid-cols-4
-          gap-8
+          gap-2
         "
       >
         <folder-item
-          v-for="item of currentFolder"
+          v-for="item of folderContent"
           :key="item.name"
           :item="item"
+          :class="{
+            'row-span-1': item.type === 'post',
+            'row-span-2': item.type === 'folder' && item.children.length > 3,
+          }"
           @setCollection="setCollectionHandler"
+          @setFolder="setFolderHandler"
         ></folder-item>
       </div>
     </main>
@@ -179,58 +206,62 @@ import Footer from "../components/Footer.vue";
 import FolderItem from "../components/FolderItem.vue";
 import CollectionModal from "../components/CollectionModal.vue";
 
-function getLocation(array, key, value) {
-  let t = 0; // t is used as a counter
-  while (t < array.length && array[t][key] !== value) {
-    t++;
-  }
+// function getLocation(array, key, value) {
+//   let t = 0; // t is used as a counter
+//   while (t < array.length && array[t][key] !== value) {
+//     t++;
+//   }
 
-  if (t < array.length) {
-    return array[t];
-  } else {
-    return false;
-  }
-}
+//   if (t < array.length) {
+//     return array[t];
+//   } else {
+//     return false;
+//   }
+// }
 
 function buildPostsTree(rootName, postsList) {
   let tree = {
     name: rootName,
-    type: 'root',
+    type: "root",
     parent: null,
     children: [],
-  }
+  };
 
   const mdReg = /\.md$/;
 
   postsList.forEach((post) => {
     const paths = post.filePathRelative.split("/").slice(1);
-    let parentLevel = tree;
-    let currentLevel = tree.children;
+    let folder = tree;
+    let currentContent = tree.children;
 
-    for(let index=0; index<paths.length; index++) {
+    for (let index = 0; index < paths.length; index++) {
       const path = paths[index];
-      let existingPath = getLocation(currentLevel, "name", path);
+      // let existingPath = getLocation(currentLevel, "name", path);
+      let existingPath = currentContent.find((item) => {
+        return item.name === path;
+      });
       if (existingPath) {
-        currentLevel = existingPath.children;
+        folder = existingPath;
+        currentContent = existingPath.children;
       } else if (mdReg.test(path)) {
         const newPath = {
           name: path,
-          type: 'post',
-          parent: parentLevel,
+          type: "post",
+          parent: folder,
           data: post,
         };
-        currentLevel.push(newPath);
+        currentContent.push(newPath);
       } else {
         const newPath = {
           name: path,
-          type: 'folder',
-          parent: parentLevel,
+          type: "folder",
+          parent: folder,
           children: [],
         };
 
-        currentLevel.push(newPath);
-        parentLevel = currentLevel;
-        currentLevel = newPath.children;
+        currentContent.push(newPath);
+        folder = newPath;
+        currentContent = newPath.children;
       }
     }
   });
@@ -248,7 +279,8 @@ export default {
   setup(props) {
     const data = reactive({
       folder: "",
-      breadcrumb: [],
+      folderList: [],
+      currentFolder: null,
       posts: [],
       postsTree: null,
       tags: [],
@@ -288,73 +320,101 @@ export default {
         data.collectionModalOpen = false;
         data.collection = null;
       },
+      setFolderHandler(value) {
+        data.currentFolder = value;
+      },
     });
 
     // set init data property value
+    const page = usePageData();
+
+    data.folder = page.value.frontmatter.folder;
+    data.posts = page.value.postsData.posts;
+    data.postsTree = buildPostsTree(data.folder, data.posts);
+    data.currentFolder = data.postsTree;
+    data.tags = ["all", ...page.value.postsData.tags];
+
     onMounted(() => {
       if (location.hash) {
         data.currentTag = location.hash.slice(1);
       }
       if (location.search) {
         const searchStr = location.search.slice(1);
-        data.breadcrumb = new URLSearchParams(searchStr).getAll("folder");
+        data.folderList = new URLSearchParams(searchStr).getAll("folder");
+        if (data.folderList.length > 0) {
+          let folder = data.postsTree.children;
+          for (let i = 0; i < data.folderList.length; i++) {
+            const subFolderName = data.folderList[i];
+            const subFolder = folder.children.find((item) => {
+              return item.name === subFolderName;
+            });
+            if (!subFolder) break;
+            folder = subFolder;
+          }
+          data.currentFolder = folder;
+        }
       }
     });
-
-    const page = usePageData();
-
-    data.folder = page.value.frontmatter.folder;
-    data.posts = page.value.postsData.posts;
-    data.postsTree = buildPostsTree(data.folder, data.posts);
-    data.tags = ["all", ...page.value.postsData.tags];
 
     window.onhashchange = function (event) {
       data.currentTag = location.hash.slice(1);
     };
 
-    // sort posts
-    const currentFolder = computed(() => {
-      let content = data.postsTree.children;
-      if (data.breadcrumb.length > 0) {
-        for (let i = 0; i < data.breadcrumb.length; i++) {
-          const subFolderName = data.breadcrumb[i];
-          const subFolder = content.find(item => {
-            return item.name === subFolderName
-          })
-          if(!subFolder) break
-          content = subFolder
-        }
-      }
+    // set current folder content
+    const folderContent = computed(() => {
+      let content = data.currentFolder.children;
+
       content.sort((itemA, itemB) => {
-        if(itemA.type !== 'post' || itemB.type !== 'post') return
-        let timeA = null;
-        let timeB = null;
-        if (data.sortByUpdated) {
-          timeA = itemA.updatedTime || itemA.date || itemA.createdTime;
-          timeB = itemB.updatedTime || itemB.date || itemB.createdTime;
-        } else {
-          timeA = itemA.date || itemA.createdTime;
-          timeB = itemB.date || itemB.createdTime;
+        if (itemA.type === "folder" && itemB.type === "folder") {
+          return itemB.children.length - itemA.children.length;
         }
-        if (timeA && timeB) {
-          return data.sortType === "descend"
-            ? new Date(timeB) - new Date(timeA)
-            : new Date(timeA) - new Date(timeB);
-        } else {
-          return 0;
+        if (itemA.type === "folder" && itemB.type !== "folder") {
+          return -1;
+        } else if (itemA.type !== "folder" && itemB.type === "folder") {
+          return 1;
+        } else if (itemA.type === "post" && itemB.type === "post") {
+          let timeA = null;
+          let timeB = null;
+          if (data.sortByUpdated) {
+            timeA = itemA.updatedTime || itemA.date || itemA.createdTime;
+            timeB = itemB.updatedTime || itemB.date || itemB.createdTime;
+          } else {
+            timeA = itemA.date || itemA.createdTime;
+            timeB = itemB.date || itemB.createdTime;
+          }
+          if (timeA && timeB) {
+            return data.sortType === "descend"
+              ? new Date(timeB) - new Date(timeA)
+              : new Date(timeA) - new Date(timeB);
+          } else {
+            return 0;
+          }
         }
       });
       return content;
     });
 
-    // console.log(currentFolder.value)
-    console.log(data.postsTree)
+    // set breadcrumb navigation
+    const breadcrumb = computed(() => {
+      let arr = [];
+      arr.unshift(data.currentFolder);
+
+      let folder = data.currentFolder;
+      while (folder.parent) {
+        arr.unshift(folder.parent);
+        folder = folder.parent;
+      }
+      return arr;
+    });
+
+    console.log(data.postsTree);
 
     const refData = toRefs(data);
 
     return {
       ...refData,
-      currentFolder,
+      folderContent,
+      breadcrumb,
     };
   },
 };

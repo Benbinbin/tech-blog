@@ -55,7 +55,7 @@
         <p>{{ post.summary }}</p>
       </div>
       <a
-        :href="$withBase(`${post.pathRelative}`)"
+        :href="$withBase(post.pathRelative)"
         target="_blank"
         class="absolute z-10 inset-0"
       ></a>
