@@ -90,7 +90,7 @@ export default {
       clickHandler(value) {
         let link = "";
         if (value !== "Toolbox") {
-          link = `postslist/${value.toLowerCase()}.html`;
+          link = `postslist/${value.toLowerCase()}`;
         } else if (value === "Toolbox") {
           link = "#";
         }
@@ -99,7 +99,7 @@ export default {
       ctrlShiftClickHandler(value) {
         let link = "";
         if (value !== "Toolbox") {
-          link = `folder/${value.toLowerCase()}.html`;
+          link = `folder/${value.toLowerCase()}`;
         } else if (value === "Toolbox") {
           link = "#";
         }

@@ -23,7 +23,7 @@
         }"
         v-for="item of navbarItemsList"
         :key="item"
-        :href="$withBase(`${baseURL}/${item.toLowerCase()}.html`)"
+        :href="item.toLowerCase()"
       >
         {{ item }}
       </a>
@@ -119,7 +119,7 @@ export default {
       currentItem: "",
       showMoreModal: false,
       changeURL(link) {
-        window.location.href = `${link.toLowerCase()}.html`;
+        window.location.href = `${link.toLowerCase()}`;
         this.showMoreModal = false;
       },
     });

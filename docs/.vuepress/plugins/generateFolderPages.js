@@ -135,7 +135,7 @@ const generateFolderPages = (options, app) => {
 
       options.postFolders.forEach(item => {
         folderOptions.push({
-          path: `/folder/${item}.html`,
+          path: `/folder/${item}`,
           frontmatter: {
             layout: 'FolderLayout',
             folder: item

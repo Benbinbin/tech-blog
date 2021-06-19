@@ -52,7 +52,7 @@ const generateListPages = (options, app) => {
 
       // set list page data
       let listOptions = [{
-        path: '/postslist/all.html',
+        path: '/postslist/all',
         frontmatter: {
           layout: 'ClassificationLayout',
           classification: 'all',
@@ -61,7 +61,7 @@ const generateListPages = (options, app) => {
 
       options.postClassifications.forEach(item => {
         listOptions.push({
-          path: `/postslist/${item}.html`,
+          path: `/postslist/${item}`,
           frontmatter: {
             layout: 'ClassificationLayout',
             classification: item

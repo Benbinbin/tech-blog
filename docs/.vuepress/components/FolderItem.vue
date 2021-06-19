@@ -3,6 +3,9 @@
     <div
       v-if="type === 'post'"
       class="post-container bg-gray-50 rounded flex flex-col"
+      :class="{
+        'border border-blue-300': post.tags.includes(tag),
+      }"
     >
       <div class="flex-grow p-4 flex items-start justify-between space-x-2">
         <a
@@ -133,6 +136,9 @@
           <div
             v-if="item.type === 'post'"
             class="flex items-center justify-between space-x-2"
+            :class="{
+              'border border-blue-300 rounded': item.data.tags.includes(tag),
+            }"
           >
             <a
               class="
@@ -231,10 +237,11 @@
 import { reactive, toRefs } from "vue";
 
 export default {
-  props: ["item"],
-  setup({ item }) {
+  props: ["item", "tag"],
+  setup({ item, tag }) {
     const data = reactive({
       type: item.type,
+      tag: tag,
       folder: null,
       post: null,
     });
