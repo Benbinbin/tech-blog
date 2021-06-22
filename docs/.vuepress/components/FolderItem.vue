@@ -204,7 +204,7 @@
               flex
               items-start
               space-x-1
-              text-gray-500
+              text-blue-500
               hover:text-white
               hover:bg-blue-400
               rounded

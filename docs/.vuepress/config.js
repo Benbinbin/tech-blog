@@ -86,6 +86,7 @@ module.exports = {
     md.use(require('@neilsustc/markdown-it-katex'))
   },
   define: {
+    __BASE__: "/tech-blog/",
     __AUTHOR__: 'Ben',
     __AVATAR__: 'Ben.png',
     __SOCIAL_MEDIA__: [

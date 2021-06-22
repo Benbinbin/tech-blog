@@ -110,6 +110,7 @@ const generateFolderPages = (options, app) => {
         }
 
         const post = {
+          key: page.key,
           title: page.title,
           path: page.path,
           pathRelative: page.htmlFilePathRelative,
