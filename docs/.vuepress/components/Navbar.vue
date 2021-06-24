@@ -1,14 +1,18 @@
 <template>
   <nav class="px-4 sm:px-8 py-2 flex justify-between items-center">
-    <a class="avatar p-2 hover:bg-gray-100 rounded-md" href="/">
-      <img
-        :src="$withBase(`/images/${avatar}`)"
-        alt="avatar"
-        class="w-10 h-10 rounded-full"
-      />
-    </a>
-    <div class="navbar-items hidden sm:flex items-center space-x-0.5">
-      <a
+    <div class="left flex items-center space-x-0.5">
+      <slot name="left"></slot>
+      <a class="avatar p-2 hover:bg-gray-100 rounded-md" href="/">
+        <img
+          :src="$withBase(`/images/${avatar}`)"
+          alt="avatar"
+          class="w-10 h-10 rounded-full"
+        />
+      </a>
+    </div>
+
+    <div class="right hidden sm:flex items-center space-x-0.5">
+      <button
         class="
           p-2
           text-sm
@@ -23,10 +27,11 @@
         }"
         v-for="item of navbarItemsList"
         :key="item"
-        :href="item.toLowerCase()"
+        @click="changeURL(item, $event)"
       >
         {{ item }}
-      </a>
+      </button>
+      <slot name="right"></slot>
     </div>
     <div class="more-container sm:hidden relative">
       <button
@@ -96,7 +101,7 @@
           }"
           v-for="item of navbarItemsList"
           :key="item"
-          @click="changeURL(item)"
+          @click="changeURL(item, $event)"
         >
           {{ item }}
         </button>
@@ -110,21 +115,35 @@ import { reactive, toRefs } from "vue";
 import { usePageData } from "@vuepress/client";
 
 export default {
-  props: ["navbarType"],
+  props: {
+    navbarType: {
+      type: String,
+      default: "classification",
+    },
+  },
   setup(props) {
+    // data
     const data = reactive({
       avatar: "",
       baseURL: "",
       navbarItemsList: [],
       currentItem: "",
       showMoreModal: false,
-      changeURL(link) {
-        window.location.href = `${link.toLowerCase()}`;
-        this.showMoreModal = false;
-      },
     });
-    const page = usePageData();
+    // methods
+    const changeURL = (link, event) => {
+      console.log(event);
+      if (link !== "All" && event && event.ctrlKey && event.shiftKey) {
+        window.location.href = `${__BASE__}folder/${link.toLowerCase()}`;
+      } else {
+        window.location.href = `${__BASE__}${
+          data.baseURL
+        }/${link.toLowerCase()}`;
+      }
+      data.showMoreModal = false;
+    };
 
+    const page = usePageData();
     data.avatar = __AVATAR__ || "";
     if (props.navbarType === "classification") {
       data.currentItem = page.value.frontmatter.classification;
@@ -139,6 +158,7 @@ export default {
     const refData = toRefs(data);
     return {
       ...refData,
+      changeURL,
     };
   },
 };

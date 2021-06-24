@@ -2,7 +2,7 @@
   <svg
     v-bind="$attrs"
     v-show="layout === 'tree'"
-    class="tree-diagram"
+    class="tree-diagram select-none"
     :viewBox="viewBox"
   >
     <g
@@ -198,14 +198,6 @@ export default {
       return linkGenerator(link);
     };
 
-    // const folderColor = (node) => {
-    //   if(node.children) {
-    //     return '#93C5FD'
-    //   } else {
-    //     return '#60A5FA'
-    //   }
-    // }
-
     const textGenerator = (node, type = "truncate") => {
       // text max width
       const len = Math.floor(dy.value / 14);
@@ -247,10 +239,13 @@ export default {
     });
 
     const resizeTransform = () => {
-      d3.select(".tree-diagram").call(zoom.transform, d3.zoomIdentity);
+      d3.select(".tree-diagram")
+        .transition()
+        .duration(500)
+        .call(zoom.transform, d3.zoomIdentity);
     };
 
-    // open post page
+    // open post page or expand folder
     const clickHandler = (node) => {
       if (node.data.type === "post") {
         window.open(`${__BASE__}${node.data.data.pathRelative}`);
@@ -258,12 +253,38 @@ export default {
         if (!node.parent) return;
         if (node.children) {
           node.children = null;
+          adjustTransform(node, false);
         } else {
           node.children = node._children;
+          adjustTransform(node, true);
         }
         // console.log(node);
-        buildTree()
+        buildTree();
       }
+    };
+
+    const adjustTransform = (d, isExpand) => {
+      /**
+       * if expand sub tree, move folder node to center
+       * if contract sub tree, move the parent node to center
+       */
+      let scale = 1;
+      let x, y;
+      if (isExpand) {
+        // expand sub tree
+        x = d.y;
+        y = d.x;
+      } else {
+        // contract sub tree
+        x = d.parent.y;
+        y = d.parent.x;
+      }
+
+      // d3.zoomIdentity represend coordinate=[0, 0] and scale=1
+      d3.select(".tree-diagram")
+        .transition()
+        .duration(500)
+        .call(zoom.transform, d3.zoomIdentity.translate(-x, -y).scale(scale));
     };
 
     // init build tree

@@ -1,3 +1,5 @@
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   lang: 'zh-CN',
   base: "/tech-blog/",
@@ -5,9 +7,7 @@ module.exports = {
   description: 'A blog shows some of the notes I took while learning skills.',
   head: [
     ['link', { rel: 'icon', href: '/images/favicon.ico' }],
-    // ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
-    // ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css' }],
-    // ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
   ],
   bundler: '@vuepress/vite',
   bundlerConfig: {
@@ -59,19 +59,21 @@ module.exports = {
       postFolders: ['web', 'data', 'design', 'other']
     }],
   ],
-  theme: '@vuepress/default',
+  // theme: '@vuepress/default',
+  theme: path.resolve(__dirname, './theme/index.js'),
   themeConfig: {
     logo: '/images/Ben.png',
+    navbar: false,
     sidebar: false,
     contributors: false,
     lastUpdatedText: '更新时间',
-    navbar: [
-      { text: 'All', link: '/postslist/all.html' },
-      { text: 'Data', link: '/postslist/data.html' },
-      { text: 'Web', link: '/postslist/web.html' },
-      { text: 'Design', link: '/postslist/design.html' },
-      { text: 'Other', link: '/postslist/other.html' },
-    ],
+    // navbar: [
+    //   { text: 'All', link: '/postslist/all.html' },
+    //   { text: 'Data', link: '/postslist/data.html' },
+    //   { text: 'Web', link: '/postslist/web.html' },
+    //   { text: 'Design', link: '/postslist/design.html' },
+    //   { text: 'Other', link: '/postslist/other.html' },
+    // ],
     themePlugins: {
       backToTop: false,
       nprogress: false,
