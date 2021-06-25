@@ -44,7 +44,7 @@
           v-if="post.collection"
           class="p-2 flex-shrink-0 hover:bg-gray-300 rounded text-blue-500"
           title="查看系列文章"
-          @click="$emit('setCollection')"
+          @click="$emit('setCollection', post.collection)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,4 @@
 ---
-type: series
-series: MIT 18.06SC Linear Algebra
 tags:
   - math
   - linear-algebra

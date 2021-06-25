@@ -129,7 +129,9 @@ export default {
         "theme-default-content"
       )[0];
       const headingDomList = contentDom.querySelectorAll("h2, h3, h4, h5, h6");
+      console.log(headingDomList);
       const headingsArr = Array.from(headingDomList);
+      console.log(headingsArr);
 
       headingDomList.forEach((item) => {
         data.headings.push({
@@ -138,7 +140,6 @@ export default {
           text: item.lastChild.nodeValue.trim() || item.id,
         });
       });
-      console.log(data.headings);
 
       // set catalog width
       const setCatalogWidth = () => {
@@ -171,6 +172,7 @@ export default {
 
       const lastHeading = headingsArr[headingsArr.length - 1];
       const getCurrentHeading = () => {
+        if (headingsArr.length === 0) return;
         const scrollTop = getScrollTop();
 
         if (scrollTop >= lastHeading.offsetTop) {
@@ -271,7 +273,7 @@ export default {
 
   .katex-display {
     overflow-x: auto;
-    overflow-y:hidden
+    overflow-y: hidden;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 ---
 show: true
 collection: git
+collectionOrder: 2
 tags:
   - git
 ---
