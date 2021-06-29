@@ -205,11 +205,11 @@ import { reactive, toRefs, onMounted, computed, nextTick } from "vue";
 import Masonry from "masonry-layout";
 import { usePageData } from "@vuepress/client";
 
-import Navbar from "../components/Navbar.vue";
-import Footer from "../components/Footer.vue";
-import PostCard from "../components/PostCard.vue";
-import PostList from "../components/PostList.vue";
-import CollectionModal from "../components/CollectionModal.vue";
+import Navbar from "../../components/Navbar.vue";
+import Footer from "../../components/Footer.vue";
+import PostCard from "../../components/PostCard.vue";
+import PostList from "../../components/PostList.vue";
+import CollectionModal from "../../components/CollectionModal.vue";
 
 // masonry layout
 function createMasonryLayout(container, item) {

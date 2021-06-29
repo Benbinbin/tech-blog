@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import Footer from "../components/Footer.vue";
+import Footer from "../../components/Footer.vue";
 import { usePageFrontmatter } from "@vuepress/client";
 import { reactive, toRefs } from "vue";
 

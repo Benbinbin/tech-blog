@@ -421,11 +421,11 @@ import {
 } from "vue";
 import { usePageData } from "@vuepress/client";
 
-import Navbar from "../components/Navbar.vue";
-import Footer from "../components/Footer.vue";
-import FolderItem from "../components/FolderItem.vue";
-import PostsTree from "../components/PostsTree.vue";
-import CollectionModal from "../components/CollectionModal.vue";
+import Navbar from "../../components/Navbar.vue";
+import Footer from "../../components/Footer.vue";
+import FolderItem from "../../components/FolderItem.vue";
+import PostsTree from "../../components/PostsTree.vue";
+import CollectionModal from "../../components/CollectionModal.vue";
 
 function buildPostsTreeData(rootName, postsList) {
   let tree = {
