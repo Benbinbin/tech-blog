@@ -115,7 +115,7 @@
                     />
                   </svg>
                 </div>
-                <span class="text-xs"> {{ item.name.toUpperCase() }}</span>
+                <span class="text-xs"> {{ item.name }}</span>
               </button>
             </template>
           </div>
@@ -311,7 +311,7 @@
             />
           </svg>
           <span class="text-xs hidden sm:block">
-            {{ folder.toUpperCase() }}</span
+            {{ folder }}</span
           >
         </button>
       </div>

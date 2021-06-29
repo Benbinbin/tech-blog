@@ -1,6 +1,7 @@
 const { path } = require('@vuepress/utils')
 
 module.exports = {
+  open: true,
   lang: 'zh-CN',
   base: "/tech-blog/",
   title: "Tech Blog",
@@ -59,21 +60,12 @@ module.exports = {
       postFolders: ['web', 'data', 'design', 'other']
     }],
   ],
-  // theme: '@vuepress/default',
   theme: path.resolve(__dirname, './theme/index.js'),
   themeConfig: {
-    logo: '/images/Ben.png',
     navbar: false,
     sidebar: false,
     contributors: false,
     lastUpdatedText: '更新时间',
-    // navbar: [
-    //   { text: 'All', link: '/postslist/all.html' },
-    //   { text: 'Data', link: '/postslist/data.html' },
-    //   { text: 'Web', link: '/postslist/web.html' },
-    //   { text: 'Design', link: '/postslist/design.html' },
-    //   { text: 'Other', link: '/postslist/other.html' },
-    // ],
     themePlugins: {
       backToTop: false,
       nprogress: false,
@@ -85,7 +77,7 @@ module.exports = {
     }
   },
   extendsMarkdown: (md) => {
-    md.use(require('@neilsustc/markdown-it-katex'))
+    md.use(require('@neilsustc/markdown-it-katex'), {output: 'html'})
   },
   define: {
     __BASE__: "/tech-blog/",

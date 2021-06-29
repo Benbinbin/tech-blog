@@ -77,17 +77,23 @@
 <script>
 import Footer from "../../components/Footer.vue";
 import { usePageFrontmatter } from "@vuepress/client";
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, onMounted } from "vue";
 
 export default {
   components: {
     Footer,
   },
   setup(props) {
+    // data
     const data = reactive({
       author: "",
       cards: [],
-      clickHandler(value) {
+      clickHandler: () => {},
+      ctrlShiftClickHandler: () => {},
+    });
+
+    onMounted(() => {
+      data.clickHandler = (value) => {
         let link = "";
         if (value !== "Toolbox") {
           link = `postslist/${value.toLowerCase()}`;
@@ -95,8 +101,9 @@ export default {
           link = "#";
         }
         window.open(link);
-      },
-      ctrlShiftClickHandler(value) {
+      };
+
+      data.ctrlShiftClickHandler = (value) => {
         let link = "";
         if (value !== "Toolbox") {
           link = `folder/${value.toLowerCase()}`;
@@ -104,7 +111,7 @@ export default {
           link = "#";
         }
         window.open(link);
-      },
+      };
     });
 
     data.author = __AUTHOR__ || "";

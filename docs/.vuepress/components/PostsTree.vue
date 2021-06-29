@@ -156,6 +156,7 @@ export default {
         y: 0,
         k: 1,
       },
+      clickHandler: () => {},
     });
 
     // tree size
@@ -246,22 +247,24 @@ export default {
     };
 
     // open post page or expand folder
-    const clickHandler = (node) => {
-      if (node.data.type === "post") {
-        window.open(`${__BASE__}${node.data.data.pathRelative}`);
-      } else if (node.data.type === "folder") {
-        if (!node.parent) return;
-        if (node.children) {
-          node.children = null;
-          adjustTransform(node, false);
-        } else {
-          node.children = node._children;
-          adjustTransform(node, true);
+    onMounted(() => {
+      data.clickHandler = (node) => {
+        if (node.data.type === "post") {
+          window.open(`${__BASE__}${node.data.data.pathRelative}`);
+        } else if (node.data.type === "folder") {
+          if (!node.parent) return;
+          if (node.children) {
+            node.children = null;
+            adjustTransform(node, false);
+          } else {
+            node.children = node._children;
+            adjustTransform(node, true);
+          }
+          // console.log(node);
+          buildTree();
         }
-        // console.log(node);
-        buildTree();
-      }
-    };
+      };
+    });
 
     const adjustTransform = (d, isExpand) => {
       /**
@@ -296,10 +299,8 @@ export default {
       ...refData,
       viewBox,
       linkPathGenerator,
-      // folderColor,
       textGenerator,
       resizeTransform,
-      clickHandler,
     };
   },
 };
