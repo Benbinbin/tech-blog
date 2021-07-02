@@ -134,7 +134,6 @@ export default {
 
     onMounted(() => {
       data.changeURL = (link, event) => {
-        console.log(event);
         if (link !== "All" && event && event.ctrlKey && event.shiftKey) {
           window.location.href = `${__BASE__}folder/${link.toLowerCase()}`;
         } else {
@@ -155,7 +154,7 @@ export default {
     } else if (props.navbarType === "folder") {
       data.currentItem = page.value.frontmatter.folder;
       data.navbarItemsList = __FOLDERS__ || [];
-      data.baseURL = "folder";
+      data.baseURL = "folderslist";
     }
 
     const refData = toRefs(data);

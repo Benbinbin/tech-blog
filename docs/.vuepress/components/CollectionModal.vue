@@ -131,7 +131,6 @@ export default {
 
     onMounted(() => {
       document.body.style.overflow = "hidden";
-      // console.log(data.main);
     });
 
     const refData = toRefs(data);

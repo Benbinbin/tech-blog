@@ -175,7 +175,6 @@ export default {
     let treeData = null;
     const setTreeData = () => {
       treeData = d3.hierarchy(props.postsData);
-      // console.log(treeData);
       treeData.descendants().forEach((d, i) => {
         d.id = i;
         if (d.children) d._children = d.children;
@@ -260,7 +259,6 @@ export default {
             node.children = node._children;
             adjustTransform(node, true);
           }
-          // console.log(node);
           buildTree();
         }
       };

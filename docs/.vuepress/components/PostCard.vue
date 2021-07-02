@@ -149,8 +149,6 @@ export default {
     bottom: 0px;
     z-index: -10;
     border-radius: 0.5rem;
-    // box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    //   0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms;
   }
 
@@ -170,7 +168,6 @@ export default {
 .card:hover {
   .collection::before {
     transform: translateY(-20px);
-    // transition-delay: 50ms;
   }
   .collection::after {
     transform: translateY(-10px);

@@ -55,10 +55,7 @@
       </template>
     </Navbar>
     <div class="relative flex-grow">
-      <Layout>
-        <!-- <template #page-top></template>
-        <template #page-bottom></template> -->
-      </Layout>
+      <Layout></Layout>
       <div
         v-show="showCatalog"
         class="catalog-container absolute top-0 right-0 h-full hidden lg:block"
@@ -120,18 +117,13 @@ export default {
       headings: [],
     });
 
-    // const page = usePageData();
-    // console.log(page.value);
-
     onMounted(() => {
       // get headings list
       const contentDom = document.getElementsByClassName(
         "theme-default-content"
       )[0];
       const headingDomList = contentDom.querySelectorAll("h2, h3, h4, h5, h6");
-      // console.log(headingDomList);
       const headingsArr = Array.from(headingDomList);
-      // console.log(headingsArr);
 
       headingDomList.forEach((item) => {
         data.headings.push({
@@ -252,11 +244,22 @@ export default {
 
   li {
     margin-left: 30px;
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+
+  ul li {
     list-style: circle;
   }
 
-  div > ul > li {
+  & > ul > li {
     list-style: disc;
+  }
+
+  & > ul > li > ul > li > ul > li {
+    list-style: square;
   }
 
   img {

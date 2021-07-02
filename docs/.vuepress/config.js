@@ -7,12 +7,11 @@ module.exports = {
   title: "Tech Blog",
   description: 'A blog shows some of the notes I took while learning skills.',
   head: [
-    ['link', { rel: 'icon', href: '/images/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/tech-blog/images/favicon.ico' }],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
   ],
   bundler: '@vuepress/vite',
   bundlerConfig: {
-    // vite 打包工具的选项
     viteOptions: {
       css: {
         postcss: {
@@ -45,10 +44,10 @@ module.exports = {
           name: "Other",
           image: "other.svg"
         },
-        {
-          name: "Toolbox",
-          image: "toolbox.svg"
-        },
+        // {
+        //   name: "Toolbox",
+        //   image: "toolbox.svg"
+        // },
       ]
     }],
     [require('./plugins/generateListPages.js'),
@@ -81,8 +80,17 @@ module.exports = {
   },
   define: {
     __BASE__: "/tech-blog/",
+    __HOME_PAGE_TITLE__: "技术部落格",
+    __HOME_PAGE_ICON__: "home_icon.svg",
+    __HOME_DESCRIPTION__: "我是 Ben，该网站的大部分内容是我学习过程中做的笔记",
+    __HOME_PAGE_COLOR__: '#9CA3AF',
+    __AVATAR__: 'avatar.png',
+    __CLASSIFICATIONS__: ['All','Data', 'Web', 'Design','Other'],
+    __FOLDERS__: ['Data', 'Web', 'Design','Other'],
+    __FOOTER_AVATAR_LINK__: 'https://benbinbin.github.io/',
     __AUTHOR__: 'Ben',
-    __AVATAR__: 'Ben.png',
+    __FOOTER_LICENSE__: 'CC-BY-SA-4.0',
+    __FOOTER_LICENSE_LINK__: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
     __SOCIAL_MEDIA__: [
       {
         name: 'email',
@@ -115,7 +123,5 @@ module.exports = {
         url: 'https://weibo.com/binbindesign'
       },
     ],
-    __CLASSIFICATIONS__: ['All','Data', 'Web', 'Design','Other'],
-    __FOLDERS__: ['Data', 'Web', 'Design','Other'],
   },
 }
