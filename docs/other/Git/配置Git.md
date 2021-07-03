@@ -1,7 +1,6 @@
 ---
 show: true
-collection: git
-collectionOrder: 1
+cover: git.jpg
 tags:
   - git
 ---

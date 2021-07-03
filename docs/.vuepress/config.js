@@ -3,7 +3,8 @@ const { path } = require('@vuepress/utils')
 module.exports = {
   open: true,
   lang: 'zh-CN',
-  base: "/tech-blog/",
+  // base: "/tech-blog/",
+  base: "/",
   title: "Tech Blog",
   description: 'A blog shows some of the notes I took while learning skills.',
   head: [
@@ -21,6 +22,7 @@ module.exports = {
             ]
         }
       },
+      assetsInclude: /\.pdf$/
     }
   },
   plugins: [
@@ -79,7 +81,8 @@ module.exports = {
     md.use(require('@neilsustc/markdown-it-katex'), {output: 'html'})
   },
   define: {
-    __BASE__: "/tech-blog/",
+    // __BASE__: "/tech-blog/",
+    __BASE__: "/",
     __HOME_PAGE_TITLE__: "技术部落格",
     __HOME_PAGE_ICON__: "home_icon.svg",
     __HOME_DESCRIPTION__: "我是 Ben，该网站的大部分内容是我学习过程中做的笔记",
