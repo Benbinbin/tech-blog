@@ -65,9 +65,6 @@ SVG 绘制图形时需要使用坐标系统/网格系统，以页面的**左上�
 </svg>
 ```
 
-
-
-
 ## 基本形状
 
 SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本的形状元素**构成，如用于定义圆形的 `<circle>` 元素、用于定义矩形的 `<rect>` 元素、用于定义简单或复杂曲线的 `<path>` 元素。
@@ -96,13 +93,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <!-- 矩形 -->
-  <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
-  <!-- 圆角矩形 -->
-  <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
-</svg>
-
 使用元素 `<rect/>` 绘制一个矩形，可以通过 6 个基本属性控制其位置和形状：
 
 * `x` 矩形左上角在画布中的 x 位置
@@ -122,13 +112,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   <ellipse cx="75" cy="25" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/>
 </svg>
 ```
-
-<svg width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <!-- 圆形 -->
-  <circle cx="25" cy="25" r="20" stroke="red" fill="transparent" stroke-width="5"/>
-  <!-- 椭圆形 -->
-  <ellipse cx="75" cy="25" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/>
-</svg>
 
 使用元素 `<circle/>` 绘制一个圆形。通过 3 个属性来设置圆形：
 
@@ -155,14 +138,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg width="100" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <!-- 直线 -->
-  <line x1="10" x2="90" y1="10" y2="45" stroke="orange" fill="transparent" stroke-width="5"/>
-  <!-- 折线 -->
-  <polyline points="10,25 20,25 30,55 50,45 60,65 70,75 80,65 90,80"
-      stroke="orange" fill="transparent" stroke-width="5"/>
-</svg>
-
 使用元素 `<line/>` 绘制一条直线。通过指定起点和终点的位置即可：
 
 * `x1` 起点的 x 位置
@@ -185,15 +160,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   <path d="M80,50 Q90,70 50,80 T90,30" fill="none" stroke="blue" stroke-width="5"/>
 </svg>
 ```
-
-<svg width="200" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <!-- 多边形 -->
-  <polygon points="50,10 55,30 70,30 60,40 65,55 50,45 35,55 40,40 30,30 45,30"
-      stroke="green" fill="transparent" stroke-width="5"/>
-  <!-- 路径 -->
-  <path d="M80,50 Q90,70 50,80 T90,30" fill="none" stroke="blue" stroke-width="5"/>
-</svg>
-
 
 使用元素 `<polygon/>` 绘制多边形。多边形可以当作由多条折线构成的闭合图形，也是由点集数列组成：
 
@@ -229,11 +195,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg width="100px" height="100px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,10 H 90 V 90 H 10 L10,10"/>
-</svg>
-
-
 :bulb: 我们可以通过命令 `Z` 或 `z`（该命令不区分大小写） 来简化 `<path>` 命令，**该命令会从当前点画一条直线到路径的起点**，实现闭合路径的作用。尽管我们不总是需要闭合路径，但是它还是经常被放到路径的最后。
 
 ```html
@@ -242,12 +203,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
    <path d="M10,10 H 90 V 90 H 10 Z" fill="transparent" stroke="black"/>
 </svg>
 ```
-
-<svg width="100px" height="100px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <!-- 最后使用 -->
-   <path d="M10,10 H 90 V 90 H 10 Z" fill="transparent" stroke="black"/>
-</svg>
-
 
 :bulb: 也可以使用相对坐标的形式，其中参数不是明确的的坐标而是相对于前一个点需要移动的距离。
 
@@ -258,10 +213,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
     <path d="M10,10 h 80 v 80 h -80 Z" fill="transparent" stroke="black"/>
 </svg>
 ```
-
-<svg width="100px" height="100px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,10 h 80 v 80 h -80 Z" fill="transparent" stroke="black"/>
-</svg>
 
 ### 曲线
 绘制平滑曲线的命令有三个，其中两个用来绘制贝塞尔曲线，另外一个用来绘制弧形或者说是圆的一部分。
@@ -277,11 +228,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg width="60px" height="30px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,10 C20,20 40,20 50,10" stroke="black" fill="transparent"/>
-</svg>
-
-
 :bulb: 可以使用简写 `S` 命令创建与前面相同的贝塞尔曲线 ` S x2,y2 x,y`
 
 ```html
@@ -289,10 +235,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   <path d="M10,80 C40,10 65,10 95,80 S150,150 180,80" stroke="black" fill="transparent"/>
 </svg>
 ```
-
-<svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,80 C40,10 65,10 95,80 S150,150 180,80" stroke="black" fill="transparent"/>
-</svg>
 
 * 二次贝塞尔曲线 Quadratic Bézier curve：使用 `Q` 命令 `Q x1,y1 x,y` 绘制。它只有两组参数点，因为只需要一个控制点，用来确定起点和终点的曲线斜率。
 
@@ -302,11 +244,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,80 Q95,10 180,80" stroke="black" fill="transparent"/>
-</svg>
-
-
 :bulb: 类似地，简写 `T` 命令会通过前一个控制点，推断出一个新的控制点 `T x, y`。
 
 ```html
@@ -314,10 +251,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   <path d="M10,80 Q52.5,10 95,80 T180,80" stroke="black" fill="transparent"/>
 </svg>
 ```
-
-<svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,80 Q52.5,10 95,80 T180,80" stroke="black" fill="transparent"/>
-</svg>
 
 #### 弧形
 弧形 Arc curve：使用 `A` 命令绘制弧形。基本上，弧形可以视为圆形或椭圆形的一部分。
@@ -331,11 +264,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
 </svg>
 ```
 
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="500px" height="50px" viewBox="0 0 100 100">
-  <text x="50" y="50" font-size="50">Hello, out there</text>
-</svg>
-
 
 使用元素 `<text>` 定义了一个由文字组成的矢量图形，可以将渐变、图案、剪切路径、遮罩或者滤镜应用到文字图形上，可以通过不同属性设置文本的定位、大小、对其方式等。
 
@@ -346,8 +274,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   * 开头 `start`：文本字符串的开始位置对齐给定的点
   * 中间 `middle`：文本字符串的中间位置对齐给定的点
   * 末尾对齐 `end`：文本字符串的末尾对齐给定的点
-
-
 
 ## 工具
 
@@ -364,8 +290,6 @@ SVG 与 HTML 类似，一个简单的 SVG 文档由 `<svg>` 根元素和**基本
   * [SVGO](https://github.com/svg/svgo) 一个 node.js 包，提供 CLI 命令行优化 SVG 文件。
 
 :bulb: 使用软件和工具处理 SVG 文档时，应该对不同的路径/图层进行分组并设置适当的名称，导出生成的 `<svg>` 元素内才会有对应的分组和 `id` 属性，便于使用 GreenSock 处理生成动画。
-
-
 
 ## 资源
 
