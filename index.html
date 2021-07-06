@@ -30,7 +30,7 @@
             <div class="after flex-grow h-0.5 bg-white"></div>
         </div>
         <p class="p-8 text-center text-lg font-bold">我是 <a href="https://benbinbin.github.io/" target="_blank"
-                class="hover:text-blue-600 underline font-bold transition-colors">Benbinbin</a>，该博客的大部分内容是我学习过程中做的笔记。
+                class="hover:text-blue-600 underline font-bold transition-colors">Benbinbin</a>，这是我的技术部落格导航页，这些部落格大部分内容是我学习过程中做的笔记。
         </p>
     </header>
 
@@ -97,7 +97,7 @@
           ">
             <a class="p-2 hover:bg-gray-300 rounded-md" v-for="item of socialMedia" :key="item.name" :href="item.url"
                 :target="item.name === 'email' ? '' : '_blank'">
-                <img :src="`/images/icons/${item.logo}`" :alt="item.name" class="w-auto h-6" />
+                <img :src="`./images/icons/${item.logo}`" :alt="item.name" class="w-auto h-6" />
             </a>
         </div>
     </footer>
