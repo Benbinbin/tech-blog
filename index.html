@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benbinbin Tech Blog</title>
+    <link rel="icon" type="image/png" href="./images/Ben.png">
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./vue.global.js"></script>
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.1.4/dist/vue.global.js"></script> -->
+</head>
+
+<body class="bg-gray-100">
+    <header class="
+        h-screen
+        flex flex-col
+        justify-center
+        items-center
+        text-white
+        bg-gray-400
+      ">
+        <h1 class="p-8 text-center text-5xl md:text-8xl font-bold">Tech Blog</h1>
+        <div v-if="icon" class="container w-full p-8 md:p-10 flex justify-center items-center">
+            <div class="before flex-grow h-0.5 bg-white"></div>
+            <img class="flex-shrink-0 px-4 w-20 sm:w-24" src="./tech-blog.svg" alt="tech blog logo" />
+            <div class="after flex-grow h-0.5 bg-white"></div>
+        </div>
+        <p class="p-8 text-center text-lg font-bold">我是 <a href="https://benbinbin.github.io/" target="_blank"
+                class="hover:text-blue-600 underline font-bold transition-colors">Benbinbin</a>，该博客的大部分内容是我学习过程中做的笔记。
+        </p>
+    </header>
+
+    <main id="main" class="px-8 py-16">
+        <div class="
+          container
+          mx-auto
+          grid grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          xl:grid-cols-4
+          gap-6
+        ">
+            <a v-for="card of cards" :key="card.name" class="
+            card
+            rounded-2xl
+            pl-6
+            relative
+            bg-cover bg-center bg-no-repeat
+            hover:shadow-lg
+            hover:text-blue-400
+            text-white
+            transition-all
+          " :style="{backgroundImage: 'url(' + `./images/covers/${card.cover}` + ')'}"
+                :href="`/blog-${card.name.toLowerCase()}/`" target="_blank">
+                <div class="card-body my-40 relative z-10">
+                    <h3 class="text-5xl text-left font-bold">{{ card.name }}</h3>
+                </div>
+            </a>
+        </div>
+    </main>
+    <footer id="footer" class="bg-gray-200 p-8 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <div class="flex justify-center md:justify-start items-center">
+            <a class="p-2 hover:bg-gray-300 rounded-md" href="https://benbinbin.github.io/" target="_blank">
+                <img src="./images/Ben.png" alt="avatar" class="w-10 h-10 rounded-full" />
+            </a>
+        </div>
+
+        <div class="text-center space-y-0.5">
+            <p class="text-sm text-gray-600">
+                &copy;<span id="year">{{ time }}</span> <span class="author">Benbinbin</span>. All Right Reserved.
+            </p>
+            <p class="text-xs text-center text-gray-400">
+                除特殊说明外，本站的文章遵循
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank"
+                    class="text-blue-400">CC-BY-SA-4.0</a>
+                协议
+            </p>
+            <p class="text-xs text-center text-gray-400">
+                网站主题采用
+                <a href="https://github.com/Benbinbin/two-dishes-one-fish" target="_blank" class="text-blue-400">Two
+                    Dishes
+                    One Fish</a>
+            </p>
+        </div>
+
+        <div class="
+            btn-container
+            flex
+            justify-center
+            md:justify-end
+            items-center
+            space-x-0.5
+          ">
+            <a class="p-2 hover:bg-gray-300 rounded-md" v-for="item of socialMedia" :key="item.name" :href="item.url"
+                :target="item.name === 'email' ? '' : '_blank'">
+                <img :src="`/images/icons/${item.logo}`" :alt="item.name" class="w-auto h-6" />
+            </a>
+        </div>
+    </footer>
+</body>
+<script type="application/javascript">
+    const Content = {
+        data() {
+            return {
+                cards: [
+                    {
+                        name: "Data",
+                        color: "#9CA3AF",
+                        cover: 'data.svg'
+                    },
+
+                    {
+                        name: "Design",
+                        color: "#A78BFA",
+                        cover: 'design.svg'
+                    },
+                    {
+                        name: "Web",
+                        color: "#60A5FA",
+                        cover: 'web.svg'
+                    },
+                    {
+                        name: "Code",
+                        color: "#9CA3AF",
+                        cover: 'code.svg'
+                    },
+                ]
+            }
+        }
+    }
+
+    Vue.createApp(Content).mount('#main')
+
+    const Footer = {
+        data() {
+            return {
+                time: new Date().getFullYear(),
+                socialMedia: [
+                    {
+                        name: 'email',
+                        logo: 'email.svg',
+                        url: 'mailto:benthomsonbin@gmail.com'
+                    },
+                    {
+                        name: 'github',
+                        logo: 'github.svg',
+                        url: 'https://github.com/Benbinbin'
+                    },
+                    {
+                        name: 'juejin',
+                        logo: 'juejin.svg',
+                        url: 'https://juejin.cn/user/3175045314389278/posts'
+                    },
+                    {
+                        name: 'dribbble',
+                        logo: 'dribbble.svg',
+                        url: 'https://dribbble.com/BinBinDesign'
+                    },
+                    {
+                        name: 'twitter',
+                        logo: 'twitter.svg',
+                        url: 'https://twitter.com/Benbinbin_fun'
+                    },
+                    {
+                        name: 'weibo',
+                        logo: 'weibo.svg',
+                        url: 'https://weibo.com/binbindesign'
+                    },
+                ],
+            }
+        }
+    }
+    Vue.createApp(Footer).mount('#footer')
+</script>
+
+</html>
